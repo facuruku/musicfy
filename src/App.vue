@@ -1,19 +1,19 @@
 <template>
   <!-- Header -->
-  <header id="header" class="bg-gray-700">
+  <header id="header" class="bg-gray-700 w-full">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
-      <a class="text-white font-bold uppercase text-2xl mr-4" href="#">Music</a>
+      <a class="text-white font-bold text-2xl mr-4 justify-center" href="#">Musicfy</a>
 
-      <div class="flex flex-grow items-center">
+      <div class="flex flex-grow items-center justify-end">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <a class="px-2 text-white" href="#">Login / Register</a>
+            <a class="px-2 text-gray-300" href="#">Login / Register</a>
           </li>
           <li>
-            <a class="px-2 text-white" href="#">Manage</a>
+            <a class="px-2 text-gray-300" href="#">Manage</a>
           </li>
         </ul>
       </div>
@@ -45,9 +45,9 @@
 
   <!-- Main Content -->
   <section class="container mx-auto">
-    <div class="bg-white rounded border border-gray-200 relative flex flex-col">
+    <div class="bg-gray900 rounded border border-gray-200 relative flex flex-col">
       <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-        <span class="card-title">Songs</span>
+        <span class="card-title text-gray-100">Songs</span>
         <!-- Icon -->
         <i class="fa fa-headphones-alt float-right text-green-400 text-xl"></i>
       </div>
@@ -57,11 +57,11 @@
           class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
         >
           <div>
-            <a href="#" class="font-bold block text-gray-600">Song Title</a>
-            <span class="text-gray-500 text-sm">Artist Name</span>
+            <a href="#" class="font-bold block text-gray-100">Song Title</a>
+            <span class="text-gray-300 text-sm">Artist Name</span>
           </div>
 
-          <div class="text-gray-600 text-lg">
+          <div class="text-gray-100 text-lg">
             <span class="comments">
               <i class="fa fa-comments text-gray-600"></i>
               15
@@ -72,11 +72,11 @@
           class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
         >
           <div>
-            <a href="#" class="font-bold block text-gray-600">Song Title</a>
-            <span class="text-gray-500 text-sm">Artist Name</span>
+            <a href="#" class="font-bold block text-gray-100">Song Title</a>
+            <span class="text-gray-300 text-sm">Artist Name</span>
           </div>
 
-          <div class="text-gray-600 text-lg">
+          <div class="text-gray-100 text-lg">
             <span class="comments">
               <i class="fa fa-comments text-gray-600"></i>
               15
