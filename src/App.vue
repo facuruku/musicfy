@@ -3,7 +3,7 @@
   <header id="header" class="w-full">
     <nav class="container mx-auto flex items-center py-5 px-4">
       <!-- App Name -->
-      <a class="text-[#1ed760] font-bold text-2xl justify-center hover:scale-110" href="#"
+      <a class="text-[#1ed760] font-bold text-2xl justify-center hover:scale-105" href="#"
         >Musicfy</a
       >
 
@@ -11,7 +11,7 @@
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1 text-xs">
           <!-- Navigation Links -->
-          <li class="p-1">
+          <li class="p-1 hover:scale-105">
             <a
               class="text-gray-300 border border-transparent rounded-full bg-neutral-950 bg-opacity-60 p-2"
               href="#"
@@ -19,7 +19,7 @@
             >
           </li>
 
-          <li class="p-1">
+          <li class="p-1 hover:scale-105">
             <a
               class="text-gray-300 border border-transparent rounded-full bg-neutral-950 bg-opacity-60 p-2"
               href="#"
@@ -27,7 +27,7 @@
               <!--TODO change to icon  --></a
             >
           </li>
-          <li class="p-1">
+          <li class="p-1 hover:scale-105">
             <a
               class="text-gray-300 border border-transparent rounded-full bg-neutral-950 bg-opacity-60 p-2"
               href="#"
