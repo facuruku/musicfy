@@ -35,7 +35,7 @@ a:hover {
 }
 
 #playlist li:first-child {
-  padding-top: 25px;
+  margin-top: 10px;
 }
 
 .upload-dropbox.upload-dropbox-drag {
