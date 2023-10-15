@@ -12,10 +12,10 @@
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
-import AppAuth from '@/components/AppAuth.vue'
 import AppPlayer from '@/components/AppPlayer.vue'
 import AppPlaylist from '@/components/AppPlaylist.vue'
 import AppPlaylistHeader from '@/components/AppPlaylistHeader.vue'
+import AppAuth from '@/components/AppAuth.vue'
 
 export default {
   name: 'App',

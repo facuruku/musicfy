@@ -37,7 +37,7 @@
           <li
             class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
           >
-            <!-- User icon -->
+            <!-- Settings icon -->
             <a class="text-white" href="#"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +63,8 @@
           <li
             class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
           >
-            <!-- Settings icon -->
-            <a class="text-white rounded-full" href="#">
+            <!-- User icon -->
+            <a class="text-white rounded-full" href="#" @click.prevent="toggleAuthModal">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -86,3 +86,23 @@
     </nav>
   </header>
 </template>
+
+<script>
+import { mapStores, /* mapState,*/ mapWritableState } from 'pinia'
+import useModalStore from '@/stores/modal'
+
+export default {
+  name: 'AppHeader',
+  computed: {
+    ...mapStores(useModalStore),
+    ...mapWritableState(useModalStore, ['isOpen']) // We can map the property we need and not the entire store
+    //...mapState(useModalStore, ['isOpen']) // mapState is readonly
+  },
+  methods: {
+    toggleAuthModal() {
+      this.isOpen = !this.isOpen
+      console.log(this.isOpen)
+    }
+  }
+}
+</script>
