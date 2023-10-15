@@ -11,8 +11,11 @@
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1 gap-1">
           <!-- Navigation Links -->
-          <li class="p-1 hover:scale-105">
-            <a class="text-white" href="#"
+          <li
+            class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
+          >
+            <!-- Install app icon -->
+            <a class="text-white text-sm flex gap-1 items-center" href="#"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -27,28 +30,14 @@
                   d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
+              Install app
             </a>
           </li>
 
-          <li class="p-1 hover:scale-105">
-            <a class="text-white rounded-full" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                />
-              </svg>
-            </a>
-          </li>
-          <li class="p-1 hover:scale-105">
+          <li
+            class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
+          >
+            <!-- User icon -->
             <a class="text-white" href="#"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +56,27 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </a>
+          </li>
+          <li
+            class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
+          >
+            <!-- Settings icon -->
+            <a class="text-white rounded-full" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                 />
               </svg>
             </a>
