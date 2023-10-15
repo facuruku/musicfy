@@ -1,17 +1,19 @@
 <template>
   <!-- Header -->
-  <header id="header" class="bg-gray-700 w-full">
-    <nav class="container mx-auto flex justify-start items-center py-5 px-4">
+  <header id="header" class="w-full">
+    <nav class="container mx-auto flex items-center py-5 px-4">
       <!-- App Name -->
-      <a class="text-green-400 font-bold text-2xl mr-4 justify-center" href="#">Musicfy</a>
+      <a class="text-[#1ed760] font-bold text-2xl justify-center hover:scale-110" href="#"
+        >Musicfy</a
+      >
 
       <div class="flex flex-grow items-center justify-end">
         <!-- Primary Navigation -->
-        <ul class="flex flex-row mt-1">
+        <ul class="flex flex-row mt-1 text-xs">
           <!-- Navigation Links -->
           <li class="p-1">
             <a
-              class="text-gray-300 border border-transparent rounded-full bg-neutral-800 bg-opacity-80 p-2"
+              class="text-gray-300 border border-transparent rounded-full bg-neutral-950 bg-opacity-60 p-2"
               href="#"
               >Download app</a
             >
@@ -19,7 +21,7 @@
 
           <li class="p-1">
             <a
-              class="text-gray-300 border border-transparent rounded-full bg-neutral-800 bg-opacity-80 p-2"
+              class="text-gray-300 border border-transparent rounded-full bg-neutral-950 bg-opacity-60 p-2"
               href="#"
               >Login / Register
               <!--TODO change to icon  --></a
@@ -27,7 +29,7 @@
           </li>
           <li class="p-1">
             <a
-              class="text-gray-300 border border-transparent rounded-full bg-neutral-800 bg-opacity-80 p-2"
+              class="text-gray-300 border border-transparent rounded-full bg-neutral-950 bg-opacity-60 p-2"
               href="#"
               >Manage</a
             >

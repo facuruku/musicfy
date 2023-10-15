@@ -13,7 +13,7 @@ a {
 
 /* text-yellow-500 */
 a:hover {
-  filter: brightness(150%);
+  filter: brightness(110%);
   text-decoration: none;
 }
 
