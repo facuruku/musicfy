@@ -12,7 +12,7 @@
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
 
       <div
-        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+        class="inline-block align-bottom bg-neutral-950 rounded-lg text-left text-white overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
       >
         <!-- Add margin if you want to see some of the overlay behind the modal-->
         <div class="py-4 text-left px-6">
@@ -26,28 +26,32 @@
           </div>
 
           <!-- Tabs -->
-          <ul class="flex flex-wrap mb-4">
+          <ul class="flex flex-wrap mb-4 gap-2">
             <li class="flex-auto text-center">
               <a
-                class="block rounded py-3 px-4 transition hover:text-white text-white bg-blue-600"
+                class="block rounded-full border border-gray-300 p-2 transition hover:scale-105 text-white font-bold"
                 href="#"
                 >Login</a
               >
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition" href="#">Register</a>
+              <a
+                class="block rounded-full border border-gray-300 p-2 transition hover:scale-105 text-white font-bold"
+                href="#"
+                >Register</a
+              >
             </li>
           </ul>
 
           <!-- Login Form -->
-          <form>
+          <form class="flex flex-col gap-2">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
               <input
                 type="email"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Enter Email"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+                placeholder="Enter your Email"
               />
             </div>
             <!-- Password -->
@@ -55,26 +59,26 @@
               <label class="inline-block mb-2">Password</label>
               <input
                 type="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
                 placeholder="Password"
               />
             </div>
             <button
               type="submit"
-              class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
+              class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
             >
-              Submit
+              Login
             </button>
           </form>
           <!-- Registration Form -->
-          <form>
+          <form class="flex flex-col gap-2" :class="hiddenForm">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
               <input
                 type="text"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Enter Name"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+                placeholder="Enter your Name"
               />
             </div>
             <!-- Email -->
@@ -82,8 +86,8 @@
               <label class="inline-block mb-2">Email</label>
               <input
                 type="email"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Enter Email"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+                placeholder="Enter your Email"
               />
             </div>
             <!-- Age -->
@@ -91,7 +95,8 @@
               <label class="inline-block mb-2">Age</label>
               <input
                 type="number"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+                placeholder="Enter your age"
               />
             </div>
             <!-- Password -->
@@ -99,8 +104,8 @@
               <label class="inline-block mb-2">Password</label>
               <input
                 type="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Password"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+                placeholder="Enter new Password"
               />
             </div>
             <!-- Confirm Password -->
@@ -108,7 +113,7 @@
               <label class="inline-block mb-2">Confirm Password</label>
               <input
                 type="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
                 placeholder="Confirm Password"
               />
             </div>
@@ -116,23 +121,26 @@
             <div class="mb-3">
               <label class="inline-block mb-2">Country</label>
               <select
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
               >
-                <option value="USA">USA</option>
-                <option value="Mexico">Mexico</option>
+                <option value="Argentina">Argentina</option>
+                <option value="United States">United States</option>
+                <option value="Spain">Spain</option>
                 <option value="Germany">Germany</option>
               </select>
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
-              <label class="inline-block">Accept terms of service</label>
+              <label class="inline-block hover:cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
+                Accept terms of service</label
+              >
             </div>
             <button
               type="submit"
-              class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
+              class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
             >
-              Submit
+              Register
             </button>
           </form>
         </div>
