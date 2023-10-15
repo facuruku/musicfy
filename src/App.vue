@@ -46,14 +46,14 @@
         aria-hidden="false"
         draggable="false"
         loading="eager"
-        src="assets/img/liked-songs-300.png"
+        src="/assets/img/liked-songs-300.png"
         alt="Liked songs"
         class=""
         srcset="
-          assets/img/liked-songs-300.png 150w,
-          assets/img/liked-songs-300.png 300w,
-          assets/img/liked-songs-640.png 320w,
-          assets/img/liked-songs-640.png 640w
+          /assets/img/liked-songs-300.png 150w,
+          /assets/img/liked-songs-300.png 300w,
+          /assets/img/liked-songs-640.png 320w,
+          /assets/img/liked-songs-640.png 640w
         "
         sizes="(min-width: 1280px) 232px, 192px"
       />
