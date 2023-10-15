@@ -288,33 +288,38 @@
   </section>
 
   <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-black px-4 py-2 w-full">
+  <div class="fixed bottom-0 left-0 bg-black px-4 py-4 w-full flex flex-nowrap">
     <!-- Track Info -->
-    <div class="text-left text-white">
-      <span class="song-title font-bold">Song Title</span> by
-      <span class="song-artist">Artist</span>
+    <div class="text-white flex flex-col justify-center items-center">
+      <p class="song-title font-bold">Song Title</p>
+      <p class="song-artist">by Artist</p>
     </div>
-    <div class="flex flex-nowrap gap-4 items-center text-white">
+    <div class="text-white grow flex flex-col gap-0.5">
       <!-- Play/Pause Button -->
       <button type="button">
-        <i class="fa fa-play-circle text-white text-xl"></i>
+        <p class="fa fa-play-circle text-white text-3xl hover:scale-110"></p>
       </button>
-      <!-- Current Position -->
-      <div class="player-currenttime">00:00</div>
-      <!-- Scrub Container  -->
-      <div class="w-80 h-2 rounded bg-gray-200 relative cursor-pointer">
-        <!-- Player Ball -->
-        <span class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" style="left: 50%">
-          <i class="fas fa-circle"></i>
-        </span>
-        <!-- Player Progress Bar-->
-        <span
-          class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
-          style="width: 50%"
-        ></span>
+      <div class="flex flex-nowrap gap-3 w-full justify-center items-center">
+        <!-- Current Position -->
+        <div class="player-currenttime text-xs secondary-text">00:00</div>
+        <!-- Scrub Container  -->
+        <div class="group w-80 h-1 rounded relative bg-neutral-700 cursor-pointer">
+          <!-- Player Ball -->
+          <span
+            class="absolute -top-1.5 -ml-2.5 text-white text-xs opacity-0 group-hover:opacity-100"
+            style="left: 50%"
+          >
+            <i class="fas fa-circle"></i>
+          </span>
+          <!-- Player Progress Bar-->
+          <span
+            class="block h-1 rounded bg-white group-hover:bg-gradient-to-r from-green-500 to-green-400"
+            style="width: 50%"
+          ></span>
+        </div>
+        <!-- Duration -->
+        <div class="player-duration text-xs secondary-text">03:06</div>
       </div>
-      <!-- Duration -->
-      <div class="player-duration">03:06</div>
     </div>
   </div>
 
