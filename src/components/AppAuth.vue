@@ -20,7 +20,7 @@
           <div class="flex justify-between items-center pb-4">
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
-            <div class="modal-close cursor-pointer z-50" @click="isOpen = false">
+            <div class="modal-close cursor-pointer z-50" @click="modalVisibility = false">
               <i class="fas fa-times"></i>
             </div>
           </div>
@@ -29,22 +29,32 @@
           <ul class="flex flex-wrap mb-4 gap-2">
             <li class="flex-auto text-center">
               <a
-                class="block rounded-full border border-gray-300 p-2 transition hover:scale-105 text-white font-bold"
+                class="block rounded-full border border-gray-300 p-2 transition font-bold"
                 href="#"
+                @click.prevent="tab = 'login'"
+                :class="{
+                  'text-black bg-[#1ed760]': tab === 'login',
+                  'hover:scale-105 hover:text-[#1ed760]': tab === 'register'
+                }"
                 >Login</a
               >
             </li>
             <li class="flex-auto text-center">
               <a
-                class="block rounded-full border border-gray-300 p-2 transition hover:scale-105 text-white font-bold"
+                class="block rounded-full border border-gray-300 p-2 transition font-bold"
                 href="#"
+                @click.prevent="tab = 'register'"
+                :class="{
+                  'text-black bg-[#1ed760]': tab === 'register',
+                  'hover:scale-105 hover:text-[#1ed760]': tab === 'login'
+                }"
                 >Register</a
               >
             </li>
           </ul>
 
           <!-- Login Form -->
-          <form class="flex flex-col gap-2">
+          <form class="flex flex-col gap-2" v-show="tab === 'login'">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
@@ -71,7 +81,7 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <form class="flex flex-col gap-2" :class="hiddenForm">
+          <form class="flex flex-col gap-2" v-show="tab === 'register'">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -154,9 +164,16 @@ import useModalStore from '@/stores/modal'
 import { mapState, mapWritableState } from 'pinia'
 export default {
   name: 'AppAuth',
+  data() {
+    return {
+      tab: 'login'
+    }
+  },
   computed: {
     ...mapState(useModalStore, ['hiddenClass']),
-    ...mapWritableState(useModalStore, ['isOpen'])
+    ...mapWritableState(useModalStore, {
+      modalVisibility: 'isOpen'
+    })
   }
 }
 </script>
