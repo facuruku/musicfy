@@ -85,6 +85,7 @@
             class="flex flex-col gap-4"
             v-show="tab === 'register'"
             :validation-schema="schema"
+            @submit="register"
           >
             <!-- Name -->
             <div class="">
@@ -208,6 +209,11 @@ export default {
     ...mapWritableState(useModalStore, {
       modalVisibility: 'isOpen'
     })
+  },
+  methods: {
+    register(values) {
+      console.log('Submit register: ', values)
+    }
   }
 }
 </script>
