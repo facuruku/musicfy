@@ -1,4 +1,12 @@
 <template>
+  <div
+    class="text-black text-center font-bold p-4 rounded mb-4"
+    v-if="login_show_alert"
+    :class="login_alert_variant"
+  >
+    {{ login_alert_msg }}
+  </div>
+
   <!-- Login Form -->
   <VeeForm class="flex flex-col gap-2" :validation-schema="loginSchema" @submit="login">
     <!-- Email -->
@@ -28,6 +36,7 @@
     <button
       type="submit"
       class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
+      :disabled="login_in_submission"
     >
       Login
     </button>
@@ -43,11 +52,22 @@ export default {
       loginSchema: {
         email: 'required|email',
         password: 'required'
-      }
+      },
+      login_in_submission: false,
+      login_show_alert: false,
+      login_alert_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
+      login_alert_msg: 'Please wait! Your account is being created. '
     }
   },
   methods: {
     login(values) {
+      this.login_in_submission = true
+      this.login_show_alert = true
+      this.login_alert_variant = 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%'
+      this.login.login_alert_msg = 'Please wait! Logging in.'
+
+      this.login_alert_variant = 'bg-[#1ed760]'
+      this.login_alert_msg = 'Success! Login completed.'
       console.log('Login started', values)
     }
   }

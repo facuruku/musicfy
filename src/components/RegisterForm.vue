@@ -6,6 +6,8 @@
   >
     {{ reg_alert_msg }}
   </div>
+
+  <!-- Register form -->
   <VeeForm
     class="flex flex-col gap-4"
     :validation-schema="registrationSchema"
