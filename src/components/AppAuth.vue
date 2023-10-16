@@ -61,7 +61,7 @@
               <input
                 type="email"
                 class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-                placeholder="Enter your Email"
+                placeholder="your@email.com"
               />
             </div>
             <!-- Password -->
@@ -86,6 +86,7 @@
             v-show="tab === 'register'"
             :validation-schema="schema"
             @submit="register"
+            :initial-values="userData"
           >
             <!-- Name -->
             <div class="">
@@ -105,7 +106,7 @@
                 name="email"
                 type="email"
                 class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-                placeholder="Enter your Email"
+                placeholder="your@email.com"
               />
               <ErrorMessage class="text-red-600" name="email" />
             </div>
@@ -123,13 +124,15 @@
             <!-- Password -->
             <div class="">
               <label class="">Password</label>
-              <VeeField
-                name="password"
-                type="password"
-                class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-                placeholder="Enter new Password"
-              />
-              <ErrorMessage class="text-red-600" name="password" />
+              <VeeField name="password" :bails="false" v-slot="{ field, errors }">
+                <input
+                  v-bind="field"
+                  placeholder="Enter new Password"
+                  type="password"
+                  class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+                />
+                <div class="text-red-600" v-for="error in errors" :key="error">{{ error }}</div>
+              </VeeField>
             </div>
             <!-- Confirm Password -->
             <div class="">
@@ -194,13 +197,16 @@ export default {
     return {
       tab: 'login',
       schema: {
-        name: 'required|min:3|max:100|alpha_spaces',
+        name: 'required|min:3|max:60|alpha_spaces',
         email: 'required|email|min:3|max:100',
         age: 'required|min_value:14|max_value:120',
-        password: 'required|min:6|max:12',
-        confirmPassword: 'confirmed:@password',
-        country: 'required|excluded:Antarctica',
-        tos: 'required'
+        password: 'required|min:8|max:12|excluded:password',
+        confirmPassword: 'passwords_missmatch:@password',
+        country: 'required|country_excluded:Antarctica',
+        tos: 'tos'
+      },
+      userData: {
+        country: 'Spain'
       }
     }
   },
