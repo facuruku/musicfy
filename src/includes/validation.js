@@ -43,8 +43,8 @@ export default {
           max: `The field ${context.field} maximun length is ${context.rule.params}.`,
           alpha_spaces: `The field ${context.field} may only contain alphabetical characters and spaces.`,
           email: `The field ${context.field} must be a valid email.`,
-          min_value: `The field ${context.field} is too low.`,
-          max_value: `The field ${context.field} is too high.`,
+          min_value: `The field ${context.field} can't be under ${context.rule.params}.`,
+          max_value: `The field ${context.field} can't be above ${context.rule.params}.`,
           excluded: `You are not allowed to use this value for the field ${context.field}.`,
           country_excluded: `Due to restrictions, we do not accept users from this location: ${context.value}.`,
           passwords_missmatch: `The passwords don't match`,
@@ -56,7 +56,12 @@ export default {
           : `The field ${context.field} is invalid.`
 
         return message
-      }
+      },
+      /* Validation triggers */
+      validateOnBlur: true,
+      validateOnChange: true,
+      validateOnInput: false,
+      validateOnModelUpdate: true
     })
   }
 }
