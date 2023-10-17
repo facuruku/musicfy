@@ -15,7 +15,10 @@
             class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
           >
             <!-- Install app icon -->
-            <a class="text-white text-sm flex gap-1 items-center" href="#"
+            <a
+              class="text-white text-sm flex gap-1 items-center"
+              href="https://www.spotify.com/es/download/windows/"
+              target="_blank"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
