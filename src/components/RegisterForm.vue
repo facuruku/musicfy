@@ -142,7 +142,7 @@ export default {
       this.reg_show_alert = true
       this.reg_in_submission = true
       this.reg_alert_variant = 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%'
-      this.reg_alert_msg = 'Please wait! Your account is being created. '
+      this.reg_alert_msg = 'Please wait! Your account is being created.'
 
       let userCredentials = null
       try {
@@ -150,7 +150,7 @@ export default {
       } catch (error) {
         this.reg_in_submission = false
         this.reg_alert_variant = 'bg-red-500'
-        this.reg_alert_msg = error.message + '. Please try again later'
+        this.reg_alert_msg = error.message + '. Please try again later.'
         console.log(error)
         return
       }
