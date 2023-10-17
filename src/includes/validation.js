@@ -1,4 +1,5 @@
 import {
+  //Validator,
   Form as VeeForm,
   Field as VeeField,
   defineRule,
@@ -14,7 +15,8 @@ import {
   min_value as minValue,
   max_value as maxValue,
   confirmed,
-  not_one_of as excluded
+  not_one_of as excluded,
+  digits
 } from '@vee-validate/rules'
 
 export default {
@@ -34,6 +36,7 @@ export default {
     defineRule('passwords_missmatch', confirmed)
     defineRule('excluded', excluded)
     defineRule('country_excluded', excluded)
+    defineRule('digits', digits)
 
     configure({
       generateMessage: (context) => {
@@ -48,7 +51,8 @@ export default {
           excluded: `You are not allowed to use this value for the field ${context.field}.`,
           country_excluded: `Due to restrictions, we do not accept users from this location: ${context.value}.`,
           passwords_missmatch: `The passwords don't match`,
-          tos: 'You must accept the Terms of Service.'
+          tos: 'You must accept the Terms of Service.',
+          digits: `The field ${context.field} must be a valid phone number (012345678)`
         }
 
         const message = messages[context.rule.name]

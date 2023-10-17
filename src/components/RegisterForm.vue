@@ -36,6 +36,17 @@
       />
       <ErrorMessage class="text-red-600" name="email" />
     </div>
+    <!-- Phone -->
+    <div class="">
+      <label class="">Phone</label>
+      <VeeField
+        name="phone"
+        type="number"
+        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+        placeholder="Enter your phone"
+      />
+      <ErrorMessage class="text-red-600" name="phone" />
+    </div>
     <!-- Age -->
     <div class="">
       <label class="">Age</label>
@@ -121,6 +132,7 @@ export default {
       registrationSchema: {
         name: 'required|min:3|max:60|alpha_spaces',
         email: 'required|email|min:3|max:100',
+        phone: 'digits:9',
         age: 'required|min_value:14|max_value:120',
         password: 'required|min:8|max:12|excluded:password',
         confirmPassword: 'passwords_missmatch:@password',
@@ -159,6 +171,7 @@ export default {
         await usersCollection.add({
           name: values.name,
           email: values.email,
+          phone: values.phone,
           age: values.age,
           country: values.country
         })
