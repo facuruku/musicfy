@@ -141,9 +141,8 @@
 </template>
 
 <script>
-import { auth, usersCollection } from '@/includes/firebase'
 import useUserStore from '@/stores/user'
-import { mapWritableState } from 'pinia'
+import { mapActions } from 'pinia'
 
 export default {
   name: 'RegisterForm',
@@ -167,50 +166,41 @@ export default {
       },
       reg_in_submission: false,
       reg_show_alert: false,
-      reg_alert_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
-      reg_alert_msg: 'Please wait! Your account is being created. '
+      reg_alert_variant: '',
+      reg_alert_msg: '',
+      reg_initial_msg: 'Please wait! Your account is being created.',
+      reg_error_msg: 'Something went wrong. Please try again later.',
+      reg_success_msg: 'Success! Your account has been created.',
+      reg_progress_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
+      reg_error_variant: 'bg-red-500',
+      reg_success_variant: 'bg-[#1ed760]'
     }
   },
-  computed: {
-    ...mapWritableState(useUserStore, ['userLoggedIn'])
-  },
+  computed: {},
   methods: {
     async register(values) {
+      this.initRegisterAlert()
+
+      try {
+        await this.createUser(values)
+      } catch (error) {
+        this.reg_in_submission = false
+        this.reg_alert_variant = this.reg_error_variant
+        this.reg_alert_msg = this.reg_error_msg
+        return
+      }
+
+      this.reg_alert_variant = this.reg_success_variant
+      this.reg_alert_msg = this.reg_success_msg
+    },
+    ...mapActions(useUserStore, {
+      createUser: 'register'
+    }),
+    initRegisterAlert() {
       this.reg_show_alert = true
       this.reg_in_submission = true
-      this.reg_alert_variant = 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%'
-      this.reg_alert_msg = 'Please wait! Your account is being created.'
-
-      let userCredentials = null
-      try {
-        userCredentials = await auth.createUserWithEmailAndPassword(values.email, values.password)
-      } catch (error) {
-        this.reg_in_submission = false
-        this.reg_alert_variant = 'bg-red-500'
-        this.reg_alert_msg = error.message + '. Please try again later.'
-        return
-      }
-
-      try {
-        await usersCollection.add({
-          name: values.name,
-          email: values.email,
-          phone: values.phone,
-          age: values.age,
-          country: values.country
-        })
-      } catch (error) {
-        this.reg_in_submission = false
-        this.reg_alert_variant = 'bg-red-500'
-        this.reg_alert_msg = error.message + '. Please try again later.'
-        return
-      }
-
-      this.userLoggedIn = true
-
-      this.reg_alert_variant = 'bg-[#1ed760]'
-      this.reg_alert_msg = 'Success! Your account has been created.'
-      console.log(userCredentials)
+      this.reg_alert_variant = this.reg_progress_variant
+      this.reg_alert_msg = this.reg_initial_msg
     }
   }
 }
