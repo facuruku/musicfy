@@ -117,7 +117,7 @@
       </VeeField>
       <ErrorMessage class="text-red-600" name="country" />
     </div>
-    <!-- TermsOfService -->
+    <!-- Terms of Service -->
     <div class="mb-3 pl-6">
       <label class="inline-block hover:cursor-pointer">
         <VeeField
