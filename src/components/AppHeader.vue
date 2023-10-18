@@ -12,7 +12,7 @@
         <ul class="flex flex-row mt-1 gap-1">
           <!-- Navigation Links -->
           <li
-            class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
+            class="p-1 pr-2 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
           >
             <!-- Install app icon -->
             <a
@@ -37,10 +37,37 @@
             </a>
           </li>
 
+          <!-- User icon -->
+          <li
+            class="p-1 pr-2 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
+          >
+            <a
+              class="text-white text-sm flex gap-1 items-center"
+              href="#"
+              @click.prevent="toggleAuthModal"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+              {{ this.userIconText }}
+            </a>
+          </li>
+
+          <!-- Settings icon -->
           <li
             class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
           >
-            <!-- Settings icon -->
             <a class="text-white" href="#"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,27 +90,6 @@
               </svg>
             </a>
           </li>
-          <li
-            class="p-1 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
-          >
-            <!-- User icon -->
-            <a class="text-white rounded-full" href="#" @click.prevent="toggleAuthModal">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                />
-              </svg>
-            </a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -91,15 +97,20 @@
 </template>
 
 <script>
-import { mapStores, /* mapState,*/ mapWritableState } from 'pinia'
+import { mapStores, mapState, mapWritableState } from 'pinia'
 import useModalStore from '@/stores/modal'
+import useUserStore from '@/stores/user'
 
 export default {
   name: 'AppHeader',
   computed: {
     ...mapStores(useModalStore),
-    ...mapWritableState(useModalStore, ['isOpen']) // We can map the property we need and not the entire store
+    ...mapWritableState(useModalStore, ['isOpen']), // We can map the property we need and not the entire store
     //...mapState(useModalStore, ['isOpen']) // mapState is readonly
+    ...mapState(useUserStore, ['userLoggedIn']),
+    userIconText() {
+      return this.userLoggedIn ? 'Logout' : 'Login/Register'
+    }
   },
   methods: {
     toggleAuthModal() {
