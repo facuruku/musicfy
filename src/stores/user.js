@@ -7,7 +7,10 @@ export default defineStore('user', {
   }),
   actions: {
     async register(values) {
-      await auth.createUserWithEmailAndPassword(values.email, values.password)
+      const userCredentials = await auth.createUserWithEmailAndPassword(
+        values.email,
+        values.password
+      )
 
       const userData = {
         name: values.name,
@@ -24,8 +27,12 @@ export default defineStore('user', {
         }
       })
 
-      await usersCollection.add({
+      await usersCollection.doc(userCredentials.user.uid).set({
         userData
+      })
+
+      await userCredentials.user.updateProfile({
+        displayName: values.name
       })
 
       this.userLoggedIn = true
