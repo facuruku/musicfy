@@ -82,6 +82,7 @@ export default {
 
       this.login_alert_variant = 'bg-[#1ed760]'
       this.login_alert_msg = 'Success! Login completed.'
+      window.location.reload()
     }
   }
 }
