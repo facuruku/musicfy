@@ -16,7 +16,7 @@
   >
     <!-- Name -->
     <div class="">
-      <label class="">Name</label>
+      <label class="select-none">Name</label>
       <VeeField
         name="name"
         type="text"
@@ -27,7 +27,7 @@
     </div>
     <!-- Email -->
     <div class="">
-      <label class="">Email</label>
+      <label class="select-none">Email</label>
       <VeeField
         name="email"
         type="email"
@@ -38,7 +38,7 @@
     </div>
     <!-- Phone -->
     <div class="">
-      <label class="">Phone</label>
+      <label class="select-none">Phone</label>
       <VeeField
         name="phone"
         type="number"
@@ -49,7 +49,7 @@
     </div>
     <!-- Age -->
     <div class="">
-      <label class="">Age</label>
+      <label class="select-none">Age</label>
       <VeeField
         name="age"
         type="number"
@@ -60,31 +60,50 @@
     </div>
     <!-- Password -->
     <div class="">
-      <label class="">Password</label>
+      <label class="select-none">Password</label>
       <VeeField name="password" :bails="false" v-slot="{ field, errors }">
-        <input
-          v-bind="field"
-          placeholder="Enter new Password"
-          type="password"
-          class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        />
+        <div class="flex items-center">
+          <input
+            v-bind="field"
+            placeholder="Enter new Password"
+            :type="showPassword ? 'text' : 'password'"
+            class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+          />
+          <i
+            @click="showPassword = !showPassword"
+            class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
+            :class="{ 'fa-regular fa-eye-slash': showPassword, 'fa-regular fa-eye': !showPassword }"
+          ></i>
+        </div>
         <div class="text-red-600" v-for="error in errors" :key="error">{{ error }}</div>
       </VeeField>
     </div>
     <!-- Confirm Password -->
     <div class="">
-      <label class="">Confirm Password</label>
-      <VeeField
-        name="confirmPassword"
-        type="password"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        placeholder="Confirm Password"
-      />
+      <label class="select-none">Confirm Password</label>
+      <VeeField name="confirmPassword" :bails="false" v-slot="{ field }">
+        <div class="flex items-center">
+          <input
+            v-bind="field"
+            :type="showConfirmPassword ? 'text' : 'password'"
+            class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+            placeholder="Confirm Password"
+          />
+          <i
+            @click="showConfirmPassword = !showConfirmPassword"
+            class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
+            :class="{
+              'fa-regular fa-eye-slash': showConfirmPassword,
+              'fa-regular fa-eye': !showConfirmPassword
+            }"
+          />
+        </div>
+      </VeeField>
       <ErrorMessage class="text-red-600" name="confirmPassword" />
     </div>
     <!-- Country -->
     <div class="">
-      <label class="">Country</label>
+      <label class="select-none">Country</label>
       <VeeField
         as="select"
         name="country"
@@ -123,6 +142,8 @@
 
 <script>
 import { auth, usersCollection } from '@/includes/firebase'
+import useUserStore from '@/stores/user'
+import { mapWritableState } from 'pinia'
 
 export default {
   name: 'RegisterForm',
@@ -139,7 +160,8 @@ export default {
         country: 'required|country_excluded:Antarctica',
         tos: 'tos'
       },
-
+      showPassword: false,
+      showConfirmPassword: false,
       userData: {
         country: 'Spain'
       },
@@ -148,6 +170,9 @@ export default {
       reg_alert_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
       reg_alert_msg: 'Please wait! Your account is being created. '
     }
+  },
+  computed: {
+    ...mapWritableState(useUserStore, ['userLoggedIn'])
   },
   methods: {
     async register(values) {
@@ -163,7 +188,6 @@ export default {
         this.reg_in_submission = false
         this.reg_alert_variant = 'bg-red-500'
         this.reg_alert_msg = error.message + '. Please try again later.'
-        console.log(error)
         return
       }
 
@@ -181,6 +205,8 @@ export default {
         this.reg_alert_msg = error.message + '. Please try again later.'
         return
       }
+
+      this.userLoggedIn = true
 
       this.reg_alert_variant = 'bg-[#1ed760]'
       this.reg_alert_msg = 'Success! Your account has been created.'
