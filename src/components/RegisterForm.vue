@@ -53,19 +53,20 @@
       />
       <ErrorMessage class="text-red-600" name="phone" />
     </div>
-    <!-- Age -->
+    <!-- Birthdate -->
     <div class="">
       <label class="select-none group"
-        >Age <sup class="">*</sup
+        >Birthdate <sup class="">*</sup
         ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
       >
       <VeeField
-        name="age"
-        type="number"
+        name="birthdate"
+        type="date"
+        min="1900-01-01"
+        :max="maxBirthdate"
         class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        placeholder="Enter your age"
       />
-      <ErrorMessage class="text-red-600" name="age" />
+      <ErrorMessage class="text-red-600" name="birthdate" />
     </div>
     <!-- Password -->
     <div class="">
@@ -173,7 +174,7 @@ export default {
         name: 'required|min:3|max:60|alpha_spaces',
         email: 'required|email|min:3|max:100',
         phone: 'digits:9',
-        age: 'required|min_value:14|max_value:120',
+        birthdate: 'required|minAge:14',
         password: 'required|min:8|max:12|excluded:password',
         confirmPassword: 'passwords_missmatch:@password',
         country: 'required|country_excluded:Antarctica',
@@ -196,7 +197,12 @@ export default {
       reg_success_variant: 'bg-[#1ed760]'
     }
   },
-  computed: {},
+  computed: {
+    maxBirthdate() {
+      const today = new Date()
+      return today.toISOString().slice(0, 10) // Retorna maxDate con el formato YYYY-MM-DD
+    }
+  },
   methods: {
     async register(values) {
       this.initRegisterAlert()

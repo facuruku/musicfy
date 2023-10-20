@@ -15,7 +15,7 @@ export default defineStore('user', {
       const userData = {
         name: values.name,
         email: values.email,
-        age: values.age,
+        birthdate: values.birthdate,
         country: values.country,
         phone: values.phone
       }
