@@ -2,18 +2,20 @@
   <!-- Player -->
   <div class="fixed bottom-0 left-0 bg-black px-4 py-4 w-full flex flex-nowrap">
     <!-- Track Info -->
-    <div class="text-white flex flex-col justify-center items-center">
+    <div class="text-white flex flex-col justify-center items-center font-circular-thin">
       <p class="song-title font-bold">Song Title</p>
       <p class="song-artist">by Artist</p>
     </div>
-    <div class="text-white grow flex flex-col gap-0.5">
+    <div class="text-white grow flex flex-col gap-0.5 font-circular-regular">
       <!-- Play/Pause Button -->
       <button type="button">
         <p class="fa fa-play-circle text-white text-3xl hover:scale-110"></p>
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
         <!-- Current Position -->
-        <div class="player-currenttime text-xs secondary-text">00:00</div>
+        <div class="player-currenttime text-xs secondary-text">
+          00<span class="font-sans">:</span>00
+        </div>
         <!-- Scrub Container  -->
         <div class="group w-80 h-1 rounded bg-neutral-700 relative cursor-pointer">
           <!-- Player Ball -->
@@ -30,7 +32,9 @@
           ></span>
         </div>
         <!-- Duration -->
-        <div class="player-duration text-xs secondary-text">03:06</div>
+        <div class="player-duration text-xs secondary-text">
+          03<span class="font-sans">:</span>06
+        </div>
       </div>
     </div>
   </div>

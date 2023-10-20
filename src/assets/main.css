@@ -1,5 +1,14 @@
-* {
-  font-family: 'Roboto';
+@font-face {
+  font-family: 'Circular Thin';
+  src: url(/src/assets/fonts/Circular-Thin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Circular Regular';
+  src: url(/src/assets/fonts/Circular-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Circular Black';
+  src: url(/src/assets/fonts/Circular-Black.woff2) format('woff2');
 }
 
 a {

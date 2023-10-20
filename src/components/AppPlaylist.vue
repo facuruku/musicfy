@@ -1,10 +1,12 @@
 <template>
   <!-- Playlist Content -->
-  <section class="container mx-auto">
+  <section class="mx-auto px-10">
     <div class="bg-gray900 flex flex-col">
       <div class="px-6 pt-6 pb-5 font-bold border-b border-neutral-300 border-opacity-10">
-        <span class="card-title secondary-text">Title</span>
+        <span class="card-title secondary-text font-circular-regular">Title</span>
         <!--TODO add columns like spotify <span class="card-title secondary-text">Album</span> -->
+        <!-- Maybe refactor to use table -->
+
         <!-- Icon -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +24,7 @@
         </svg>
       </div>
       <!-- Playlist -->
-      <ol id="playlist">
+      <ol id="playlist" class="font-circular-thin">
         <li
           class="flex justify-between items-center p-2 pl-6 cursor-pointer transition duration-800 rounded-md hover:bg-neutral-800"
         >

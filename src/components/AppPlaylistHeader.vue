@@ -1,7 +1,7 @@
 <template>
   <!-- Playlist header -->
-  <section class="mb-10 py-20 text-white text-center relative">
-    <div class="container mx-auto flex">
+  <section class="mb-10 py-20 text-white text-center relative font-circular-black">
+    <div class="container mx-10 flex gap-6">
       <img
         aria-hidden="false"
         draggable="false"
@@ -17,11 +17,17 @@
         "
         sizes="(min-width: 1280px) 232px, 192px"
       />
-      <div class="text-white main-header-content ml-5 flex-col self-end">
-        <h4 class="text-left text-sm">Playlist</h4>
-        <h1 class="text-left font-bold text-5xl mb-5">Liked songs</h1>
-        <p class="text-left"><span class="font-bold">Username</span> Nº songs</p>
+      <div
+        class="text-white main-header-content flex flex-col grow justify-end items-start content-normal"
+      >
+        <h4 class="text-sm mb-2 font-circular-regular">Playlist</h4>
+        <h1 class="text-5xl mb-5 tracking-tighter">Liked songs</h1>
+        <p class="font-circular-regula"><span>Username</span> º 6 songs</p>
       </div>
     </div>
   </section>
 </template>
+
+<script>
+//TODO add username
+</script>
