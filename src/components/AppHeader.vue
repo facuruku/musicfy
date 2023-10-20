@@ -1,7 +1,7 @@
 <template>
   <!-- Header -->
-  <header id="header" class="w-full font-circular-black border border-blue-40">
-    <nav class="flex items-center border border-red-400 py-5 px-10">
+  <header id="header" class="w-full font-circular-black">
+    <nav class="flex items-center py-5 px-10">
       <!-- App Name -->
       <a class="text-[#1ed760] font-bold text-2xl justify-center hover:scale-105" href="#"
         >Musicfy</a
