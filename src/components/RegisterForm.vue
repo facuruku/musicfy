@@ -16,7 +16,10 @@
   >
     <!-- Name -->
     <div class="">
-      <label class="select-none">Name</label>
+      <label class="select-none group"
+        >Name <sup class="">*</sup
+        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+      >
       <VeeField
         name="name"
         type="text"
@@ -27,7 +30,10 @@
     </div>
     <!-- Email -->
     <div class="">
-      <label class="select-none">Email</label>
+      <label class="select-none group"
+        >Email <sup class="">*</sup
+        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+      >
       <VeeField
         name="email"
         type="email"
@@ -49,7 +55,10 @@
     </div>
     <!-- Age -->
     <div class="">
-      <label class="select-none">Age</label>
+      <label class="select-none group"
+        >Age <sup class="">*</sup
+        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+      >
       <VeeField
         name="age"
         type="number"
@@ -60,7 +69,10 @@
     </div>
     <!-- Password -->
     <div class="">
-      <label class="select-none">Password</label>
+      <label class="select-none group"
+        >Password <sup class="">*</sup
+        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+      >
       <VeeField name="password" :bails="false" v-slot="{ field, errors }">
         <div class="flex items-center">
           <input
@@ -80,7 +92,10 @@
     </div>
     <!-- Confirm Password -->
     <div class="">
-      <label class="select-none">Confirm Password</label>
+      <label class="select-none group"
+        >Confirm Password <sup class="">*</sup
+        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+      >
       <VeeField name="confirmPassword" :bails="false" v-slot="{ field }">
         <div class="flex items-center">
           <input
@@ -103,8 +118,12 @@
     </div>
     <!-- Country -->
     <div class="">
-      <label class="select-none">Country</label>
+      <label class="select-none group"
+        >Country <sup class="">*</sup
+        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+      >
       <VeeField
+        label="hola"
         as="select"
         name="country"
         class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
@@ -114,6 +133,7 @@
         <option value="Spain">Spain</option>
         <option value="Germany">Germany</option>
         <option value="Antarctica">Antarctica</option>
+        <option value="Other">Other</option>
       </VeeField>
       <ErrorMessage class="text-red-600" name="country" />
     </div>
