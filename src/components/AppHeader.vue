@@ -1,5 +1,6 @@
 <template>
   <!-- Header -->
+  <!-- TODO fix responsive for mobile phones (mobileFirst) -->
   <header id="header" class="w-full font-circular-black">
     <nav class="flex items-center py-5 px-10">
       <!-- App Name -->
@@ -33,7 +34,7 @@
                   d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Install app
+              <span>Install app</span>
             </a>
           </li>
 
