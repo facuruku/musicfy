@@ -22,12 +22,30 @@
       >
         <h4 class="text-sm mb-2 font-circular-regular">Playlist</h4>
         <h1 class="text-5xl mb-5 tracking-tighter">Liked songs</h1>
-        <p class="font-circular-regula"><span>Username</span> º 6 songs</p>
+        <p class="font-circular-regula">
+          <span>{{ getUserName }} º {{ songsInPlaylist }} songs </span>
+        </p>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-//TODO add username
+import { auth } from '@/includes/firebase'
+
+export default {
+  name: 'PlaylistHeader',
+  data() {
+    return {
+      songsInPlaylist: auth.currentUser ? 6 : 0
+    }
+  },
+  computed: {
+    getUserName() {
+      return auth.currentUser && auth.currentUser.displayName
+        ? auth.currentUser.displayName
+        : 'Your name here'
+    }
+  }
+}
 </script>
