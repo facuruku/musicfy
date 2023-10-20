@@ -6,14 +6,14 @@
         aria-hidden="false"
         draggable="false"
         loading="eager"
-        src="/assets/img/liked-songs-300.png"
+        src="/assets/img/liked-songs-300.webp"
         alt="Liked songs"
-        class=""
+        class="shadow-2xl shadow-black"
         srcset="
-          /assets/img/liked-songs-300.png 150w,
-          /assets/img/liked-songs-300.png 300w,
-          /assets/img/liked-songs-640.png 320w,
-          /assets/img/liked-songs-640.png 640w
+          /assets/img/liked-songs-300.webp 150w,
+          /assets/img/liked-songs-300.webp 300w,
+          /assets/img/liked-songs-640.webp 320w,
+          /assets/img/liked-songs-640.webp 640w
         "
         sizes="(min-width: 1280px) 232px, 192px"
       />
