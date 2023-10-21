@@ -24,14 +24,26 @@
     <!-- Password -->
     <div class="mb-3">
       <label class="inline-block mb-2">Password</label>
-      <VeeField
-        name="password"
-        type="password"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        placeholder="Password"
-      >
+      <VeeField name="password" :bails="false" v-slot="{ field, errors }">
+        <div class="flex items-center">
+          <input
+            v-bind="field"
+            :type="togglePassword ? 'text' : 'password'"
+            class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+            placeholder="Password"
+          />
+          <i
+            @click="togglePassword = !togglePassword"
+            class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
+            :class="{
+              'fa-regular fa-eye-slash': togglePassword,
+              'fa-regular fa-eye': !togglePassword
+            }"
+          />
+        </div>
+
+        <ErrorMessage v-bind="errors" class="text-red-600 block" name="password" />
       </VeeField>
-      <ErrorMessage class="text-red-600 block" name="password" />
     </div>
     <button
       type="submit"
@@ -56,6 +68,7 @@ export default {
         email: 'required|email',
         password: 'required'
       },
+      togglePassword: false,
       login_in_submission: false,
       login_show_alert: false,
       login_alert_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',

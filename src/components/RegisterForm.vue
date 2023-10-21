@@ -79,13 +79,16 @@
           <input
             v-bind="field"
             placeholder="Enter new Password"
-            :type="showPassword ? 'text' : 'password'"
+            :type="togglePassword ? 'text' : 'password'"
             class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
           />
           <i
-            @click="showPassword = !showPassword"
+            @click="togglePassword = !togglePassword"
             class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
-            :class="{ 'fa-regular fa-eye-slash': showPassword, 'fa-regular fa-eye': !showPassword }"
+            :class="{
+              'fa-regular fa-eye-slash': togglePassword,
+              'fa-regular fa-eye': !togglePassword
+            }"
           ></i>
         </div>
         <div class="text-red-600" v-for="error in errors" :key="error">{{ error }}</div>
@@ -101,16 +104,16 @@
         <div class="flex items-center">
           <input
             v-bind="field"
-            :type="showConfirmPassword ? 'text' : 'password'"
+            :type="toggleConfirmPassword ? 'text' : 'password'"
             class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
             placeholder="Confirm Password"
           />
           <i
-            @click="showConfirmPassword = !showConfirmPassword"
+            @click="toggleConfirmPassword = !toggleConfirmPassword"
             class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
             :class="{
-              'fa-regular fa-eye-slash': showConfirmPassword,
-              'fa-regular fa-eye': !showConfirmPassword
+              'fa-regular fa-eye-slash': toggleConfirmPassword,
+              'fa-regular fa-eye': !toggleConfirmPassword
             }"
           />
         </div>
@@ -180,8 +183,8 @@ export default {
         country: 'required|country_excluded:Antarctica',
         tos: 'tos'
       },
-      showPassword: false,
-      showConfirmPassword: false,
+      togglePassword: false,
+      toggleConfirmPassword: false,
       userData: {
         country: 'Spain'
       },
