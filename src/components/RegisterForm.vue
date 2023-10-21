@@ -23,7 +23,7 @@
       <VeeField
         name="name"
         type="text"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+        class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
         placeholder="Enter your Name"
       />
       <ErrorMessage class="text-red-600" name="name" />
@@ -37,7 +37,7 @@
       <VeeField
         name="email"
         type="email"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+        class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
         placeholder="your@email.com"
       />
       <ErrorMessage class="text-red-600" name="email" />
@@ -48,7 +48,7 @@
       <VeeField
         name="phone"
         type="number"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+        class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
         placeholder="Enter your phone"
       />
       <ErrorMessage class="text-red-600" name="phone" />
@@ -64,7 +64,7 @@
         type="date"
         min="1900-01-01"
         :max="maxBirthdate"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+        class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
       />
       <ErrorMessage class="text-red-600" name="birthdate" />
     </div>
@@ -80,7 +80,7 @@
             v-bind="field"
             placeholder="Enter new Password"
             :type="togglePassword ? 'text' : 'password'"
-            class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+            class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
           />
           <i
             @click="togglePassword = !togglePassword"
@@ -105,7 +105,7 @@
           <input
             v-bind="field"
             :type="toggleConfirmPassword ? 'text' : 'password'"
-            class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+            class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
             placeholder="Confirm Password"
           />
           <i
@@ -130,7 +130,7 @@
         label="hola"
         as="select"
         name="country"
-        class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+        class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
       >
         <option value="Argentina">Argentina</option>
         <option value="United States">United States</option>
