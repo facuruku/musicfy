@@ -1,7 +1,7 @@
 <template>
   <!-- Header -->
   <!-- TODO fix responsive for mobile phones (mobileFirst) -->
-  <header id="header" class="w-full font-circular-black">
+  <header id="header" class="w-full font-circular-black bg-neutral-900">
     <nav class="flex items-center py-5 px-10">
       <!-- App Name -->
       <RouterLink class="text-[#1ed760] font-bold text-2xl justify-center hover:scale-105" to="/">

@@ -1,9 +1,11 @@
 <template>
-  <AppPlaylistHeader />
+  <section class="bg-gradient-to-t from-zinc-900 from-70% to-[#5038a0] to-90%">
+    <AppPlaylistHeader />
 
-  <AppPlaylist />
+    <AppPlaylist />
 
-  <AppPlayer />
+    <AppPlayer />
+  </section>
 </template>
 
 <script>
