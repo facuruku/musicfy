@@ -17,6 +17,7 @@
         type="email"
         class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
         placeholder="your@email.com"
+        autocomplete="email"
       >
       </VeeField>
       <ErrorMessage class="text-red-600 block" name="email" />
@@ -31,6 +32,7 @@
             :type="togglePassword ? 'text' : 'password'"
             class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
             placeholder="Password"
+            autocomplete="current-password"
           />
           <i
             @click="togglePassword = !togglePassword"

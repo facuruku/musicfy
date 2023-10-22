@@ -9,7 +9,11 @@
     <div class="text-white grow flex flex-col gap-0.5 font-circular-regular">
       <!-- Play/Pause Button -->
       <button type="button">
-        <p class="fa fa-play-circle text-white text-3xl hover:scale-110"></p>
+        <p
+          class="text-white text-3xl hover:scale-105"
+          :class="{ 'fa fa-play-circle': !isPlaying, 'fa fa-pause-circle': isPlaying }"
+          @click.prevent="isPlaying = !isPlaying"
+        ></p>
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
         <!-- Current Position -->
@@ -42,10 +46,12 @@
 
 <script>
 export default {
+  name: 'AppPlayer',
   data() {
     return {
       currentTime: 93, //audio current
-      durationTime: 186 //audio length
+      durationTime: 186, //audio length
+      isPlaying: false //just for visual testing
     }
   },
   computed: {

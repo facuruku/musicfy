@@ -2,7 +2,7 @@
   <!-- Header -->
   <!-- TODO fix responsive for mobile phones (mobileFirst) -->
   <header id="header" class="w-full font-circular-black bg-neutral-900">
-    <nav class="flex items-center py-5 px-10">
+    <nav class="flex items-center py-5 md:px-10 sm:px-10">
       <!-- App Name -->
       <RouterLink class="text-[#1ed760] font-bold text-2xl justify-center hover:scale-105" to="/">
         Musicfy
@@ -11,9 +11,9 @@
       <div class="flex flex-grow items-center justify-end">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1 gap-1">
-          <li>
+          <!--  <li>
             <RouterLink class="text-white text-sm items-center" to="/about">About</RouterLink>
-          </li>
+          </li> -->
           <!-- Navigation Links -->
           <li
             class="p-1 pr-2 bg-neutral-900 bg-opacity-60 rounded-full hover:scale-105 hover:bg-opacity-90"
@@ -37,7 +37,7 @@
                   d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Install app</span>
+              <span class="hidden md:block">Install app</span>
             </a>
           </li>
 
@@ -65,7 +65,7 @@
                     d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                   />
                 </svg>
-                Login/Register
+                <span class="hidden md:block">Login/Register</span>
               </a>
             </template>
             <template v-else>
@@ -88,7 +88,7 @@
                     d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                   />
                 </svg>
-                Logout
+                <span class="hidden md:block">Logout</span>
               </a>
             </template>
             <div></div>
