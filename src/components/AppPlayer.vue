@@ -1,9 +1,11 @@
 <template>
   <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-black px-4 py-4 w-full flex flex-nowrap">
+  <div class="fixed bottom-0 left-0 bg-black z-10 px-4 py-4 w-full flex flex-nowrap">
     <!-- Track Info -->
-    <div class="text-white flex flex-col justify-center items-center font-circular-thin">
-      <p class="song-title font-bold">Song Title</p>
+    <div
+      class="fixed bottom-2 left-5 text-white flex flex-col justify-center font-circular-thin w-40 h-16 overflow-x-hidden whitespace-nowrap"
+    >
+      <p class="song-title font-bold">Playing Song</p>
       <p class="song-artist">by Artist</p>
     </div>
     <div class="text-white grow flex flex-col gap-0.5 font-circular-regular">
@@ -12,7 +14,7 @@
         <p
           class="text-white text-3xl hover:scale-105"
           :class="{ 'fa fa-play-circle': !isPlaying, 'fa fa-pause-circle': isPlaying }"
-          @click.prevent="isPlaying = !isPlaying"
+          @click.prevent="isPlaying ? pause() : play()"
         ></p>
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
@@ -45,19 +47,25 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'pinia'
+import usePlayerStore from '@/stores/player'
+
 export default {
   name: 'AppPlayer',
   data() {
     return {
       currentTime: 93, //audio current
-      durationTime: 186, //audio length
-      isPlaying: false //just for visual testing
+      durationTime: 186 //audio ,
     }
   },
   computed: {
+    ...mapState(usePlayerStore, ['isPlaying']),
     currentTimePercentage() {
       return (this.currentTime / this.durationTime) * 100 + '%'
     }
+  },
+  methods: {
+    ...mapActions(usePlayerStore, ['play', 'pause'])
   }
 }
 </script>
