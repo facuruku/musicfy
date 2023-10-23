@@ -19,7 +19,7 @@
 
         <!-- About page -->
         <li class="md:hover:scale-105">
-          <RouterLink class="flex items-center gap-1" to="/about">
+          <RouterLink class="flex items-center gap-1" :to="{ name: 'about' }">
             <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path
                 fill="#1ED760"
@@ -33,7 +33,7 @@
 
         <!-- Settings icon -->
         <li v-show="userStore.userLoggedIn" class="md:hover:scale-105">
-          <RouterLink class="" to="/manage"
+          <RouterLink class="" :to="{ name: 'manage' }"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
