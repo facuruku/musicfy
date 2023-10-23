@@ -3,7 +3,8 @@ import { routes } from '@/router/routes'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  linkExactActiveClass: 'text-green-600'
 })
 
 export default router

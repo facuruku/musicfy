@@ -92,7 +92,7 @@
 
             <div class="text-lg">
               <span class="comments">
-                <i class="fa fa-comments"></i>
+                <i class="fa-solid fa-comments"></i>
                 15
               </span>
             </div>
