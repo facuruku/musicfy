@@ -5,12 +5,10 @@ export default defineStore('player', {
     isPlaying: false
   }),
   actions: {
-    play(song) {
-      console.log('Now playing ' + song)
+    play() {
       this.isPlaying = true
     },
     pause() {
-      console.log('Pause song')
       this.isPlaying = false
     }
   }

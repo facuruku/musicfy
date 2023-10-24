@@ -57,8 +57,8 @@ export default {
   methods: {
     upload($event) {
       this.is_dragover = false
-      console.log($event)
-      const files = [...$event.dataTransfer.files]
+
+      const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files]
 
       files.forEach(async (file) => {
         if (file.type != 'audio/mpeg') {
@@ -70,7 +70,6 @@ export default {
         const songsRef = songsFolderRef.child(`${file.name}`) // musicfy-53b66.appspot.com/songs/example.mp3
 
         const fileExists = await this.fileExists(songsFolderRef, file)
-        console.log('FILE_EXIST:', fileExists)
 
         if (fileExists) {
           alert('Song already existing')
@@ -78,7 +77,6 @@ export default {
         }
 
         const task = songsRef.put(file)
-        console.log(task)
 
         const uploadIndex =
           this.uploads.push({
@@ -100,7 +98,7 @@ export default {
             this.uploads[uploadIndex].variant = 'bg-red-400'
             this.uploads[uploadIndex].icon = 'fas fa-times'
             this.uploads[uploadIndex].text_class = 'text-red-400'
-            console.log(error)
+            console.error('Error uploading the song', error)
           },
           async () => {
             //success
@@ -129,8 +127,6 @@ export default {
           }
         )
       })
-
-      console.log(files)
     },
     async fileExists(folderRef, file) {
       try {
