@@ -7,7 +7,7 @@
     <main id="manage" class="pt-20">
       <div class="container mx-auto pt-6">
         <div class="md:grid md:grid-cols-3 md:gap-4">
-          <AppUpload />
+          <AppUpload ref="upload" />
           <div class="col-span-2">
             <div
               class="bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
@@ -137,6 +137,10 @@ export default {
   components: {
     AppUpload
   }
+  /*   beforeRouteLeave(to, from, next) {
+    this.$refs.upload.cancelUploads()
+    next()
+  } */
   /*   beforeRouteEnter(to, from, next) {
     const store = useUserStore()
     if (store.userLoggedIn) {

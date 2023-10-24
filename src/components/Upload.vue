@@ -138,7 +138,17 @@ export default {
         console.error('Error al verificar la existencia del archivo:', error)
         return false // En caso de error, asumimos que el archivo no existe
       }
+    },
+    cancelUploads() {
+      this.uploads.forEach((upload) => {
+        upload.task.cancel()
+      })
     }
+  },
+  beforeUnmount() {
+    this.uploads.forEach((upload) => {
+      upload.task.cancel()
+    })
   }
 }
 </script>
