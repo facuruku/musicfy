@@ -15,7 +15,22 @@ export const routes = [
   },
   {
     name: 'manage',
+    // alias: '/manage',
+    path: '/manage/music',
+    component: Manage,
+    beforeEnter: (to, from, next) => {
+      next()
+    },
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/manage',
-    component: Manage
+    redirect: { name: 'manage' }
+  },
+  {
+    path: '/:catchAll(.*)*',
+    redirect: { name: 'home' }
   }
 ]

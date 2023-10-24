@@ -78,7 +78,7 @@
             </a>
           </template>
           <template v-else>
-            <a class="flex gap-1 items-center" href="#" @click.prevent="userStore.signOut">
+            <a class="flex gap-1 items-center" href="#" @click.prevent="signOut()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -138,6 +138,12 @@ export default {
   methods: {
     toggleAuthModal() {
       this.isOpen = !this.isOpen
+    },
+    signOut() {
+      this.userStore.signOut()
+
+      //console.log(this.$route)
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
     }
   }
 }
