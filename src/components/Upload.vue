@@ -78,6 +78,8 @@ export default {
 
         const task = songsRef.put(file)
 
+        //TODO get metadata from mp3 file (artist,album...)
+
         const uploadIndex =
           this.uploads.push({
             task,
