@@ -4,6 +4,8 @@
       <h4 class="inline-block text-2xl font-bold">{{ song.modified_name }}</h4>
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-red-600 float-right md:hover:scale-105 md:hover:bg-gray-800"
+        @click.prevent="deleteSong"
+        :disabled="in_submission"
       >
         <i class="fa fa-times"></i>
       </button>
@@ -74,7 +76,7 @@
 </template>
 
 <script>
-import { songsCollection } from '@/includes/firebase'
+import { songsCollection, storage } from '@/includes/firebase'
 
 export default {
   name: 'CompositionItem',
@@ -84,6 +86,10 @@ export default {
       required: true
     },
     updateSong: {
+      type: Function,
+      required: true
+    },
+    removeSong: {
       type: Function,
       required: true
     },
@@ -117,20 +123,52 @@ export default {
     }
   },
   methods: {
-    editSong(values) {
+    async deleteSong() {
+      this.in_submission = true
+
+      const storageRef = storage.ref()
+      const songRef = storageRef.child(`songs/${this.song.original_name}`)
+
+      await songRef
+        .delete()
+        .then(() => {})
+        .catch((error) => {
+          console.error(error)
+          alert('There was an error deleting the song. Try again later')
+          this.in_submission = false
+          return
+        })
+
+      await songsCollection
+        .doc(this.song.docID)
+        .delete()
+        .then(() => {})
+        .catch((error) => {
+          console.error(error)
+          alert('There was an error deleting the song. Try again later')
+          this.in_submission = false
+          return
+        })
+
+      this.removeSong(this.index) //removes from songList
+
+      this.in_submission = false
+    },
+    async editSong(values) {
       this.initAlert()
 
       try {
         if (!this.hasChanges(values)) {
           return
         }
-        songsCollection.doc(this.song.docID).update({
-          modified_name: values.modified_name
+        await songsCollection.doc(this.song.docID).update({
+          modified_name: values.modified_name,
+          artist: values.artist ? values.artist : '',
+          gerne: values.gerne ? values.genre : ''
         })
       } catch (error) {
         this.alert_variant = this.error_variant
         this.alert_msg = 'Something went wrong! Try again later.'
-        console.log(error)
         return
       } finally {
         this.in_submission = false

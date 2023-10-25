@@ -7,7 +7,7 @@
     <main id="manage" class="pt-20">
       <div class="container mx-auto pt-6">
         <div class="md:grid md:grid-cols-3 md:gap-4">
-          <AppUpload ref="upload" />
+          <AppUpload ref="upload" :addSong="addSong" />
           <div class="col-span-2">
             <div
               class="bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
@@ -18,12 +18,17 @@
               </div>
               <div class="p-6">
                 <!-- Composition Items -->
+                <div v-if="songs.length === 0">
+                  <p class="text-center">Playlist empty.</p>
+                </div>
                 <CompositionItem
+                  v-else
                   v-for="(song, i) in songs"
                   :key="song.docID"
                   :song="song"
                   :updateSong="updateSong"
                   :index="i"
+                  :removeSong="removeSong"
                 />
               </div>
             </div>
@@ -65,6 +70,12 @@ export default {
       this.songs[i].modified_name = values.modified_name
       this.songs[i].genre = values.genre
       this.songs[i].artist = values.artist
+    },
+    removeSong(i) {
+      this.songs.splice(i, 1)
+    },
+    addSong(song) {
+      this.songs.push(song)
     }
   }
 

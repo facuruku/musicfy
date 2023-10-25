@@ -32,7 +32,7 @@
         />
         <hr class="my-6 border-slate-400" />
         <!-- Progess Bars -->
-        <div class="mb-4" v-for="upload in uploads" :key="upload.name">
+        <div class="mb-4" v-for="upload in uploads" :key="upload.name" :class="upload.hide_class">
           <!-- File Name -->
           <div class="font-bold text-sm" :class="upload.text_class">
             <i :class="upload.icon"></i>{{ upload.name }}
@@ -55,6 +55,12 @@ import { storage, auth, songsCollection } from '@/includes/firebase'
 
 export default {
   name: 'Upload',
+  props: {
+    addSong: {
+      type: Function,
+      required: true
+    }
+  },
   data() {
     return {
       is_dragover: false,
@@ -66,7 +72,6 @@ export default {
       this.is_dragover = false
 
       const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files]
-
       files.forEach(async (file) => {
         if (file.type != 'audio/mpeg') {
           alert('file type invalid')
@@ -74,7 +79,7 @@ export default {
         }
         const storageRef = storage.ref() // musicfy-53b66.appspot.com
         const songsFolderRef = storageRef.child('songs') // musicfy-53b66.appspot.com/songs
-        const songsRef = songsFolderRef.child(`${file.name}`) // musicfy-53b66.appspot.com/songs/example.mp3
+        const songRef = songsFolderRef.child(`${file.name}`) // musicfy-53b66.appspot.com/songs/example.mp3
 
         const fileExists = await this.fileExists(songsFolderRef, file)
 
@@ -83,7 +88,7 @@ export default {
           return
         }
 
-        const task = songsRef.put(file)
+        const task = songRef.put(file)
 
         //TODO get metadata from mp3 file (artist,album...)
 
@@ -94,7 +99,8 @@ export default {
             name: file.name,
             variant: 'progress-bar bg-blue-400',
             icon: 'fa-solid fa-spinner fa-spin',
-            text_class: ''
+            text_class: '',
+            hide_class: ''
           }) - 1
 
         task.on(
@@ -123,15 +129,31 @@ export default {
             }
 
             song.url = await task.snapshot.ref.getDownloadURL()
-            await songsCollection.add(song)
+            await songsCollection
+              .add(song)
+              .then((docRef) => {
+                song.docID = docRef.id
+              })
+              .catch(async (error) => {
+                this.uploads[uploadIndex].variant = 'bg-red-400'
+                this.uploads[uploadIndex].icon = 'fas fa-times'
+                this.uploads[uploadIndex].text_class = 'text-red-400'
+                console.error('Error uploading the song', error)
+                await songRef.delete()
+
+                return
+              })
 
             this.uploads[uploadIndex].variant = 'bg-green-400'
             this.uploads[uploadIndex].icon = 'fas fa-check'
             this.uploads[uploadIndex].text_class = 'text-green-400'
 
-            //remove from list when success after 1s
+            //added to songsList
+            this.addSong(song)
+
+            //added class to remove from view when success after 1s
             setTimeout(() => {
-              this.uploads.splice(uploadIndex, 1)
+              this.uploads[uploadIndex].hide_class = 'hidden'
             }, 1000)
           }
         )
@@ -142,7 +164,7 @@ export default {
         const result = await folderRef.listAll()
         return result.items.some((item) => item.name === file.name)
       } catch (error) {
-        console.error('Error al verificar la existencia del archivo:', error)
+        console.error('Error checking file existence:', error)
         return false // En caso de error, asumimos que el archivo no existe
       }
     },
@@ -156,9 +178,7 @@ export default {
     }
   },
   beforeUnmount() {
-    this.uploads.forEach((upload) => {
-      upload.task.cancel()
-    })
+    this.cancelUploads()
   }
 }
 </script>
