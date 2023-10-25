@@ -19,6 +19,7 @@
         placeholder="your@email.com"
         autocomplete="email"
       >
+        <!-- TODO: Add email autofocus -->
       </VeeField>
       <ErrorMessage class="text-red-600 block" name="email" />
     </div>

@@ -3,7 +3,7 @@
     <div
       class="bg-zinc-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
     >
-      <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+      <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-400">
         <span class="card-title">Upload</span>
         <i class="fas fa-upload float-right text-green-400 text-2xl"></i>
       </div>
@@ -19,11 +19,18 @@
           @dragenter.prevent.stop="is_dragover = true"
           @dragleave.prevent.stop="is_dragover = false"
           @drop.prevent.stop="upload($event)"
+          @click.prevent="openInputFile"
         >
-          <h5>Drop your mp3 files here <span class="text-xs">(10MB max)</span></h5>
+          <h5>Drop your mp3 files here <span class="block text-sm">Or, click to browse</span></h5>
         </div>
-        <input type="file" multiple @change="upload($event)" />
-        <hr class="my-6" />
+        <input
+          type="file"
+          multiple
+          ref="inputFile"
+          @change="upload($event)"
+          class="hidden w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:font-semibold file:bg-gray-300 hover:file:bg-green-400 bg-gray-800 hover:cursor-pointer"
+        />
+        <hr class="my-6 border-slate-400" />
         <!-- Progess Bars -->
         <div class="mb-4" v-for="upload in uploads" :key="upload.name">
           <!-- File Name -->
@@ -143,6 +150,9 @@ export default {
       this.uploads.forEach((upload) => {
         upload.task.cancel()
       })
+    },
+    openInputFile() {
+      this.$refs.inputFile.click()
     }
   },
   beforeUnmount() {
