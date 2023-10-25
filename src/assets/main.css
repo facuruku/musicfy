@@ -57,6 +57,9 @@ input[type='file'] {
   margin-top: 20px;
   background-color: #262626;
 }
+input[type='text'] {
+  cursor: text;
+}
 
 /* TODO: create variable colors to toggle Dark/Light mode */
 input {
