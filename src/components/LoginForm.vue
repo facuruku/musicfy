@@ -12,6 +12,7 @@
     <!-- Email -->
     <div class="mb-3">
       <label class="inline-block mb-2">Email</label>
+      <!-- TODO: Add email autofocus -->
       <VeeField
         name="email"
         type="email"
@@ -19,7 +20,6 @@
         placeholder="your@email.com"
         autocomplete="email"
       >
-        <!-- TODO: Add email autofocus -->
       </VeeField>
       <ErrorMessage class="text-red-600 block" name="email" />
     </div>
