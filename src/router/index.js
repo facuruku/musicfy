@@ -9,7 +9,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!to.meta) {
+  if (!to.meta.requiresAuth) {
     next()
     return
   }
