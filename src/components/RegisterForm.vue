@@ -221,7 +221,8 @@ export default {
 
       this.reg_alert_variant = this.reg_success_variant
       this.reg_alert_msg = this.reg_success_msg
-      window.location.reload()
+
+      this.$router.push({ name: 'home' })
     },
     ...mapActions(useUserStore, {
       createUser: 'register'
