@@ -18,7 +18,13 @@
               </div>
               <div class="p-6">
                 <!-- Composition Items -->
-                <CompositionItem v-for="song in songs" :key="song.docID" :song="song" />
+                <CompositionItem
+                  v-for="(song, i) in songs"
+                  :key="song.docID"
+                  :song="song"
+                  :updateSong="updateSong"
+                  :index="i"
+                />
               </div>
             </div>
           </div>
@@ -49,10 +55,17 @@ export default {
     snapshot.forEach((document) => {
       const song = {
         ...document.data(),
-        dicID: document.id
+        docID: document.id
       }
       this.songs.push(song)
     })
+  },
+  methods: {
+    updateSong(i, values) {
+      this.songs[i].modified_name = values.modified_name
+      this.songs[i].genre = values.genre
+      this.songs[i].artist = values.artist
+    }
   }
 
   /*   beforeRouteLeave(to, from, next) {
