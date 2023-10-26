@@ -134,9 +134,7 @@ export default {
         .then(() => {})
         .catch((error) => {
           console.error(error)
-          alert('There was an error deleting the song. Try again later')
           this.in_submission = false
-          return
         })
 
       await songsCollection
@@ -145,9 +143,7 @@ export default {
         .then(() => {})
         .catch((error) => {
           console.error(error)
-          alert('There was an error deleting the song. Try again later')
           this.in_submission = false
-          return
         })
 
       this.removeSong(this.index) //removes from songList
