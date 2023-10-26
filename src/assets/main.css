@@ -42,10 +42,6 @@ a:hover {
   z-index: -1;
 }
 
-#playlist li:first-child {
-  margin-top: 10px;
-}
-
 .upload-dropbox.upload-dropbox-drag {
   color: #fff;
   background-color: #20d862;
