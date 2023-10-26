@@ -29,6 +29,7 @@
                   :updateSong="updateSong"
                   :index="i"
                   :removeSong="removeSong"
+                  :updateHasChanges="updateHasChanges"
                 />
               </div>
             </div>
@@ -52,7 +53,8 @@ export default {
   },
   data() {
     return {
-      songs: []
+      songs: [],
+      hasChanges: false
     }
   },
   async created() {
@@ -74,13 +76,19 @@ export default {
         docID: document.id
       }
       this.songs.push(song)
+    },
+    updateHasChanges(value) {
+      this.hasChanges = value
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (!this.hasChanges) {
+      next()
+    } else {
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave?')
+      next(leave)
     }
   }
-
-  /*   beforeRouteLeave(to, from, next) {
-    this.$refs.upload.cancelUploads()
-    next()
-  } */
   /*   beforeRouteEnter(to, from, next) {
     const store = useUserStore()
     if (store.userLoggedIn) {

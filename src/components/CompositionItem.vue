@@ -32,6 +32,7 @@
             type="text"
             class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
             placeholder="Enter Song Title"
+            @input="updateHasChanges(true)"
           />
           <ErrorMessage class="text-red-600" name="modified_name" />
         </div>
@@ -42,6 +43,7 @@
             type="text"
             class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
             placeholder="Enter Genre"
+            @input="updateHasChanges(true)"
           />
           <ErrorMessage class="text-red-600" name="artist" />
         </div>
@@ -52,6 +54,7 @@
             type="text"
             class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
             placeholder="Enter Genre"
+            @input="updateHasChanges(true)"
           />
           <ErrorMessage class="text-red-600" name="genre" />
         </div>
@@ -96,6 +99,9 @@ export default {
     index: {
       type: Number,
       required: true
+    },
+    updateHasChanges: {
+      type: Function
     }
   },
   data() {
@@ -171,6 +177,7 @@ export default {
       }
 
       this.updateSong(this.index, values)
+      this.updateHasChanges(false)
 
       this.alert_variant = this.success_variant
       this.alert_msg = this.success_msg
@@ -189,10 +196,11 @@ export default {
     hasChanges(values) {
       for (const key in values) {
         if (values[key] !== this.song[key]) {
+          this.updateHasChanges(true)
           return true
         }
       }
-
+      this.updateHasChanges(false)
       return false
     }
   }
