@@ -1,7 +1,7 @@
 <template>
   <!-- Header -->
   <!-- TODO fix responsive for mobile phones (mobileFirst) -->
-  <header id="header" class="fixed top-0 z-20 w-full font-circular-black bg-neutral-900">
+  <header id="header" class="fixed top-0 z-50 w-full font-circular-black bg-neutral-900">
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
       <RouterLink

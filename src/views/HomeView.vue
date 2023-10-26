@@ -1,5 +1,4 @@
 <template>
-  <!-- <section class="bg-gradient-to-t from-zinc-900 from-60% to-[#4a368e] to-90%"> -->
   <section>
     <AppPlaylist :songs="songs" />
 

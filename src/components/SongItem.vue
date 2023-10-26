@@ -4,7 +4,12 @@
   >
     <td>{{ index + 1 }}</td>
     <td>
-      <span class="text-white"> {{ song.modified_name }}</span>
+      <RouterLink
+        :to="{ name: 'song', params: { id: song.docID } }"
+        class="text-white border-b border-b-transparent hover:border-b-white"
+      >
+        <span class="text-white"> {{ song.modified_name }}</span>
+      </RouterLink>
       <span class="block text-sm">{{ song.artist ? song.artist : 'Unknown artist' }}</span>
     </td>
     <td>{{ song.genre ? song.genre : 'Unknown genre' }}</td>
