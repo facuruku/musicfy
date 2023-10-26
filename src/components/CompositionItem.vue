@@ -115,7 +115,7 @@ export default {
       initialValues: {
         modified_name: this.song.modified_name,
         artist: this.song.artist,
-        genre: this.song.gerne
+        genre: this.song.genre
       },
       in_submission: false,
       show_alert: false,
@@ -166,7 +166,7 @@ export default {
         await songsCollection.doc(this.song.docID).update({
           modified_name: values.modified_name,
           artist: values.artist ? values.artist : '',
-          gerne: values.gerne ? values.genre : ''
+          genre: values.genre ? values.genre : ''
         })
       } catch (error) {
         this.alert_variant = this.error_variant

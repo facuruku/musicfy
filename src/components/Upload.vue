@@ -124,9 +124,10 @@ export default {
               displayName: auth.currentUser.displayName,
               original_name: task.snapshot.ref.name,
               modified_name: this.getFileNameWithoutExtension(task.snapshot.ref.name),
-              gerne: '',
+              genre: '',
               artist: '',
-              comment_count: 0
+              comment_count: 0,
+              duration: 0
             }
 
             song.url = await task.snapshot.ref.getDownloadURL()
