@@ -81,7 +81,7 @@ export default {
         const songsFolderRef = storageRef.child('songs') // musicfy-53b66.appspot.com/songs
         const songRef = songsFolderRef.child(`${file.name}`) // musicfy-53b66.appspot.com/songs/example.mp3
 
-        const fileExists = await this.fileExists(songsFolderRef, file)
+        const fileExists = await this.fileExists(file)
 
         if (fileExists) {
           alert('Song already existing')
@@ -114,6 +114,7 @@ export default {
             this.uploads[uploadIndex].icon = 'fas fa-times'
             this.uploads[uploadIndex].text_class = 'text-red-400'
             console.error('Error uploading the song', error)
+            return
           },
           async () => {
             //success
@@ -122,17 +123,20 @@ export default {
               uid: auth.currentUser.uid,
               displayName: auth.currentUser.displayName,
               original_name: task.snapshot.ref.name,
-              modified_name: task.snapshot.ref.name,
+              modified_name: this.getFileNameWithoutExtension(task.snapshot.ref.name),
               gerne: '',
               artist: '',
               comment_count: 0
             }
 
             song.url = await task.snapshot.ref.getDownloadURL()
+
+            let songDocRef = ''
+
             await songsCollection
               .add(song)
               .then((docRef) => {
-                song.docID = docRef.id
+                songDocRef = docRef
               })
               .catch(async (error) => {
                 this.uploads[uploadIndex].variant = 'bg-red-400'
@@ -144,12 +148,15 @@ export default {
                 return
               })
 
+            const songSnapshot = await songDocRef.get()
+
+            //added to songsList
+            this.addSong(songSnapshot)
+
+            //Upload progress success style
             this.uploads[uploadIndex].variant = 'bg-green-400'
             this.uploads[uploadIndex].icon = 'fas fa-check'
             this.uploads[uploadIndex].text_class = 'text-green-400'
-
-            //added to songsList
-            this.addSong(song)
 
             //added class to remove from view when success after 1s
             setTimeout(() => {
@@ -159,14 +166,12 @@ export default {
         )
       })
     },
-    async fileExists(folderRef, file) {
-      try {
-        const result = await folderRef.listAll()
-        return result.items.some((item) => item.name === file.name)
-      } catch (error) {
-        console.error('Error checking file existence:', error)
-        return false // En caso de error, asumimos que el archivo no existe
-      }
+    getFileNameWithoutExtension(fileName) {
+      return fileName.replace(/\.[^.]+$/, '')
+    },
+    async fileExists(file) {
+      const snapshot = await songsCollection.where('original_name', '==', file.name).get()
+      return snapshot.size !== 0
     },
     cancelUploads() {
       this.uploads.forEach((upload) => {
