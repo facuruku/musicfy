@@ -203,7 +203,7 @@ export default {
   computed: {
     maxBirthdate() {
       const today = new Date()
-      return today.toISOString().slice(0, 10) // Retorna maxDate con el formato YYYY-MM-DD
+      return today.toISOString().slice(0, 10) // Returns format YYYY-MM-DD
     }
   },
   methods: {
