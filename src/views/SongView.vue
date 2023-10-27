@@ -144,6 +144,8 @@ export default {
 
       await commentsCollection.add(comment)
 
+      this.getComments()
+
       this.comment_in_submission = false
       this.comment_alert_variant = this.comment_success_variant
       this.comment_alert_msg = this.success_msg
