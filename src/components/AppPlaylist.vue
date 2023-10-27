@@ -1,6 +1,6 @@
 <template>
   <!-- Playlist header -->
-  <section class="z-10 mx-10 pt-40 pb-6 text-white text-center relative font-circular-regular">
+  <section class="relative z-10 mx-10 pt-40 pb-6 text-white text-center font-circular-regular">
     <div class="container flex gap-6">
       <img
         aria-hidden="false"

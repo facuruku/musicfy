@@ -64,6 +64,9 @@ input {
 select {
   background-color: #262626;
 }
+textarea {
+  background-color: #262626;
+}
 
 .progress-bar {
   background-size: 1rem 1rem;
