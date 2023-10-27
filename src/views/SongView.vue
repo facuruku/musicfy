@@ -30,7 +30,8 @@
         <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-500">
           <!-- Comment Count -->
           <span class="card-title"
-            >Comments <span class="font-sans">(</span>15<span class="font-sans">)</span></span
+            >Comments <span class="font-sans">(</span>{{ comments.length
+            }}<span class="font-sans">)</span></span
           >
           <i class="fa-regular fa-comment float-right text-2xl"></i>
         </div>
@@ -61,6 +62,7 @@
           <!-- Sort Comments -->
           <select
             class="block mt-4 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+            v-model="sort"
           >
             <option value="1">Latest</option>
             <option value="2">Oldest</option>
@@ -71,11 +73,18 @@
     <!-- Comments -->
     <section>
       <ul class="z-10 px-6 font-circular-regular min-h-[50vh] text-white">
-        <li class="p-6 border border-slate-500" v-for="comment in comments" :key="comment.docID">
+        <li class="p-6 border border-slate-500" v-if="comments.length === 0">
+          No comments yet. <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>
+        </li>
+        <li
+          class="p-6 border border-slate-500"
+          v-for="comment in sortedComments"
+          :key="comment.docID"
+        >
           <!-- Comment Author -->
           <div class="mb-5">
             <div class="font-bold">{{ comment.name }}</div>
-            <time>{{ comment.date }}</time>
+            <time class="text-sm">{{ this.getCommentPublishDate(comment) }}</time>
           </div>
 
           <p>
@@ -102,6 +111,7 @@ export default {
     return {
       song: {},
       comments: [],
+      sort: '1',
       schema: {
         comment: 'required|min:3'
       },
@@ -117,7 +127,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(useUserStore, ['userLoggedIn'])
+    ...mapState(useUserStore, ['userLoggedIn']),
+    sortedComments() {
+      return this.comments.slice().sort((a, b) => {
+        if (this.sort === '1') {
+          //latest to oldest
+          return new Date(b.date) - new Date(a.date)
+        }
+        //oldest to latest
+        return new Date(a.date) - new Date(b.date)
+      })
+    }
   },
   async created() {
     const docSnapshot = await songsCollection.doc(this.$route.params.id).get()
@@ -172,6 +192,40 @@ export default {
           ...doc.data()
         })
       })
+    },
+    getCommentPublishDate(comment) {
+      console.log(comment)
+      const today = new Date()
+
+      const differenceMS = today - new Date(comment.date)
+
+      const seconds = Math.floor(differenceMS / 1000)
+      if (seconds < 60) {
+        return `${seconds} second${seconds === 1 ? '' : 's'} ago`
+      }
+
+      const minutes = Math.floor(seconds / 60)
+      if (minutes < 60) {
+        return `${minutes} minute${minutes === 1 ? '' : 's'} ago`
+      }
+
+      const hours = Math.floor(minutes / 60)
+      if (hours < 24) {
+        return `${hours} hour${hours === 1 ? '' : 's'} ago`
+      }
+
+      const days = Math.floor(hours / 24)
+      if (days < 30) {
+        return `${days} day${days === 1 ? '' : 's'} ago`
+      }
+
+      const months = Math.floor(days / 30)
+      if (months < 12) {
+        return `${months} month${months === 1 ? '' : 's'} ago`
+      }
+
+      const years = Math.floor(months / 12)
+      return `${years} year${years === 1 ? '' : 's'} ago`
     }
   }
 }
