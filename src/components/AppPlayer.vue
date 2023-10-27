@@ -3,13 +3,13 @@
   <div class="fixed bottom-0 left-0 bg-black z-10 px-4 py-2 w-full flex flex-wrap">
     <!-- Track Info -->
     <div
-      class="text-white flex flex-col justify-center font-circular-thin w-40 h-16 overflow-x-hidden whitespace-nowrap"
+      class="text-white flex flex-col justify-center font-circular-thin h-16 overflow-x-hidden whitespace-nowrap"
     >
       <p class="song-title font-bold">Playing Song</p>
       <p class="song-artist">by Artist</p>
     </div>
     <!-- Buttons - Progress bar -->
-    <div class="text-white flex flex-col items-center gap-0.5 font-circular-regular">
+    <div class="text-white grow flex flex-col items-center gap-0.5 font-circular-regular">
       <!-- Play/Pause Button -->
       <button type="button" class="">
         <p
@@ -45,7 +45,7 @@
       </div>
     </div>
     <!-- Volume -->
-    <div class="text-white grow text-center">
+    <div class="text-white text-center">
       <h1>Volume</h1>
       (soon)
     </div>
