@@ -30,7 +30,7 @@
         <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-500">
           <!-- Comment Count -->
           <span class="card-title"
-            >Comments <span class="font-sans">(</span>{{ comments.length
+            >Comments <span class="font-sans">(</span>{{ song.comment_count
             }}<span class="font-sans">)</span></span
           >
           <i class="fa-regular fa-comment float-right text-2xl"></i>
@@ -145,6 +145,9 @@ export default {
     if (!docSnapshot.exists) {
       this.$router.push({ name: 'home' })
     }
+    const { sort } = this.$route.query
+
+    this.sort = sort === '1' || sort === '2' ? sort : '1'
 
     this.song = docSnapshot.data()
 
@@ -163,6 +166,12 @@ export default {
       }
 
       await commentsCollection.add(comment)
+
+      this.song.comment_count += 1
+
+      await songsCollection.doc(this.$route.params.id).update({
+        comment_count: this.song.comment_count
+      })
 
       this.getComments()
 
@@ -225,6 +234,19 @@ export default {
 
       const years = Math.floor(months / 12)
       return `${years} year${years === 1 ? '' : 's'} ago`
+    }
+  },
+  watch: {
+    sort(newVal) {
+      if (newVal === this.$route.query.sort) {
+        return
+      }
+
+      this.$router.push({
+        query: {
+          sort: newVal
+        }
+      })
     }
   }
 }
