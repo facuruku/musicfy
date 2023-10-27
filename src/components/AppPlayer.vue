@@ -1,20 +1,21 @@
 <template>
   <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-black z-10 px-4 py-4 w-full flex flex-nowrap">
+  <div class="fixed bottom-0 left-0 bg-black z-10 px-4 py-2 w-full flex flex-wrap">
     <!-- Track Info -->
     <div
-      class="fixed bottom-2 left-5 text-white flex flex-col justify-center font-circular-thin w-40 h-16 overflow-x-hidden whitespace-nowrap"
+      class="text-white flex flex-col justify-center font-circular-thin w-40 h-16 overflow-x-hidden whitespace-nowrap"
     >
       <p class="song-title font-bold">Playing Song</p>
       <p class="song-artist">by Artist</p>
     </div>
-    <div class="text-white grow flex flex-col gap-0.5 font-circular-regular">
+    <!-- Buttons - Progress bar -->
+    <div class="text-white flex flex-col items-center gap-0.5 font-circular-regular">
       <!-- Play/Pause Button -->
-      <button type="button">
+      <button type="button" class="">
         <p
           class="text-white text-3xl hover:scale-105"
-          :class="{ 'fa fa-play-circle': !isPlaying, 'fa fa-pause-circle': isPlaying }"
-          @click.prevent="isPlaying ? pause() : play()"
+          :class="{ 'fa fa-play-circle': !playing, 'fa fa-pause-circle': playing }"
+          @click.prevent="toggleAudio()"
         ></p>
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
@@ -43,6 +44,11 @@
         </div>
       </div>
     </div>
+    <!-- Volume -->
+    <div class="text-white grow text-center">
+      <h1>Volume</h1>
+      (soon)
+    </div>
   </div>
 </template>
 
@@ -59,13 +65,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, ['isPlaying']),
+    ...mapState(usePlayerStore, ['playing']),
     currentTimePercentage() {
       return (this.currentTime / this.durationTime) * 100 + '%'
     }
   },
   methods: {
-    ...mapActions(usePlayerStore, ['play', 'pause'])
+    ...mapActions(usePlayerStore, ['toggleAudio'])
   }
 }
 </script>

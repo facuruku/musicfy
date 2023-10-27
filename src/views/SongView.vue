@@ -3,11 +3,10 @@
   <section class="relative z-10 mx-10 pt-40 pb-6 text-white text-center">
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
-      <button
-        type="button"
-        class="absolute h-24 w-24 text-black text-5xl hover:scale-105 bg-[#1ed760] rounded-full"
-      >
-        <i class="fas fa-play"></i>
+      <button @click.prevent="play(song)" type="button">
+        <i
+          class="text-[#1ed760] text-8xl hover:scale-110 bg-black rounded-full fa fa-play-circle"
+        ></i>
       </button>
       <div class="z-50 text-left ml-28">
         <!-- Song Info -->
@@ -101,8 +100,9 @@
 <script>
 import AppPlayer from '@/components/AppPlayer.vue'
 import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
-import { mapState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
+import usePlayerStore from '@/stores/player'
 
 export default {
   name: 'Song',
@@ -128,6 +128,7 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ['userLoggedIn']),
+    ...mapState(usePlayerStore, ['playing']),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {
         if (this.sort === '1') {
@@ -154,6 +155,7 @@ export default {
     this.getComments()
   },
   methods: {
+    ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
     async publishComment(values, { resetForm }) {
       this.initCommentAlert()
 

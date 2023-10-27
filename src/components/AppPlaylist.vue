@@ -33,11 +33,11 @@
     class="relative z-10 px-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-regular min-h-[50vh]"
   >
     <button type="button">
-      <p
+      <i
         class="text-[#1ed760] text-5xl hover:scale-110 bg-black rounded-full"
-        :class="{ 'fa fa-play-circle': !isPlaying, 'fa fa-pause-circle': isPlaying }"
-        @click.prevent="isPlaying ? pause() : play()"
-      ></p>
+        :class="{ 'fa fa-play-circle': !playing, 'fa fa-pause-circle': playing }"
+        @click.prevent="playing ? toggleAudio() : play(this.songs[0])"
+      ></i>
     </button>
 
     <!-- Playlist -->
@@ -101,7 +101,7 @@ export default {
     return {}
   },
   computed: {
-    ...mapState(usePlayerStore, ['isPlaying']),
+    ...mapState(usePlayerStore, ['playing']),
     getUserName() {
       return auth.currentUser && auth.currentUser.displayName
         ? auth.currentUser.displayName
@@ -109,7 +109,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(usePlayerStore, ['play', 'pause'])
+    ...mapActions(usePlayerStore, ['play', 'toggleAudio'])
   }
 }
 </script>
