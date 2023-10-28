@@ -22,8 +22,8 @@
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
         <!-- Current Position -->
-        <div class="player-currenttime text-xs secondary-text">
-          00<span class="font-sans">:</span>00
+        <div class="player-currenttime text-xs secondary-text font-sans">
+          {{ seek }}
         </div>
         <!-- Scrub Container  -->
         <div class="group w-60 sm:w-96 h-1 bg-neutral-700 relative cursor-pointer">
@@ -41,8 +41,8 @@
           ></span>
         </div>
         <!-- Duration -->
-        <div class="player-duration text-xs secondary-text">
-          03<span class="font-sans">:</span>06
+        <div class="player-duration text-xs secondary-text font-sans">
+          {{ duration }}
         </div>
       </div>
     </div>
@@ -67,7 +67,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, ['playing', 'currentSongName', 'currentSongArtist']),
+    ...mapState(usePlayerStore, [
+      'playing',
+      'currentSongName',
+      'currentSongArtist',
+      'duration',
+      'seek'
+    ]),
     currentTimePercentage() {
       return (this.currentTime / this.durationTime) * 100 + '%'
     }
