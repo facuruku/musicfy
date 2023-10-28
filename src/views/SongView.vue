@@ -1,6 +1,6 @@
 <template>
   <!-- Music Header -->
-  <section class="relative z-10 mx-10 pt-40 pb-6 text-white text-center">
+  <section class="relative z-10 w-full px-6 pt-40 pb-6 text-white text-center">
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
       <button @click.prevent="play(song)" type="button">
@@ -8,7 +8,7 @@
           class="text-[#1ed760] text-8xl hover:scale-110 bg-black rounded-full fa fa-play-circle"
         ></i>
       </button>
-      <div class="z-50 text-left ml-28">
+      <div class="z-50 text-left px-4">
         <!-- Song Info -->
         <div class="text-sm font-circular-black">Song</div>
         <div class="text-6xl font-circular-black">{{ song.modified_name }}</div>

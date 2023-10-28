@@ -1,22 +1,26 @@
 <template>
   <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-black z-10 px-4 py-2 w-full flex flex-wrap">
+  <div
+    class="fixed bottom-0 left-0 bg-black z-10 px-8 py-2 w-full flex flex-col lg:flex-row border border-red-500 md:justify-between sm:justify-center"
+  >
     <!-- Track Info -->
     <div
-      class="text-white flex flex-col justify-center font-circular-thin h-16 overflow-x-hidden whitespace-nowrap"
+      class="text-white flex flex-col justify-center items-center font-circular-thin h-16 overflow-x-hidden whitespace-nowrap border border-blue-500"
     >
-      <p class="song-title font-bold">Playing Song</p>
-      <p class="song-artist">by Artist</p>
+      <p class="song-title font-bold">{{ currentSongName }}</p>
+      <p class="song-artist">{{ currentSongArtist }}</p>
     </div>
     <!-- Buttons - Progress bar -->
-    <div class="text-white grow flex flex-col items-center gap-0.5 font-circular-regular">
+    <div
+      class="text-white flex flex-col items-center gap-0.5 font-circular-regular border border-yellow-500"
+    >
       <!-- Play/Pause Button -->
       <button type="button" class="">
-        <p
+        <i
           class="text-white text-3xl hover:scale-105"
           :class="{ 'fa fa-play-circle': !playing, 'fa fa-pause-circle': playing }"
           @click.prevent="toggleAudio()"
-        ></p>
+        ></i>
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
         <!-- Current Position -->
@@ -24,7 +28,7 @@
           00<span class="font-sans">:</span>00
         </div>
         <!-- Scrub Container  -->
-        <div class="group w-80 h-1 rounded bg-neutral-700 relative cursor-pointer">
+        <div class="group w-60 sm:w-96 h-1 bg-neutral-700 relative cursor-pointer">
           <!-- Player Ball -->
           <span
             class="absolute -top-1.5 -ml-2.5 text-white text-xs opacity-0 group-hover:opacity-100"
@@ -45,7 +49,7 @@
       </div>
     </div>
     <!-- Volume -->
-    <div class="text-white text-center">
+    <div class="hidden lg:block text-white text-center border border-green-500">
       <h1>Volume</h1>
       (soon)
     </div>
@@ -65,7 +69,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, ['playing']),
+    ...mapState(usePlayerStore, ['playing', 'currentSongName', 'currentSongArtist']),
     currentTimePercentage() {
       return (this.currentTime / this.durationTime) * 100 + '%'
     }
