@@ -10,6 +10,10 @@ export default defineStore('player', {
     async play(song) {
       this.currentSong = song
 
+      if (this.sound.playing) {
+        this.sound.stop()
+      }
+
       this.sound = new Howl({
         src: [song.url],
         html5: true,
@@ -36,6 +40,12 @@ export default defineStore('player', {
         return state.sound.playing()
       }
       return false
+    },
+    currentSongName: (state) => {
+      return state.currentSong.modified_name
+    },
+    currentSongArtist: (state) => {
+      return state.currentSong.artist ? state.currentSong.artist : 'Unknown Artist'
     }
   }
 })
