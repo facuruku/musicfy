@@ -7,15 +7,16 @@ export default defineStore('player', {
     currentSong: {},
     sound: {},
     seek: '0:00', // CurrentPosition is called seek in Howl
-    duration: '00:00'
+    duration: '00:00',
+    playerProgress: '0%'
   }),
   actions: {
     async play(song) {
-      this.currentSong = song
-
-      if (this.sound.playing) {
-        this.sound.stop()
+      if (this.sound instanceof Howl) {
+        this.sound.unload()
       }
+
+      this.currentSong = song
 
       this.sound = new Howl({
         src: [song.url],
@@ -44,6 +45,8 @@ export default defineStore('player', {
       this.seek = helper.formatTime(this.sound.seek())
       this.duration = helper.formatTime(this.sound.duration())
 
+      this.playerProgress = `${(this.sound.seek() / this.sound.duration()) * 100}%`
+
       if (this.sound.playing()) {
         requestAnimationFrame(this.progress)
       }
@@ -55,12 +58,6 @@ export default defineStore('player', {
         return state.sound.playing()
       }
       return false
-    },
-    currentSongName: (state) => {
-      return state.currentSong.modified_name
-    },
-    currentSongArtist: (state) => {
-      return state.currentSong.artist ? state.currentSong.artist : 'Unknown Artist'
     }
   }
 })

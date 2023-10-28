@@ -5,10 +5,11 @@
   >
     <!-- Track Info -->
     <div
+      v-if="currentSong.modified_name"
       class="text-white flex flex-col justify-center items-center font-circular-thin h-16 overflow-x-hidden whitespace-nowrap"
     >
-      <p class="song-title font-bold">{{ currentSongName }}</p>
-      <p class="song-artist">{{ currentSongArtist }}</p>
+      <p class="song-title font-bold">{{ currentSong.modified_name }}</p>
+      <p class="song-artist">{{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}</p>
     </div>
     <!-- Buttons - Progress bar -->
     <div class="text-white flex flex-col items-center gap-0.5 font-circular-regular">
@@ -30,14 +31,14 @@
           <!-- Player Ball -->
           <span
             class="absolute -top-1.5 -ml-2.5 text-white text-xs opacity-0 group-hover:opacity-100"
-            :style="{ left: currentTimePercentage }"
+            :style="{ left: playerProgress }"
           >
             <i class="fas fa-circle"></i>
           </span>
           <!-- Player Progress Bar-->
           <span
             class="block h-1 rounded bg-white group-hover:bg-gradient-to-r from-green-500 to-green-400"
-            :style="{ width: currentTimePercentage }"
+            :style="{ width: playerProgress }"
           ></span>
         </div>
         <!-- Duration -->
@@ -67,13 +68,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, [
-      'playing',
-      'currentSongName',
-      'currentSongArtist',
-      'duration',
-      'seek'
-    ]),
+    ...mapState(usePlayerStore, ['playing', 'currentSong', 'duration', 'seek', 'playerProgress']),
     currentTimePercentage() {
       return (this.currentTime / this.durationTime) * 100 + '%'
     }
