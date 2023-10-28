@@ -1,19 +1,17 @@
 <template>
   <!-- Player -->
   <div
-    class="fixed bottom-0 left-0 bg-black z-10 px-8 py-2 w-full flex flex-col lg:flex-row border border-red-500 md:justify-between sm:justify-center"
+    class="fixed bottom-0 left-0 bg-black z-10 px-8 py-2 w-full flex flex-col lg:flex-row md:justify-between sm:justify-center"
   >
     <!-- Track Info -->
     <div
-      class="text-white flex flex-col justify-center items-center font-circular-thin h-16 overflow-x-hidden whitespace-nowrap border border-blue-500"
+      class="text-white flex flex-col justify-center items-center font-circular-thin h-16 overflow-x-hidden whitespace-nowrap"
     >
       <p class="song-title font-bold">{{ currentSongName }}</p>
       <p class="song-artist">{{ currentSongArtist }}</p>
     </div>
     <!-- Buttons - Progress bar -->
-    <div
-      class="text-white flex flex-col items-center gap-0.5 font-circular-regular border border-yellow-500"
-    >
+    <div class="text-white flex flex-col items-center gap-0.5 font-circular-regular">
       <!-- Play/Pause Button -->
       <button type="button" class="">
         <i
@@ -49,7 +47,7 @@
       </div>
     </div>
     <!-- Volume -->
-    <div class="hidden lg:block text-white text-center border border-green-500">
+    <div class="hidden lg:block text-white text-center">
       <h1>Volume</h1>
       (soon)
     </div>
