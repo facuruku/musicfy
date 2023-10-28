@@ -27,7 +27,10 @@
           {{ seek }}
         </div>
         <!-- Scrub Container  -->
-        <div class="group w-60 sm:w-96 h-1 bg-neutral-700 relative cursor-pointer">
+        <div
+          @click.prevent="updateSeek"
+          class="group w-60 sm:w-96 h-1 relative bg-neutral-700 cursor-pointer"
+        >
           <!-- Player Ball -->
           <span
             class="absolute -top-1.5 -ml-2.5 text-white text-xs opacity-0 group-hover:opacity-100"
@@ -74,7 +77,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(usePlayerStore, ['toggleAudio'])
+    ...mapActions(usePlayerStore, ['toggleAudio', 'updateSeek'])
   }
 }
 </script>
