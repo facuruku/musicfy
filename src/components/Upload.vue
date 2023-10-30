@@ -52,6 +52,8 @@
 </template>
 <script>
 import { storage, auth, songsCollection } from '@/includes/firebase'
+import { Howl } from 'howler'
+import helper from '@/includes/helper'
 
 export default {
   name: 'Upload',
@@ -127,7 +129,7 @@ export default {
               genre: '',
               artist: '',
               comment_count: 0,
-              duration: 0
+              duration: 0 //TODO load duration during upload
             }
 
             song.url = await task.snapshot.ref.getDownloadURL()

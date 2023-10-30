@@ -130,6 +130,7 @@ export default {
   },
   methods: {
     async deleteSong() {
+      //TODO remove comments of same songID from comments collection firebase
       this.in_submission = true
 
       const storageRef = storage.ref()

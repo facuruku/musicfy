@@ -7,7 +7,7 @@ export default defineStore('player', {
     currentSong: {},
     sound: {},
     seek: '0:00', // CurrentPosition is called seek in Howl
-    duration: '00:00',
+    duration: '0:00',
     playerProgress: 0,
     volume: 50
   }),
