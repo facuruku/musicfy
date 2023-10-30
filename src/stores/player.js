@@ -8,7 +8,8 @@ export default defineStore('player', {
     sound: {},
     seek: '0:00', // CurrentPosition is called seek in Howl
     duration: '00:00',
-    playerProgress: '0%'
+    playerProgress: 0,
+    volume: 50
   }),
   actions: {
     async play(song) {
@@ -21,7 +22,7 @@ export default defineStore('player', {
       this.sound = new Howl({
         src: [song.url],
         html5: true,
-        volume: '0.1'
+        volume: this.volume / 100
       })
 
       this.sound.play()
@@ -45,23 +46,24 @@ export default defineStore('player', {
       this.seek = helper.formatTime(this.sound.seek())
       this.duration = helper.formatTime(this.sound.duration())
 
-      this.playerProgress = `${(this.sound.seek() / this.sound.duration()) * 100}%`
+      this.playerProgress = (this.sound.seek() / this.sound.duration()) * 100
 
       if (this.sound.playing()) {
         requestAnimationFrame(this.progress)
       }
     },
-    updateSeek(event) {
+    updateVolume(newVolume) {
+      if (!this.sound.playing) {
+        return
+      }
+      this.sound.volume(newVolume / 100)
+    },
+    updateSeek(newValue) {
       if (!this.sound.playing) {
         return
       }
 
-      const { x, width } = event.currentTarget.getBoundingClientRect()
-
-      // Doc = 2000, Timeline = 1000, clientX = 1000, Distance = 500
-      const clickX = event.clientX - x
-
-      const percentage = clickX / width
+      const percentage = newValue / 100
 
       const seconds = this.sound.duration() * percentage
 
