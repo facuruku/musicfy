@@ -32,6 +32,14 @@
         <!-- Progress Slider  -->
         <Slider
           v-model="playerProgress"
+          @click.prevent="updateSeek(playerProgress)"
+          @drag.prevent.stop=""
+          @dragstart.prevent.stop=""
+          @dragend.prevent.stop=""
+          @dragover.prevent.stop=""
+          @dragenter.prevent.stop=""
+          @dragleave.prevent.stop=""
+          @drop.prevent="updateSeek(playerProgress)"
           :pt="{
             root: { class: 'w-96 h-1 bg-neutral-700 group hover:cursor-grab' },
             handle: {
