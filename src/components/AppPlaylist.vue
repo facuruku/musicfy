@@ -47,7 +47,7 @@
       <table id="playlist" class="w-full text-left mb-40">
         <thead class="border-b border-zinc-300 border-opacity-10 secondary-text">
           <tr>
-            <th class=""><span class="font-sans">#</span></th>
+            <th class="hidden sm:table-cell"><span class="font-sans">#</span></th>
             <th>Title</th>
             <th class="hidden sm:table-cell">Genre</th>
             <th class="hidden sm:table-cell">Comments</th>

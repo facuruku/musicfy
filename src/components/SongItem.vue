@@ -2,7 +2,10 @@
   <tr
     class="group hover:bg-white hover:bg-opacity-10 hover:text-white hover:cursor-pointer rounded-full secondary-text"
   >
-    <td :class="{ 'text-green-500': inPlayer, 'text-white': !inPlayer }">
+    <td
+      class="hidden sm:table-cell"
+      :class="{ 'text-green-500': inPlayer, 'text-white': !inPlayer }"
+    >
       <p class="hidden group-hover:block">
         <i
           class="fa-solid text-white"
@@ -16,7 +19,10 @@
         :to="{ name: 'song', params: { id: song.docID } }"
         class="text-white border-b border-b-transparent hover:border-b-white"
       >
-        <span :class="{ 'text-white': !inPlayer, 'text-green-500': inPlayer }">
+        <span
+          class="overflow-x-clip"
+          :class="{ 'text-white': !inPlayer, 'text-green-500': inPlayer }"
+        >
           {{ song.modified_name }}</span
         >
       </RouterLink>
@@ -26,8 +32,9 @@
     <td class="hidden sm:table-cell">
       {{ song.comment_count }}
     </td>
-    <td class="hidden sm:table-cell">
-      <i class="fa-solid fa-heart text-green-500"></i> {{ song.duration }}
+    <td class="">
+      <i class="fa-solid fa-heart text-green-500"></i>
+      <p class="hidden sm:contents">{{ song.duration }}</p>
     </td>
   </tr>
 </template>
