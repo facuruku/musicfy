@@ -11,7 +11,9 @@
       <div class="z-50 text-left px-4">
         <!-- Song Info -->
         <div class="text-sm font-circular-black">Song</div>
-        <div class="text-6xl font-circular-black">{{ song.modified_name }}</div>
+        <div class="text-2xl md:text-4xl lg:text-6xl font-circular-black">
+          {{ song.modified_name }}
+        </div>
         <div class="text-sm font-circular-black">
           {{ song.artist ? song.artist : 'Unknown artist' }}
           <span class="font-circular-regular">{{ song.genre ? song.genre : 'Unknown Genre' }}</span>
