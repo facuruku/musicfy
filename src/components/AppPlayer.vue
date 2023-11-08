@@ -1,7 +1,7 @@
 <template>
   <!-- Player -->
   <section
-    class="fixed bottom-0 left-0 bg-black z-10 px-8 py-2 w-full flex flex-col lg:flex-row md:justify-between justify-center"
+    class="fixed bottom-0 left-0 bg-black z-10 px-8 py-2 w-full flex flex-col lg:flex-row md:justify-between justify-center select-none"
   >
     <!-- Track Info -->
     <div
@@ -32,18 +32,14 @@
         <!-- Progress Slider  -->
         <Slider
           v-model="playerProgress"
-          @click.prevent="updateSeek(playerProgress)"
-          @drag.prevent.stop=""
-          @dragstart.prevent.stop=""
-          @dragend.prevent.stop=""
-          @dragover.prevent.stop=""
-          @dragenter.prevent.stop=""
-          @dragleave.prevent.stop=""
-          @drop.prevent="updateSeek(playerProgress)"
+          @change="handleSliderChange(playerProgress)"
+          @slideend="handleSlideEnd()"
+          @click.prevent="handleSliderClick()"
           :pt="{
-            root: { class: 'w-96 h-1 bg-neutral-700 group hover:cursor-grab' },
+            root: { class: 'w-96 h-1 bg-neutral-700 group hover:cursor-pointer' },
             handle: {
-              class: 'bg-white opacity-0 group-hover:opacity-100 group-active:opacity-100'
+              class:
+                'bg-white opacity-0 group-hover:opacity-100 hover:cursor-grab group-active:opacity-100'
             },
             range: { class: 'bg-white group-hover:bg-green-500 group-active:bg-green-500' }
           }"
@@ -89,7 +85,9 @@ export default {
   components: { Slider },
   data() {
     return {
-      volumeOld: 0
+      volumeOld: 0,
+      isDragging: false,
+      slideEndValue: 0
     }
   },
   computed: {
@@ -97,19 +95,34 @@ export default {
     ...mapWritableState(usePlayerStore, ['playerProgress', 'volume'])
   },
   methods: {
-    ...mapActions(usePlayerStore, ['toggleAudio', 'updateSeek', 'updateVolume']),
+    ...mapActions(usePlayerStore, ['toggleAudio', 'updateSeek', 'updateVolume', 'setIsDragging']),
     toggleVolume() {
       if (this.volume >= 1) {
         this.volume = 0
       } else {
         this.volume = this.volumeOld
       }
+    },
+    handleSliderChange(playerProgress) {
+      this.isDragging = true
+      this.slideEndValue = playerProgress
+    },
+    handleSlideEnd() {
+      this.isDragging = false
+      this.updateSeek(this.slideEndValue)
+    },
+    handleSliderClick() {
+      this.isDragging = false
+      this.updateSeek(this.slideEndValue)
     }
   },
   watch: {
     volume(newValue, oldValue) {
       this.volumeOld = oldValue
       this.updateVolume(newValue)
+    },
+    isDragging(newValue) {
+      this.setIsDragging(newValue)
     }
   }
 }

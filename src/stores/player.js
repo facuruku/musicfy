@@ -9,7 +9,8 @@ export default defineStore('player', {
     seek: '0:00', // CurrentPosition is called seek in Howl
     duration: '0:00',
     playerProgress: 0,
-    volume: 50
+    volume: 50,
+    isDragging: false
   }),
   actions: {
     async play(song) {
@@ -18,16 +19,18 @@ export default defineStore('player', {
       }
 
       this.currentSong = song
+      this.isDragging = false
 
       this.sound = new Howl({
         src: [song.url],
         html5: true,
-        volume: this.volume / 100
+        volume: this.volume / 100 //0-1
       })
 
       this.sound.play()
 
       this.sound.on('play', () => {
+        this.duration = helper.formatTime(this.sound.duration())
         requestAnimationFrame(this.progress)
       })
     },
@@ -44,9 +47,10 @@ export default defineStore('player', {
     },
     progress() {
       this.seek = helper.formatTime(this.sound.seek())
-      this.duration = helper.formatTime(this.sound.duration())
 
-      this.playerProgress = (this.sound.seek() / this.sound.duration()) * 100
+      if (!this.isDragging) {
+        this.playerProgress = (this.sound.seek() / this.sound.duration()) * 100
+      }
 
       if (this.sound.playing()) {
         requestAnimationFrame(this.progress)
@@ -68,7 +72,12 @@ export default defineStore('player', {
       const seconds = this.sound.duration() * percentage
 
       this.sound.seek(seconds)
-      this.sound.once('seek', this.progress)
+      this.sound.once('seek', () => {
+        requestAnimationFrame(this.progress)
+      })
+    },
+    setIsDragging(isDragging) {
+      this.isDragging = isDragging
     }
   },
   getters: {
