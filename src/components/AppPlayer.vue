@@ -47,7 +47,7 @@
 
         <!-- Duration -->
         <div class="player-duration text-xs secondary-text font-sans">
-          {{ duration }}
+          {{ displayDuration }}
         </div>
       </div>
     </div>
@@ -79,6 +79,7 @@
 import { mapState, mapWritableState, mapActions } from 'pinia'
 import usePlayerStore from '@/stores/player'
 import Slider from 'primevue/slider'
+import helper from '@/includes/helper'
 
 export default {
   name: 'AppPlayer',
@@ -91,8 +92,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, ['playing', 'currentSong', 'duration', 'seek']),
-    ...mapWritableState(usePlayerStore, ['playerProgress', 'volume'])
+    ...mapState(usePlayerStore, ['playing', 'currentSong', 'displayDuration', 'duration']),
+    ...mapWritableState(usePlayerStore, ['playerProgress', 'volume', 'seek'])
   },
   methods: {
     ...mapActions(usePlayerStore, ['toggleAudio', 'updateSeek', 'updateVolume', 'setIsDragging']),
@@ -103,8 +104,16 @@ export default {
         this.volume = this.volumeOld
       }
     },
+    updateDisplaySeek(playerProgress) {
+      const percentage = playerProgress / 100
+
+      const seconds = this.duration * percentage
+
+      this.seek = helper.formatTime(seconds)
+    },
     handleSliderChange(playerProgress) {
       this.isDragging = true
+      this.updateDisplaySeek(playerProgress)
       this.slideEndValue = playerProgress
     },
     handleSlideEnd() {
