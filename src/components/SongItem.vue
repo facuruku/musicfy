@@ -1,9 +1,9 @@
 <template>
   <tr
-    class="group hover:bg-white hover:bg-opacity-10 hover:text-white hover:cursor-pointer rounded-full secondary-text"
+    class="group hover:bg-white hover:bg-opacity-10 hover:text-white hover:cursor-pointer secondary-text p-2"
   >
     <td
-      class="hidden sm:table-cell"
+      class="hidden sm:table-cell px-4 rounded-l-md"
       :class="{ 'text-green-500': inPlayer, 'text-white': !inPlayer }"
     >
       <p class="hidden group-hover:block">
@@ -32,7 +32,7 @@
     <td class="hidden sm:table-cell">
       {{ song.comment_count }}
     </td>
-    <td class="">
+    <td class="rounded-r-md">
       <i class="fa-solid fa-heart text-green-500"></i>
       <p class="hidden sm:contents">{{ song.duration }}</p>
     </td>

@@ -5,7 +5,7 @@
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
       <RouterLink
-        class="text-[#1ed760] font-circular-regular text-2xl justify-center hover:scale-105"
+        class="text-[#1ed760] font-circular-thin text-2xl justify-center hover:scale-105"
         :to="{ name: 'home' }"
         exact-active-class="no-active"
       >

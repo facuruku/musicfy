@@ -1,7 +1,7 @@
 <template>
   <!-- Playlist header -->
   <section
-    class="relative z-10 mx-4 sm:mx-8 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-regular"
+    class="relative z-10 mx-4 sm:mx-8 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin"
   >
     <div class="container flex gap-6">
       <img
@@ -17,23 +17,21 @@
           /assets/img/liked-songs-640.webp 320w,
           /assets/img/liked-songs-640.webp 640w
         "
-        sizes="(min-width: 1280px) 232px, 150px"
+        sizes="(min-width: 1280px) 232px, 192px"
       />
       <div
         class="text-white main-header-content flex flex-col grow gap-1 sm:gap-4 justify-end items-start content-normal"
       >
         <h4 class="text-xs sm:text-base">Playlist</h4>
-        <h1 class="text-xl sm:text-5xl lg:text-8xl font-circular-black tracking-tighter">
-          Liked songs
-        </h1>
+        <h1 class="text-xl sm:text-8xl lg:text-8xl font-circular-black">Liked Songs</h1>
         <p class="text-xs sm:text-base">
-          <span>{{ getUserName }} º {{ songs.length }} songs </span>
+          <span class="font-circular-regular">{{ getUserName }} º {{ songs.length }} songs </span>
         </p>
       </div>
     </div>
   </section>
   <!-- Playlist Content -->
-  <section class="relative z-10 py-5 bg-zinc-900 bg-opacity-30 font-circular-regular min-h-[50vh]">
+  <section class="relative z-10 py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
     <button type="button" class="mx-4 sm:mx-8">
       <i
         class="text-[#1ed760] text-5xl hover:scale-110 bg-black rounded-full"
@@ -45,10 +43,12 @@
     <!-- Playlist -->
     <div class="mx-4 sm:mx-8 mt-4">
       <table id="playlist" class="w-full text-left mb-40">
-        <thead class="border-b border-zinc-300 border-opacity-10 secondary-text">
+        <thead class="border-b border-zinc-300 border-opacity-10 secondary-text mb-10">
           <tr>
-            <th class="hidden sm:table-cell"><span class="font-sans">#</span></th>
-            <th>Title</th>
+            <th class="hidden sm:table-cell px-4 sm:w-8">
+              <span class="font-sans">#</span>
+            </th>
+            <th class="sm:w-2/5">Title</th>
             <th class="hidden sm:table-cell">Genre</th>
             <th class="hidden sm:table-cell">Comments</th>
             <th class="hidden sm:table-cell">
@@ -71,7 +71,7 @@
           </tr>
         </thead>
 
-        <tbody class="text-white mb-10">
+        <tbody class="text-white">
           <div v-if="songs.length === 0">Empty playlist.</div>
           <SongItem
             v-else

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Circular Thin';
-  src: url(/src/assets/fonts/Circular-Thin.woff2) format('woff2');
+  src: url(/src/assets/fonts/CircularSp-Book.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Circular Regular';
@@ -8,7 +8,7 @@
 }
 @font-face {
   font-family: 'Circular Black';
-  src: url(/src/assets/fonts/Circular-Black.woff2) format('woff2');
+  src: url(/src/assets/fonts/CircularSpTitle-Black.woff2) format('woff2');
 }
 
 a {
@@ -17,7 +17,6 @@ a {
 
 .secondary-text {
   color: #929292;
-  font-weight: 500;
 }
 
 a:hover {

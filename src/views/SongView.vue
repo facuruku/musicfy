@@ -16,14 +16,14 @@
         </div>
         <div class="text-sm font-circular-black">
           {{ song.artist ? song.artist : 'Unknown artist' }}
-          <span class="font-circular-regular">{{ song.genre ? song.genre : 'Unknown Genre' }}</span>
+          <span class="font-circular-thin">{{ song.genre ? song.genre : 'Unknown Genre' }}</span>
         </div>
       </div>
     </div>
   </section>
 
   <main
-    class="relative z-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-regular min-h-[50vh] text-white"
+    class="relative z-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
   >
     <!-- Form -->
     <section>
@@ -73,7 +73,7 @@
     </section>
     <!-- Comments -->
     <section>
-      <ul class="z-10 px-6 font-circular-regular min-h-[50vh] text-white">
+      <ul class="z-10 px-6 font-circular-thin min-h-[50vh] text-white">
         <li class="p-6 border border-slate-500" v-if="comments.length === 0">
           No comments yet. <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>
         </li>
