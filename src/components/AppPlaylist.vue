@@ -1,16 +1,14 @@
 <template>
   <!-- Playlist header -->
-  <section
-    class="relative z-10 mx-4 sm:mx-8 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin"
-  >
-    <div class="container flex gap-6">
+  <section class="relative z-10 mx-4 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin">
+    <div class="container flex justify-between sm:justify-start sm:gap-6">
       <img
         aria-hidden="false"
         draggable="false"
         loading="eager"
         src="/assets/img/liked-songs-300.webp"
         alt="Liked songs"
-        class="shadow-3xl hidden sm:block"
+        class="shadow-3xl order-2 sm:order-1 w-28 h-28 sm:w-auto sm:h-auto"
         srcset="
           /assets/img/liked-songs-300.webp 150w,
           /assets/img/liked-songs-300.webp 300w,
@@ -20,7 +18,7 @@
         sizes="(min-width: 1280px) 232px, 192px"
       />
       <div
-        class="text-white main-header-content flex flex-col grow gap-1 sm:gap-4 justify-end items-start content-normal"
+        class="text-white main-header-content flex flex-col sm:grow gap-1 sm:gap-4 justify-center items-start order-1"
       >
         <h4 class="text-xs sm:text-base">Playlist</h4>
         <h1 class="text-xl sm:text-8xl lg:text-8xl font-circular-black">Liked Songs</h1>
