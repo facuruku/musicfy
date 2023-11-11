@@ -1,6 +1,6 @@
 <template>
   <tr
-    class="group hover:bg-white hover:bg-opacity-10 hover:text-white hover:cursor-pointer secondary-text p-2"
+    class="group sm:hover:bg-white sm:hover:bg-opacity-10 sm:hover:text-white hover:cursor-pointer secondary-text"
   >
     <td
       class="hidden sm:table-cell px-4 rounded-l-md"
@@ -32,9 +32,12 @@
     <td class="hidden sm:table-cell">
       {{ song.comment_count }}
     </td>
-    <td class="rounded-r-md">
-      <i class="fa-solid fa-heart text-green-500"></i>
-      <p class="hidden sm:contents">{{ song.duration }}</p>
+    <td class="rounded-r-md px-4">
+      <div class="flex justify-end gap-6 items-center">
+        <i class="fa-solid fa-heart text-green-500"></i>
+        <p class="hidden sm:contents">00:00</p>
+        <!-- {{song.duration}} TODO read and store file metadata in songsCollection-->
+      </div>
     </td>
   </tr>
 </template>

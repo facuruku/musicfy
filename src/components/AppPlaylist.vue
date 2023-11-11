@@ -41,30 +41,32 @@
     <!-- Playlist -->
     <div class="mx-4 sm:mx-8 mt-4">
       <table id="playlist" class="w-full text-left mb-40">
-        <thead class="border-b border-zinc-300 border-opacity-10 secondary-text mb-10">
+        <thead class="border-b border-zinc-400 border-opacity-10 secondary-text">
           <tr>
             <th class="hidden sm:table-cell px-4 sm:w-8">
               <span class="font-sans">#</span>
             </th>
-            <th class="sm:w-2/5">Title</th>
-            <th class="hidden sm:table-cell">Genre</th>
-            <th class="hidden sm:table-cell">Comments</th>
-            <th class="hidden sm:table-cell">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-6 secondary-text"
-                aria-label="duration"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+            <th class="sm:w-2/5 p-1">Title</th>
+            <th class="hidden sm:table-cell w-1/3">Genre</th>
+            <th class="hidden sm:table-cell w-1/5">Comments</th>
+            <th class="hidden sm:table-cell w-2/12">
+              <div class="flex justify-end mr-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 secondary-text"
+                  aria-label="duration"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
             </th>
           </tr>
         </thead>

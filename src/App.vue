@@ -7,6 +7,8 @@
     <RouterView />
   </div>
   <AppAuth />
+
+  <!-- TODO priority make layout in cards rounded like real spotify -->
 </template>
 
 <script>

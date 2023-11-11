@@ -1,7 +1,8 @@
 <template>
   <!-- Player -->
+  <!-- TODO priority fix player position slider always centered and track info / volume position fixed -->
   <section
-    class="fixed bottom-0 left-0 bg-black h-24 z-10 px-8 py-2 w-full flex flex-col lg:flex-row md:justify-between justify-center items-center select-none"
+    class="fixed bottom-0 left-0 bg-black h-24 z-10 px-8 py-2 w-full flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
   >
     <!-- Buttons - Progress bar -->
     <div class="text-white flex flex-col items-center font-circular-thin lg:order-2">
@@ -42,15 +43,20 @@
     </div>
     <!-- Track Info -->
     <div
-      class="text-white hidden sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap lg:order-1"
+      class="hidden sm:flex items-center gap-3 font-circular-thin h-6 lg:h-16 whitespace-nowrap lg:order-1"
     >
-      <p class="song-title">
-        {{ currentSong.modified_name ? currentSong.modified_name : '' }}
-      </p>
-      <p v-if="currentSong.modified_name" class="song-artist secondary-text">
-        {{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}
-      </p>
+      <div
+        class="text-white sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap"
+        v-if="playerHasSong"
+      >
+        <p class="song-title">{{ currentSong.modified_name }}</p>
+        <p class="song-artist secondary-text">
+          {{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}
+        </p>
+      </div>
+      <i class="hidden fa-solid fa-heart text-green-500" v-if="playerHasSong"></i>
     </div>
+
     <!-- Volume -->
     <div class="hidden text-white lg:flex items-center order-3">
       <!-- TODO set popover for mute funcitonality (check https://valgeirb.github.io/vue3-popper/)-->
@@ -93,7 +99,13 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, ['playing', 'currentSong', 'displayDuration', 'duration']),
+    ...mapState(usePlayerStore, [
+      'playing',
+      'currentSong',
+      'displayDuration',
+      'duration',
+      'playerHasSong'
+    ]),
     ...mapWritableState(usePlayerStore, ['playerProgress', 'volume', 'seek'])
   },
   methods: {
