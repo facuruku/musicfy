@@ -54,10 +54,10 @@
           </ul>
 
           <!-- Login Form -->
-          <AppLoginForm v-if="tab === 'login'" />
+          <AppLoginForm v-if="tab === 'login'" @login-success="closeAuthModal()" />
 
           <!-- Registration Form -->
-          <AppRegisterForm v-else />
+          <AppRegisterForm v-else @register-success="closeAuthModal()" />
         </div>
       </div>
     </div>
@@ -84,6 +84,10 @@ export default {
       modalVisibility: 'isOpen'
     })
   },
-  methods: {}
+  methods: {
+    closeAuthModal() {
+      this.modalVisibility = false
+    }
+  }
 }
 </script>

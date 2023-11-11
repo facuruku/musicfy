@@ -8,7 +8,12 @@
   </div>
 
   <!-- Login Form -->
-  <VeeForm class="flex flex-col gap-2" :validation-schema="loginSchema" @submit="login">
+  <VeeForm
+    class="flex flex-col gap-2"
+    :validation-schema="loginSchema"
+    @submit="login"
+    ref="loginForm"
+  >
     <!-- Email -->
     <div class="mb-3">
       <label class="inline-block mb-2">Email</label>
@@ -64,6 +69,7 @@ import useUserStore from '@/stores/user'
 
 export default {
   name: 'LoginForm',
+  emits: ['login-success'],
   data() {
     return {
       tab: 'login',
@@ -96,9 +102,10 @@ export default {
         return
       }
 
-      this.login_alert_variant = 'bg-[#1ed760]'
-      this.login_alert_msg = 'Success! Login completed.'
-      window.location.reload()
+      this.$refs.loginForm.resetForm()
+      this.login_show_alert = false
+      this.login_in_submission = false
+      this.$emit('login-success')
     }
   }
 }

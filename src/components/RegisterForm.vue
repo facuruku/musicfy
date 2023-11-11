@@ -13,6 +13,7 @@
     :validation-schema="registrationSchema"
     @submit="register"
     :initial-values="userData"
+    ref="registerForm"
   >
     <!-- Name -->
     <div class="">
@@ -86,8 +87,8 @@
             @click="togglePassword = !togglePassword"
             class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
             :class="{
-              'fa-regular fa-eye-slash': togglePassword,
-              'fa-regular fa-eye': !togglePassword
+              'fa-regular fa-eye-slash': !togglePassword,
+              'fa-regular fa-eye': togglePassword
             }"
           ></i>
         </div>
@@ -112,8 +113,8 @@
             @click="toggleConfirmPassword = !toggleConfirmPassword"
             class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
             :class="{
-              'fa-regular fa-eye-slash': toggleConfirmPassword,
-              'fa-regular fa-eye': !toggleConfirmPassword
+              'fa-regular fa-eye-slash': !toggleConfirmPassword,
+              'fa-regular fa-eye': toggleConfirmPassword
             }"
           />
         </div>
@@ -170,6 +171,7 @@ import { mapActions } from 'pinia'
 
 export default {
   name: 'RegisterForm',
+  emits: ['register-success'],
   data() {
     return {
       tab: 'login',
@@ -194,10 +196,8 @@ export default {
       reg_alert_msg: '',
       reg_initial_msg: 'Please wait! Your account is being created.',
       reg_error_msg: 'Something went wrong. Please try again later.',
-      reg_success_msg: 'Success! Your account has been created.',
       reg_progress_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
-      reg_error_variant: 'bg-red-500',
-      reg_success_variant: 'bg-[#1ed760]'
+      reg_error_variant: 'bg-red-500'
     }
   },
   computed: {
@@ -219,10 +219,10 @@ export default {
         return
       }
 
-      this.reg_alert_variant = this.reg_success_variant
-      this.reg_alert_msg = this.reg_success_msg
-
-      this.$router.push({ name: 'home' })
+      this.$refs.registerForm.resetForm()
+      this.reg_show_alert = false
+      this.reg_in_submission = false
+      this.$emit('register-success')
     },
     ...mapActions(useUserStore, {
       createUser: 'register'
