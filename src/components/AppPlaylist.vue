@@ -23,7 +23,7 @@
         <h4 class="text-xs sm:text-base">Playlist</h4>
         <h1 class="text-xl sm:text-8xl lg:text-8xl font-circular-black">Liked Songs</h1>
         <p class="text-xs sm:text-base">
-          <span class="font-circular-regular">{{ getUserName }} º {{ songs.length }} songs </span>
+          <span class="font-circular-regular">{{ username }} º {{ songs.length }} songs </span>
         </p>
       </div>
     </div>
@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import { auth } from '@/includes/firebase'
 import { mapState, mapActions } from 'pinia'
 import usePlayerStore from '@/stores/player'
+import useUserStore from '@/stores/user'
 import SongItem from '@/components/SongItem.vue'
 
 export default {
@@ -114,11 +114,7 @@ export default {
       'isSongPlaying',
       'playerHasSong'
     ]),
-    getUserName() {
-      return auth.currentUser && auth.currentUser.displayName
-        ? auth.currentUser.displayName
-        : 'Your name here'
-    }
+    ...mapState(useUserStore, ['username'])
   },
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio'])
