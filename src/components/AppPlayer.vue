@@ -42,7 +42,7 @@
     </div>
     <!-- Track Info -->
     <div
-      class="text-white hidden sm:flex lg:flex-col gap-2 lg:gap-0 justify-center items-center font-circular-thin h-16 whitespace-nowrap lg:order-1"
+      class="text-white hidden sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap lg:order-1"
     >
       <p class="song-title">
         {{ currentSong.modified_name ? currentSong.modified_name : '' }}
@@ -53,6 +53,7 @@
     </div>
     <!-- Volume -->
     <div class="hidden text-white lg:flex items-center order-3">
+      <!-- TODO set popover for mute funcitonality (check https://valgeirb.github.io/vue3-popper/)-->
       <i
         @click.prevent="toggleVolume"
         class="fa-solid hover:cursor-pointer p-3"
