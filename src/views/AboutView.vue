@@ -4,6 +4,15 @@
     <h4>This application is for educational purposes only</h4>
     <h6>To see the real Spotify visit www.spotify.com</h6>
   </main>
+
+  <AppPlayer />
 </template>
 
-<script></script>
+<script>
+import AppPlayer from '@/components/AppPlayer.vue'
+
+export default {
+  name: 'AboutView',
+  components: { AppPlayer }
+}
+</script>
