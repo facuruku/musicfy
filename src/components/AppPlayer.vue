@@ -47,7 +47,7 @@
     >
       <div
         class="text-white sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap"
-        v-if="playerHasSong"
+        v-show="playerHasSong"
       >
         <p class="song-title">{{ currentSong.modified_name }}</p>
         <p class="song-artist secondary-text">

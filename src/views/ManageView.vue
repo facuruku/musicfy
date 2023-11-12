@@ -1,36 +1,33 @@
 <template>
   <!-- Manage Main Content -->
-  <main id="manage" class="pt-20">
-    <div class="container mx-auto pt-6">
-      <div class="md:grid md:grid-cols-3 md:gap-4">
-        <AppUpload ref="upload" :addSong="addSong" />
-        <div class="col-span-2">
-          <div
-            class="bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
-          >
-            <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-400">
-              <span class="card-title">My Songs</span>
-              <i class="fa-solid fa-music float-right text-green-400 text-2xl"></i>
-            </div>
-            <div class="p-6">
-              <!-- Composition Items -->
-              <div v-if="songs.length === 0">
-                <p class="text-center">Playlist empty.</p>
-              </div>
-              <CompositionItem
-                v-else
-                v-for="(song, i) in songs"
-                :key="song.docID"
-                :song="song"
-                :updateSong="updateSong"
-                :index="i"
-                :removeSong="removeSong"
-                :updateHasChanges="updateHasChanges"
-              />
-            </div>
-          </div>
+  <main id="manage" class="pt-28 container mx-auto">
+    <div class="md:grid md:grid-cols-3 md:gap-4">
+      <AppUpload ref="upload" :addSong="addSong" />
+      <section
+        class="col-span-2 bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
+      >
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-400">
+          <span class="card-title">My Songs</span>
+          <i class="fa-solid fa-music float-right text-green-400 text-2xl"></i>
         </div>
-      </div>
+        <div class="p-6">
+          <!-- Composition Items -->
+          <div v-if="songs.length === 0">
+            <p class="text-center">Playlist empty.</p>
+          </div>
+          <CompositionItem
+            v-else
+            class="flex justify-between items-center gap-5"
+            v-for="(song, i) in songs"
+            :key="song.docID"
+            :song="song"
+            :updateSong="updateSong"
+            :index="i"
+            :removeSong="removeSong"
+            :updateHasChanges="updateHasChanges"
+          />
+        </div>
+      </section>
     </div>
   </main>
 </template>

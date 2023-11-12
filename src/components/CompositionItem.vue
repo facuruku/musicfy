@@ -1,9 +1,14 @@
 <template>
-  <div class="border border-slate-500 p-3 mb-4 rounded">
-    <div v-show="!showForm">
-      <h4 class="inline-block text-base md:text-2xl lg:text-3xl font-semibold">
-        {{ song.modified_name }}
-      </h4>
+  <div
+    v-show="!showForm"
+    class="border border-slate-500 p-3 mb-4 rounded flex justify-between items-center gap-5"
+  >
+    <h4
+      class="inline-block text-base md:text-2xl lg:text-3xl font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+    >
+      {{ song.modified_name }}
+    </h4>
+    <div class="">
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-red-600 float-right md:hover:scale-105 md:hover:bg-gray-800"
         @click.prevent="deleteSong"
@@ -18,48 +23,47 @@
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
     </div>
-    <div v-show="showForm">
-      <div
-        class="text-black text-center font-bold p-4 rounded mb-4"
-        v-if="show_alert"
-        :class="alert_variant"
-      >
-        {{ alert_msg }}
+  </div>
+  <div v-show="showForm" class="mb-4">
+    <p class="text-black text-center font-bold rounded" v-if="show_alert" :class="alert_variant">
+      {{ alert_msg }}
+    </p>
+    <VeeForm :validation-schema="songSchema" :initialValues="initialValues" @submit="editSong">
+      <div id="form-field" class="mb-3">
+        <label class="inline-block mb-2">Song Title</label>
+        <VeeField
+          name="modified_name"
+          label="Song"
+          type="text"
+          class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+          placeholder="Enter Song Title"
+          @input="updateHasChanges(true)"
+        />
+        <ErrorMessage class="text-red-600" name="modified_name" />
       </div>
-      <VeeForm :validation-schema="songSchema" :initialValues="initialValues" @submit="editSong">
-        <div class="mb-3">
-          <label class="inline-block mb-2">Song Title</label>
-          <VeeField
-            name="modified_name"
-            type="text"
-            class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-            placeholder="Enter Song Title"
-            @input="updateHasChanges(true)"
-          />
-          <ErrorMessage class="text-red-600" name="modified_name" />
-        </div>
-        <div class="mb-3">
-          <label class="inline-block mb-2">Artist</label>
-          <VeeField
-            name="artist"
-            type="text"
-            class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-            placeholder="Enter Genre"
-            @input="updateHasChanges(true)"
-          />
-          <ErrorMessage class="text-red-600" name="artist" />
-        </div>
-        <div class="mb-3">
-          <label class="inline-block mb-2">Genre</label>
-          <VeeField
-            name="genre"
-            type="text"
-            class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-            placeholder="Enter Genre"
-            @input="updateHasChanges(true)"
-          />
-          <ErrorMessage class="text-red-600" name="genre" />
-        </div>
+      <div id="form-field" class="mb-3">
+        <label class="inline-block mb-2">Artist</label>
+        <VeeField
+          name="artist"
+          type="text"
+          class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+          placeholder="Enter Genre"
+          @input="updateHasChanges(true)"
+        />
+        <ErrorMessage class="text-red-600" name="artist" />
+      </div>
+      <div id="form-field" class="mb-3">
+        <label class="inline-block mb-2">Genre</label>
+        <VeeField
+          name="genre"
+          type="text"
+          class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+          placeholder="Enter Genre"
+          @input="updateHasChanges(true)"
+        />
+        <ErrorMessage class="text-red-600" name="genre" />
+      </div>
+      <div id="form-buttons">
         <button
           type="submit"
           class="py-1.5 px-3 rounded text-white bg-green-600 md:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -75,8 +79,8 @@
         >
           Go Back
         </button>
-      </VeeForm>
-    </div>
+      </div>
+    </VeeForm>
   </div>
 </template>
 
