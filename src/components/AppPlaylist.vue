@@ -43,9 +43,7 @@
       <table id="playlist" class="w-full text-left mb-40">
         <thead class="border-b border-zinc-400 border-opacity-10 secondary-text">
           <tr>
-            <th class="hidden sm:table-cell px-4 sm:w-8">
-              <span class="font-sans">#</span>
-            </th>
+            <th class="hidden sm:table-cell px-4 sm:w-8">#</th>
             <th class="sm:w-2/5 p-1">Title</th>
             <th class="hidden sm:table-cell w-1/3">Genre</th>
             <th class="hidden sm:table-cell w-1/5">Comments</th>
@@ -81,9 +79,11 @@
             :index="index"
             :in-player="isSongInPlayer(song)"
             :playing="isSongPlaying(song)"
-            @click="play(song)"
-            @dblclick="this.$router.push({ name: 'song', params: { id: song.docID } })"
+            :is-selected="isSongSelected(song.docID)"
+            @click="selectSong(song.docID)"
+            @double-click="handleDblClick(song)"
           />
+          <!--  @dblclick="this.$router.push({ name: 'song', params: { id: song.docID } })" -->
         </tbody>
       </table>
     </div>
@@ -106,7 +106,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      selectedSong: ''
+    }
   },
   computed: {
     ...mapState(usePlayerStore, [
@@ -119,7 +121,17 @@ export default {
     ...mapState(useUserStore, ['username'])
   },
   methods: {
-    ...mapActions(usePlayerStore, ['play', 'toggleAudio'])
+    ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
+    isSongSelected(songDocID) {
+      return this.selectedSong === songDocID
+    },
+    selectSong(songDocID) {
+      this.selectedSong = this.selectedSong === songDocID ? null : songDocID
+    },
+    handleDblClick(song) {
+      this.selectSong(song.docID)
+      this.play(song)
+    }
   }
 }
 </script>

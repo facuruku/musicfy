@@ -29,6 +29,10 @@ a:hover {
   fill: #f59e0b !important;
 }
 
+#playlist th {
+  font-weight: 300;
+}
+
 .card-header .fa.text-orange,
 .card .card-header .fas.text-orange {
   color: #ff5e3a;
