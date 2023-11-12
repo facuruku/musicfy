@@ -127,9 +127,8 @@ export default {
               genre: '',
               artist: '',
               comment_count: 0,
-              duration: 0 //TODO #metadata load duration during upload
+              duration: Math.floor(Math.random() * (240 - 90 + 1) + 90) //TODO #metadata load duration during upload
             }
-
             song.url = await task.snapshot.ref.getDownloadURL()
 
             let songDocRef = ''
