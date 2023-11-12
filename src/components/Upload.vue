@@ -90,7 +90,7 @@ export default {
 
         const task = songRef.put(file)
 
-        //TODO get metadata from mp3 file (artist,album...)
+        //TODO #metadata get metadata from mp3 file (artist,album...)
 
         const uploadIndex =
           this.uploads.push({
@@ -127,7 +127,7 @@ export default {
               genre: '',
               artist: '',
               comment_count: 0,
-              duration: 0 //TODO load duration during upload
+              duration: 0 //TODO #metadata load duration during upload
             }
 
             song.url = await task.snapshot.ref.getDownloadURL()

@@ -36,7 +36,7 @@
       <div class="flex justify-end gap-6 items-center">
         <i class="fa-solid fa-heart text-green-500"></i>
         <p class="hidden sm:contents">00:00</p>
-        <!-- {{song.duration}} TODO read and store file metadata in songsCollection-->
+        <!-- {{song.duration}} TODO #metadata read and store file metadata in songsCollection-->
       </div>
     </td>
   </tr>
