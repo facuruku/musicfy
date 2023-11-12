@@ -23,9 +23,7 @@ export default defineStore('user', {
 
       // Remove empty optionals fields no need to store in Firestore
       Object.keys(userData).forEach((key) => {
-        if (userData[key] === undefined || userData[key] === null || userData[key] === '') {
-          delete userData[key]
-        }
+        userData[key] ?? delete userData[key]
       })
 
       await usersCollection.doc(userCredentials.user.uid).set({
