@@ -28,7 +28,7 @@
           multiple
           ref="inputFile"
           @change="upload($event)"
-          class="md:hidden w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:font-semibold file:bg-gray-300 hover:file:bg-green-400 bg-gray-800 hover:cursor-pointer"
+          class="md:hidden w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:font-semibold file:bg-green-500 hover:file:bg-green-400 bg-gray-800 hover:cursor-pointer"
         />
         <hr class="my-6 border-slate-400" />
         <!-- Progess Bars -->
