@@ -47,11 +47,13 @@
         class="sm:flex items-center gap-3 h-6 lg:h-16 whitespace-nowrap"
       >
         <div
-          class="text-white sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap"
+          class="text-white flex lg:flex-col gap-2 lg:gap-0 justify-center items-center sm:items-center lg:items-start font-circular-thin h-8 lg:h-16 w-56 sm:w-auto"
           v-show="playerHasSong"
         >
-          <p class="song-title">{{ currentSong.modified_name }}</p>
-          <p class="hidden sm:block song-artist secondary-text">
+          <p class="song-title overflow-x-clip text-ellipsis">
+            {{ currentSong.modified_name }}
+          </p>
+          <p class="hidden sm:block song-artist secondary-text overflow-x-clip text-ellipsis">
             {{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}
           </p>
         </div>
