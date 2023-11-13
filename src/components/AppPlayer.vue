@@ -44,7 +44,7 @@
     <section class="flex-1 font-circular-thin lg:order-1">
       <article
         v-show="playerHasSong"
-        class="sm:flex items-center gap-3 h-6 lg:h-16 whitespace-nowrap"
+        class="sm:flex items-center gap-5 h-6 lg:h-16 whitespace-nowrap"
       >
         <div
           class="text-white flex lg:flex-col gap-2 lg:gap-0 justify-center items-center sm:items-center lg:items-start font-circular-thin h-8 lg:h-16 w-56 sm:w-auto"
