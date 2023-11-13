@@ -12,17 +12,15 @@
     >
       <!-- TODO wave animation  -->
       <div class="hidden group-hover:block text-white">
-        <i v-show="playing" class="fa-solid fa-pause text-sm" @click.prevent="toggleAudio()"></i>
         <i
-          v-show="!playing"
-          class="fa-solid fa-play text-xs"
+          class="fa-solid"
+          :class="{ 'fa-pause text-sm': playing, 'fa-play text-xs': !playing }"
           @click.prevent="inPlayer ? toggleAudio() : play(song)"
-        >
-        </i>
+        ></i>
       </div>
       <p class="group-hover:hidden">{{ index + 1 }}</p>
     </td>
-    <td @dblclick="handleDblClick(song)">
+    <td @dblclick="handleDblClick(song)" class="rounded-l-md p-2 sm:p-0">
       <RouterLink
         :to="{ name: 'song', params: { id: song.docID } }"
         class="text-white w-max border-b border-b-transparent hover:border-b-white"
@@ -51,8 +49,14 @@
     </td>
     <td @dblclick="handleDblClick(song)" class="rounded-r-md px-4">
       <div class="flex justify-end items-center gap-4">
-        <i class="fa-solid fa-heart text-green-500"></i>
-        <p class="hidden sm:contents">{{ getDuration() }}</p>
+        <i class="!hidden sm:!block fa-solid fa-heart text-green-500"></i>
+        <i
+          class="sm:!hidden fa-solid text-white text-xl"
+          :class="{ 'fa-pause': playing, 'fa-play': !playing }"
+          @click.prevent="inPlayer ? toggleAudio() : play(song)"
+        ></i>
+
+        <p class="hidden sm:block w-9">{{ getDuration() }}</p>
       </div>
     </td>
   </tr>
