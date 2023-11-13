@@ -7,20 +7,27 @@
     }"
   >
     <td
-      class="hidden sm:table-cell p-4 rounded-l-md"
-      :class="{ 'text-green-500': inPlayer, 'text-white': !inPlayer }"
+      class="hidden sm:table-cell rounded-l-md"
+      :class="{ 'text-green-500': inPlayer, 'text-secondary': !inPlayer }"
     >
-      <!-- TODO wave animation  -->
-      <div class="hidden group-hover:block text-white">
+      <div class="hidden sm:flex justify-center items-center">
         <i
-          class="fa-solid"
-          :class="{ 'fa-pause text-sm': playing, 'fa-play text-xs': !playing }"
+          class="!hidden group-hover:!block fa-solid text-white text-sm"
+          :class="{ 'fa-pause ': playing, 'fa-play': !playing }"
           @click.prevent="inPlayer ? toggleAudio() : play(song)"
         ></i>
+        <p v-show="!playing" class="group-hover:hidden">
+          {{ index + 1 }}
+        </p>
+        <img
+          v-show="playing"
+          src="/assets/img/equaliser-animated-green.gif"
+          alt="Sound wave"
+          class="group-hover:hidden w-3.5"
+        />
       </div>
-      <p class="group-hover:hidden">{{ index + 1 }}</p>
     </td>
-    <td @dblclick="handleDblClick(song)" class="rounded-l-md p-2 sm:p-0">
+    <td id="title" @dblclick="handleDblClick(song)" class="rounded-l-md sm:rounded-none px-2">
       <RouterLink
         :to="{ name: 'song', params: { id: song.docID } }"
         class="text-white w-max border-b border-b-transparent hover:border-b-white"
@@ -41,13 +48,13 @@
         >
       </RouterLink>
     </td>
-    <td @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
+    <td id="genre" @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
       {{ song.genre ? song.genre : 'Unknown genre' }}
     </td>
-    <td @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
+    <td id="comments" @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
       {{ song.comment_count }}
     </td>
-    <td @dblclick="handleDblClick(song)" class="rounded-r-md px-4">
+    <td id="duration" @dblclick="handleDblClick(song)" class="rounded-r-md px-2">
       <div class="flex justify-end items-center gap-4">
         <i class="!hidden sm:!block fa-solid fa-heart text-green-500"></i>
         <i
