@@ -2,14 +2,15 @@
   <tr
     class="group hover:cursor-pointer"
     :class="{
-      'bg-white bg-opacity-30 text-white': isSelected,
+      'bg-white bg-opacity-30 ': isSelected,
       'sm:hover:bg-white sm:hover:bg-opacity-10 sm:hover:text-white secondary-text': !isSelected
     }"
   >
     <td
-      class="hidden sm:table-cell px-4 rounded-l-md"
+      class="hidden sm:table-cell p-4 rounded-l-md"
       :class="{ 'text-green-500': inPlayer, 'text-white': !inPlayer }"
     >
+      <!-- TODO wave animation  -->
       <div class="hidden group-hover:block text-white">
         <i v-show="playing" class="fa-solid fa-pause text-sm" @click.prevent="toggleAudio()"></i>
         <i

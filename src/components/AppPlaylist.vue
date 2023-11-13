@@ -70,6 +70,7 @@
         </thead>
 
         <tbody class="text-white">
+          <tr class="h-2"></tr>
           <div v-if="songs.length === 0">Empty playlist.</div>
           <SongItem
             v-else
