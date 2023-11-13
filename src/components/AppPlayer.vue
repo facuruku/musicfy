@@ -1,11 +1,10 @@
 <template>
   <!-- Player -->
-  <!-- TODO priority fix player position slider always centered and track info / volume position fixed -->
   <section
     class="fixed bottom-0 left-0 w-full bg-black h-24 z-10 px-8 py-2 flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
   >
     <!-- Buttons - Progress bar -->
-    <div class="text-white flex flex-col items-center flex-1 font-circular-thin lg:order-2">
+    <section class="text-white flex flex-col items-center flex-1 font-circular-thin lg:order-2">
       <!-- Play/Pause Button -->
       <button type="button" class="">
         <i
@@ -40,25 +39,28 @@
           {{ displayDuration }}
         </div>
       </div>
-    </div>
+    </section>
     <!-- Track Info -->
-    <div
-      class="hidden sm:flex items-center flex-1 gap-3 font-circular-thin h-6 lg:h-16 whitespace-nowrap lg:order-1"
-    >
-      <div
-        class="text-white sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap"
+    <section class="flex-1 font-circular-thin lg:order-1">
+      <article
         v-show="playerHasSong"
+        class="sm:flex items-center gap-3 h-6 lg:h-16 whitespace-nowrap"
       >
-        <p class="song-title">{{ currentSong.modified_name }}</p>
-        <p class="song-artist secondary-text">
-          {{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}
-        </p>
-      </div>
-      <i class="hidden fa-solid fa-heart text-green-500" v-if="playerHasSong"></i>
-    </div>
+        <div
+          class="text-white sm:flex lg:flex-col gap-2 lg:gap-0 justify-center sm:items-center lg:items-start font-circular-thin h-16 whitespace-nowrap"
+          v-show="playerHasSong"
+        >
+          <p class="song-title">{{ currentSong.modified_name }}</p>
+          <p class="hidden sm:block song-artist secondary-text">
+            {{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}
+          </p>
+        </div>
+        <i class="!hidden lg:!block fa-solid fa-heart text-green-500"></i>
+      </article>
+    </section>
 
     <!-- Volume -->
-    <div class="hidden text-white lg:flex items-center justify-end flex-1 order-3">
+    <section class="hidden text-white lg:flex items-center justify-end flex-1 order-3">
       <!-- TODO set popover for mute funcitonality (check https://valgeirb.github.io/vue3-popper/)-->
       <i
         @click.prevent="toggleVolume"
@@ -78,7 +80,7 @@
           range: { class: 'bg-white group-hover:bg-green-500 group-active:bg-green-500' }
         }"
       />
-    </div>
+    </section>
   </section>
 </template>
 
