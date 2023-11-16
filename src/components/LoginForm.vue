@@ -81,7 +81,7 @@ export default {
       login_in_submission: false,
       login_show_alert: false,
       login_alert_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
-      login_alert_msg: 'Please wait! Your account is being created. '
+      login_alert_msg: 'Please wait! Logging in.'
     }
   },
   methods: {
@@ -91,7 +91,7 @@ export default {
       this.login_in_submission = true
       this.login_show_alert = true
       this.login_alert_variant = 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%'
-      this.login.login_alert_msg = 'Please wait! Logging in.'
+      this.login_alert_msg = 'Please wait! Logging in.'
 
       try {
         await this.authenticate(values)
