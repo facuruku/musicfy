@@ -1,98 +1,102 @@
 <template>
-  <!-- Music Header -->
-  <section class="relative z-10 w-full px-6 pt-40 pb-6 text-white text-center">
-    <div class="container mx-auto flex items-center">
-      <!-- Play/Pause Button -->
-      <button @click.prevent="play(song)" type="button">
-        <i
-          class="text-[#1ed760] text-8xl hover:scale-110 bg-black rounded-full fa fa-play-circle"
-        ></i>
-      </button>
-      <div class="z-50 text-left px-4">
-        <!-- Song Info -->
-        <div class="text-sm font-circular-black">Song</div>
-        <div class="text-2xl md:text-4xl lg:text-6xl font-circular-black">
-          {{ song.modified_name }}
-        </div>
-        <div class="text-sm font-circular-black">
-          {{ song.artist ? song.artist : 'Unknown artist' }}
-          <span class="font-circular-thin">{{ song.genre ? song.genre : 'Unknown Genre' }}</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <main
-    class="relative z-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
-  >
-    <!-- Form -->
-    <section>
-      <div class="flex flex-col">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-500">
-          <!-- Comment Count -->
-          <span class="card-title"
-            >Comments <span class="font-sans">(</span>{{ song.comment_count
-            }}<span class="font-sans">)</span></span
-          >
-          <i class="fa-regular fa-comment float-right text-2xl"></i>
-        </div>
-        <div class="p-6">
-          <div
-            class="text-white text-center p-4 mb-4"
-            v-if="comment_show_alert"
-            :class="comment_alert_variant"
-          >
-            {{ comment_alert_msg }}
+  <main class="view-gradient">
+    <!-- Music Header -->
+    <section class="relative z-10 w-full px-6 pt-40 pb-6 text-white text-center">
+      <div class="container mx-auto flex items-center">
+        <!-- Play/Pause Button -->
+        <button @click.prevent="play(song)" type="button">
+          <i
+            class="text-[#1ed760] text-8xl hover:scale-110 bg-black rounded-full fa fa-play-circle"
+          ></i>
+        </button>
+        <div class="z-50 text-left px-4">
+          <!-- Song Info -->
+          <div class="text-sm font-circular-black">Song</div>
+          <div class="text-2xl md:text-4xl lg:text-6xl font-circular-black">
+            {{ song.modified_name }}
           </div>
-          <VeeForm :validation-schema="schema" @submit="publishComment" v-if="userLoggedIn">
-            <VeeField
-              as="textarea"
-              name="comment"
-              class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded mb-4"
-              placeholder="Your comment here..."
-            ></VeeField>
-            <ErrorMessage class="text-red-600" name="comment" />
-            <button
-              type="submit"
-              class="py-1.5 px-3 rounded text-white bg-green-600 block"
-              :disabled="comment_in_submission"
-            >
-              Publish
-            </button>
-          </VeeForm>
-          <!-- Sort Comments -->
-          <select
-            class="block mt-4 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-            v-model="sort"
-          >
-            <option value="1">Latest</option>
-            <option value="2">Oldest</option>
-          </select>
+          <div class="text-sm font-circular-black">
+            {{ song.artist ? song.artist : 'Unknown artist' }}
+            <span class="font-circular-thin">{{ song.genre ? song.genre : 'Unknown Genre' }}</span>
+          </div>
         </div>
       </div>
     </section>
-    <!-- Comments -->
-    <section>
-      <ul class="z-10 px-6 font-circular-thin min-h-[50vh] text-white">
-        <li class="p-6 border border-slate-500" v-if="comments.length === 0">
-          No comments yet. <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>
-        </li>
-        <li
-          class="p-6 border border-slate-500"
-          v-for="comment in sortedComments"
-          :key="comment.docID"
-        >
-          <!-- Comment Author -->
-          <div class="mb-5">
-            <div class="font-bold">{{ comment.name }}</div>
-            <time class="text-sm">{{ this.getCommentPublishDate(comment) }}</time>
-          </div>
 
-          <p>
-            {{ comment.content }}
-          </p>
-        </li>
-      </ul>
+    <!-- Comments -->
+    <section
+      class="relative z-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
+    >
+      <!-- Form -->
+      <section>
+        <div class="flex flex-col">
+          <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-500">
+            <!-- Comment Count -->
+            <span class="card-title"
+              >Comments <span class="font-sans">(</span>{{ song.comment_count
+              }}<span class="font-sans">)</span></span
+            >
+            <i class="fa-regular fa-comment float-right text-2xl"></i>
+          </div>
+          <div class="p-6">
+            <div
+              class="text-white text-center p-4 mb-4"
+              v-if="comment_show_alert"
+              :class="comment_alert_variant"
+            >
+              {{ comment_alert_msg }}
+            </div>
+            <VeeForm :validation-schema="schema" @submit="publishComment" v-if="userLoggedIn">
+              <VeeField
+                as="textarea"
+                name="comment"
+                class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded mb-4"
+                placeholder="Your comment here..."
+              ></VeeField>
+              <ErrorMessage class="text-red-600" name="comment" />
+              <button
+                type="submit"
+                class="py-1.5 px-3 rounded text-white bg-green-600 block"
+                :disabled="comment_in_submission"
+              >
+                Publish
+              </button>
+            </VeeForm>
+            <!-- Sort Comments -->
+            <select
+              class="block mt-4 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+              v-model="sort"
+            >
+              <option value="1">Latest</option>
+              <option value="2">Oldest</option>
+            </select>
+          </div>
+        </div>
+      </section>
+      <!-- Comments -->
+      <section>
+        <ul class="z-10 px-6 font-circular-thin min-h-[50vh] text-white">
+          <li class="p-6 border border-slate-500" v-if="comments.length === 0">
+            No comments yet.
+            <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>
+          </li>
+          <li
+            class="p-6 border border-slate-500"
+            v-for="comment in sortedComments"
+            :key="comment.docID"
+          >
+            <!-- Comment Author -->
+            <div class="mb-5">
+              <div class="font-bold">{{ comment.name }}</div>
+              <time class="text-sm">{{ this.getCommentPublishDate(comment) }}</time>
+            </div>
+
+            <p>
+              {{ comment.content }}
+            </p>
+          </li>
+        </ul>
+      </section>
     </section>
   </main>
 

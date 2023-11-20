@@ -1,7 +1,7 @@
 <template>
   <!-- Manage Main Content -->
-  <main id="manage" class="pt-28 container mx-auto">
-    <div class="md:grid md:grid-cols-3 md:gap-4">
+  <main class="view-gradient">
+    <div class="md:grid md:grid-cols-3 md:gap-4 px-20 pt-32">
       <AppUpload ref="upload" :addSong="addSong" />
       <section
         class="col-span-2 bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"

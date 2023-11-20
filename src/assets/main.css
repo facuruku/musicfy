@@ -24,13 +24,21 @@ a:hover {
   text-decoration: none;
 }
 
+.view-gradient {
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+  --tw-gradient-from: #18181b var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(24 24 27 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-from-position: 65%;
+  --tw-gradient-to: #4a368e var(--tw-gradient-to-position);
+  --tw-gradient-to-position: 90%;
+}
+
 .text-orange {
   color: #f59e0b !important;
   fill: #f59e0b !important;
-}
-
-#playlist th {
-  font-weight: 300;
 }
 
 .card-header .fa.text-orange,

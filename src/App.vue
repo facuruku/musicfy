@@ -1,11 +1,6 @@
 <template>
   <AppHeader />
-  <div class="relative min-h-screen">
-    <section
-      class="absolute inset-0 min-h-screen bg-gradient-to-t from-zinc-900 from-50% to-[#4a368e] to-90% w-full"
-    ></section>
-    <RouterView />
-  </div>
+  <RouterView />
   <AppAuth />
 
   <!-- TODO priority make layout in cards rounded like real spotify -->

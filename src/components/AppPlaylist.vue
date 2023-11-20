@@ -43,12 +43,12 @@
       <table id="playlist" class="w-full text-left mb-40">
         <thead class="border-b border-zinc-400 border-opacity-10 secondary-text">
           <tr>
-            <th class="hidden sm:table-cell px-4 sm:w-8">#</th>
-            <th class="sm:w-2/5 p-1">Title</th>
-            <th class="hidden sm:table-cell w-1/3">Genre</th>
-            <th class="hidden sm:table-cell w-1/5">Comments</th>
-            <th class="hidden sm:table-cell w-2/12">
-              <div class="flex justify-end mr-2">
+            <th class="hidden sm:table-cell px-4 sm:w-8 font-light">#</th>
+            <th class="sm:w-2/5 p-1 font-light">Title</th>
+            <th class="hidden sm:table-cell w-1/3 font-light">Genre</th>
+            <th class="hidden sm:table-cell w-1/5 font-light">Comments</th>
+            <th class="hidden sm:table-cell w-2/12 font-light">
+              <div class="flex justify-end mr-2 font-light">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

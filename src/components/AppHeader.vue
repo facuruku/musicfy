@@ -1,7 +1,7 @@
 <template>
   <!-- Header -->
   <!-- TODO fix responsive for mobile phones (mobileFirst) -->
-  <header id="header" class="fixed top-0 z-50 w-full font-circular-black bg-neutral-900">
+  <header id="header" class="fixed top-0 left-0 z-50 w-full bg-black font-circular-black">
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
       <RouterLink
@@ -14,7 +14,7 @@
 
       <!-- TODO Create burguer menu for mobile devices -->
       <!-- Primary Navigation -->
-      <ul class="flex flex-row gap-2 items-center text-white text-sm">
+      <ul class="flex flex-row gap-2 items-center text-white text-sm fixed right-10">
         <!-- Navigation Links -->
 
         <!-- About page -->
