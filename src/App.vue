@@ -3,7 +3,7 @@
   <RouterView />
   <AppAuth />
 
-  <!-- TODO priority make layout in cards rounded like real spotify -->
+  <!-- TODO priority make header change style while scroll -->
 </template>
 
 <script>
