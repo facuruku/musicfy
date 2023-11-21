@@ -52,7 +52,13 @@
       {{ song.genre ? song.genre : 'Unknown genre' }}
     </td>
     <td id="comments" @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
-      {{ song.comment_count }}
+      <RouterLink
+        custom
+        :to="{ name: 'song', params: { id: song.docID }, hash: '#comments' }"
+        v-slot="{ navigate }"
+      >
+        <span @click="navigate"> {{ song.comment_count }} </span>
+      </RouterLink>
     </td>
     <td id="duration" @dblclick="handleDblClick(song)" class="rounded-r-md px-2">
       <div class="flex justify-end items-center gap-4">
@@ -73,6 +79,7 @@
 import helper from '@/includes/helper'
 import { mapActions } from 'pinia'
 import usePlayerStore from '@/stores/player'
+import { RouterLink } from 'vue-router'
 export default {
   name: 'SongItem',
   props: {
@@ -103,11 +110,11 @@ export default {
     getDuration() {
       return helper.formatTime(this.song.duration ?? 0)
     },
-
     handleDblClick(song) {
       this.$emit('double-click')
       this.play(song)
     }
-  }
+  },
+  components: { RouterLink }
 }
 </script>

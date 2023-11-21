@@ -25,6 +25,7 @@
 
     <!-- Comments -->
     <section
+      id="comments"
       class="relative z-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
     >
       <!-- Form -->
