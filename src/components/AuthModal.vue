@@ -71,7 +71,7 @@ import AppLoginForm from '@/components/LoginForm.vue'
 import AppRegisterForm from '@/components/RegisterForm.vue'
 
 export default {
-  name: 'AppAuth',
+  name: 'AuthModal',
   components: { AppLoginForm, AppRegisterForm },
   data() {
     return {
