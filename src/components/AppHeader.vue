@@ -1,7 +1,9 @@
 <template>
   <!-- Header -->
-  <!-- TODO fix responsive for mobile phones (mobileFirst) -->
-  <header id="header" class="fixed top-0 left-0 z-50 w-full bg-black font-circular-black">
+  <header
+    id="header"
+    class="fixed top-0 left-0 z-50 w-full bg-black font-circular-black font-semibold"
+  >
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
       <RouterLink
@@ -14,33 +16,27 @@
 
       <!-- TODO Create burguer menu for mobile devices -->
       <!-- Primary Navigation -->
-      <ul class="flex flex-row gap-2 items-center text-white text-sm fixed right-10">
+      <ul class="flex gap-2 items-center text-white text-base">
         <!-- Navigation Links -->
 
         <!-- About page -->
         <li class="md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'about' }">
-            <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill="#1ED760"
-                fill-rule="evenodd"
-                d="M19.0983701,10.6382791 C15.230178,8.34118115 8.85003755,8.12986439 5.15729493,9.25058527 C4.56433588,9.43062856 3.93727638,9.09580812 3.75758647,8.50284907 C3.57789655,7.90953664 3.91236362,7.28283051 4.50585273,7.10261054 C8.74455585,5.81598127 15.7909802,6.06440214 20.2440037,8.70780512 C20.7774195,9.02442687 20.9525156,9.71332656 20.6362472,10.2456822 C20.3198021,10.779098 19.6305491,10.9549008 19.0983701,10.6382791 M18.971686,14.0407262 C18.7004726,14.4810283 18.1246521,14.6190203 17.6848801,14.3486903 C14.4600027,12.3664473 9.54264764,11.792217 5.72728477,12.9503953 C5.23256328,13.0998719 4.70992535,12.8208843 4.55974204,12.3270462 C4.41061884,11.8323247 4.68978312,11.3107469 5.18362118,11.1602103 C9.5419409,9.83771368 14.9600247,10.4782013 18.6638986,12.7544503 C19.1036707,13.0253103 19.242016,13.6013075 18.971686,14.0407262 M17.5034233,17.308185 C17.2876894,17.6617342 16.827245,17.7725165 16.4749326,17.5571359 C13.6571403,15.8347984 10.1101639,15.4459119 5.93312425,16.4000177 C5.53063298,16.4922479 5.12937851,16.2399399 5.03767834,15.8376253 C4.94544812,15.4351341 5.19669597,15.0338796 5.60024736,14.9420027 C10.1712973,13.8970803 14.0923186,14.3467468 17.2551791,16.2796943 C17.6078449,16.4948982 17.7189805,16.9556959 17.5034233,17.308185 M12,0 C5.37267547,0 0,5.37249879 0,11.9998233 C0,18.6278546 5.37267547,24 12,24 C18.6275012,24 24,18.6278546 24,11.9998233 C24,5.37249879 18.6275012,0 12,0"
-              />
-            </svg>
+            <i class="fa-regular fa-circle-question"></i>
             <span class="hidden md:block">About</span>
           </RouterLink>
         </li>
 
         <!-- Settings icon -->
-        <li v-show="userStore.userLoggedIn" class="md:hover:scale-105">
-          <RouterLink class="" :to="{ name: 'manage' }"
+        <li v-show="this.userLoggedIn" class="md:hover:scale-105">
+          <RouterLink class="flex items-center gap-1" :to="{ name: 'manage' }"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6"
+              class="w-6"
             >
               <path
                 stroke-linecap="round"
@@ -53,46 +49,21 @@
                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
+            <span class="">Manage</span>
           </RouterLink>
         </li>
 
         <!-- User icon -->
         <li class="md:hover:scale-105">
-          <template v-if="!userStore.userLoggedIn">
-            <a class="flex items-center" href="#" @click.prevent="toggleAuthModal">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                />
-              </svg>
+          <template v-if="!userLoggedIn">
+            <a class="flex items-center gap-1" href="#" @click.prevent="toggleAuthModal">
+              <i class="fa-regular fa-user"></i>
               <span class="hidden md:block">Login/Register</span>
             </a>
           </template>
           <template v-else>
             <a class="flex gap-1 items-center" href="#" @click.prevent="signOut()">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                />
-              </svg>
+              <i class="fa-regular fa-user"></i>
               <span class="hidden md:block">Logout</span>
             </a>
           </template>
@@ -101,21 +72,13 @@
 
         <!-- Install app -->
         <li class="md:hover:scale-105">
-          <a class="" href="https://www.spotify.com/es/download/" target="_blank"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+          <a
+            class="flex items-center gap-1"
+            href="https://www.spotify.com/es/download/"
+            target="_blank"
+          >
+            <i class="fa-regular fa-circle-down"></i>
+            <span>Install app</span>
           </a>
         </li>
       </ul>
@@ -124,25 +87,20 @@
 </template>
 
 <script>
-import { mapStores, /* mapState,*/ mapWritableState } from 'pinia'
+import { mapState, mapWritableState, mapActions } from 'pinia'
 import useModalStore from '@/stores/modal'
 import useUserStore from '@/stores/user'
 
 export default {
   name: 'AppHeader',
   computed: {
-    ...mapStores(useModalStore, useUserStore),
-    ...mapWritableState(useModalStore, ['isOpen']) // We can map the property we need and not the entire store
-    //...mapState(useModalStore, ['isOpen']) // mapState is readonly
+    ...mapWritableState(useModalStore, ['isOpen']), // We can map the property we need and not the entire store
+    ...mapState(useUserStore, ['userLoggedIn']) // mapState is readonly
   },
   methods: {
+    ...mapActions(useUserStore, ['signOut']),
     toggleAuthModal() {
       this.isOpen = !this.isOpen
-    },
-    signOut() {
-      this.userStore.signOut()
-
-      if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
     }
   }
 }
