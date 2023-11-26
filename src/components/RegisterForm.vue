@@ -22,6 +22,7 @@
         ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
       >
       <VeeField
+        id="nameField"
         name="name"
         type="text"
         class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
