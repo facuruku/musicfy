@@ -2,6 +2,7 @@ import Home from '@/views/HomeView.vue'
 import About from '@/views/AboutView.vue'
 import Manage from '@/views/ManageView.vue'
 import Song from '@/views/SongView.vue'
+import Error404 from '@/views/ErrorView.vue'
 
 export const routes = [
   {
@@ -19,9 +20,9 @@ export const routes = [
     // alias: '/manage',
     path: '/manage/music',
     component: Manage,
-    beforeEnter: (to, from, next) => {
+    /* beforeEnter: (to, from, next) => {
       next()
-    },
+    }, */
     meta: {
       requiresAuth: true
     }
@@ -36,7 +37,8 @@ export const routes = [
     component: Song
   },
   {
+    name: 'error',
     path: '/:catchAll(.*)*',
-    redirect: { name: 'home' }
+    component: Error404
   }
 ]

@@ -47,6 +47,8 @@ export default defineStore('user', {
       await auth.signOut()
       this.userLoggedIn = false
       this.username = 'Stranger'
+
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
     }
   }
 })
