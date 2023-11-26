@@ -31,7 +31,7 @@
               <a
                 class="block rounded-full border border-gray-300 p-2 transition font-bold"
                 href="#"
-                @click.prevent="tab = 'login'"
+                @click.prevent="handleLoginTab()"
                 :class="{
                   'text-black bg-[#1ed760]': tab === 'login',
                   'hover:scale-105 hover:text-[#1ed760]': tab === 'register'
@@ -43,7 +43,7 @@
               <a
                 class="block rounded-full border border-gray-300 p-2 transition font-bold"
                 href="#"
-                @click.prevent="tab = 'register'"
+                @click.prevent="handleRegisterTab()"
                 :class="{
                   'text-black bg-[#1ed760]': tab === 'register',
                   'hover:scale-105 hover:text-[#1ed760]': tab === 'login'
@@ -85,6 +85,14 @@ export default {
     })
   },
   methods: {
+    handleLoginTab() {
+      this.tab = 'login'
+      this.$nextTick(() => document.getElementById('emailField').focus())
+    },
+    handleRegisterTab() {
+      this.tab = 'register'
+      this.$nextTick(() => document.getElementById('nameField').focus())
+    },
     closeAuthModal() {
       this.modalVisibility = false
     }

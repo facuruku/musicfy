@@ -1,3 +1,4 @@
+<!-- TODO Create burguer menu for mobile devices -->
 <template>
   <!-- Header -->
   <header
@@ -14,7 +15,6 @@
         Musicfy
       </RouterLink>
 
-      <!-- TODO Create burguer menu for mobile devices -->
       <!-- Primary Navigation -->
       <ul class="flex gap-2 items-center text-white text-base">
         <!-- Navigation Links -->
