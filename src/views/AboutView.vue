@@ -12,6 +12,7 @@
     <AppPlayer />
   </main>
 </template>
+<!-- TODO Create short description of all functionalities and technologies used for this project -->
 
 <script>
 import AppPlayer from '@/components/AppPlayer.vue'
