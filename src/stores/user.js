@@ -4,7 +4,7 @@ import { auth, usersCollection } from '@/includes/firebase'
 export default defineStore('user', {
   state: () => ({
     userLoggedIn: false,
-    username: 'Stranger'
+    username: 'Anonymous'
   }),
   actions: {
     async register(values) {
@@ -46,7 +46,7 @@ export default defineStore('user', {
     async signOut() {
       await auth.signOut()
       this.userLoggedIn = false
-      this.username = 'Stranger'
+      this.username = 'Anonymous'
 
       if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
     }

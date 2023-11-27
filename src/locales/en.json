@@ -1,0 +1,14 @@
+{
+  "header": {
+    "about": "About",
+    "manage": "Manage",
+    "login": "Login",
+    "logout": "Logout",
+    "install": "Install app"
+  },
+  "home": {
+    "playlist": "Playlist",
+    "liked": "Liked Songs",
+    "songs": "songs"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "header": {
+    "about": "Acerca",
+    "manage": "Administrar",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sión",
+    "install": "Instalar app"
+  },
+  "home": {
+    "playlist": "Lista",
+    "liked": "Canciones que me gustan",
+    "songs": "canciones"
+  }
+}

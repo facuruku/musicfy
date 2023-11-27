@@ -8,6 +8,7 @@ import { auth } from '@/includes/firebase'
 import PrimeVue from 'primevue/config'
 import 'primevue/resources/themes/arya-green/theme.css'
 import Icon from '@/directives/icon'
+import i18n from '@/includes/i18n'
 
 import '@/assets/base.css'
 import '@/assets/main.css'
@@ -22,7 +23,9 @@ auth.onAuthStateChanged(() => {
     app.use(router)
     app.use(VeeValidatePlugin)
     app.use(PrimeVue)
+    app.use(i18n)
     app.directive('icon', Icon)
+
     app.mount('#app')
   }
 })
