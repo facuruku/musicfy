@@ -29,7 +29,7 @@
     </div>
   </section>
   <!-- Playlist Content -->
-  <section class="py-1 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
+  <section class="py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
     <button type="button" class="mx-4 sm:mx-8">
       <i
         class="text-[#1ed760] text-5xl hover:scale-110 bg-black rounded-full"
