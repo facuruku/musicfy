@@ -32,8 +32,8 @@
   <section class="py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
     <button type="button" class="mx-4 sm:mx-8">
       <i
-        class="text-[#1ed760] text-5xl hover:scale-110 bg-black rounded-full"
-        :class="{ 'fa fa-play-circle': !playing, 'fa fa-pause-circle': playing }"
+        v-icon.button="!playing ? 'play-circle' : 'pause-circle'"
+        class="text-[#1ed760] text-5xl bg-black rounded-full"
         @click.prevent="playerHasSong ? toggleAudio() : play(this.songs[0])"
       ></i>
     </button>

@@ -6,7 +6,8 @@
         <!-- Play/Pause Button -->
         <button @click.prevent="play(song)" type="button">
           <i
-            class="text-[#1ed760] text-8xl hover:scale-110 bg-black rounded-full fa fa-play-circle"
+            v-icon-secondary="{ icon: 'play-circle', button: true }"
+            class="text-[#1ed760] text-8xl bg-black rounded-full"
           ></i>
         </button>
         <div class="z-50 text-left px-4">
@@ -110,10 +111,14 @@ import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
 import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
 import usePlayerStore from '@/stores/player'
+import iconSecondary from '@/directives/icon-secondary'
 
 export default {
   name: 'Song',
   components: { AppPlayer },
+  directives: {
+    'icon-secondary': iconSecondary
+  },
   data() {
     return {
       song: {},
