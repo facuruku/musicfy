@@ -1,7 +1,8 @@
 <template>
-  <!-- Manage Main Content -->
   <main class="view-gradient">
-    <div class="md:grid md:grid-cols-3 md:gap-4 px-20 pt-32">
+    <!-- Manage Main Content -->
+
+    <div class="md:grid md:grid-cols-3 md:gap-4 px-20 pt-32 py-1 mb-24">
       <AppUpload ref="upload" :addSong="addSong" />
       <section
         class="col-span-2 bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
@@ -17,7 +18,7 @@
           </div>
           <CompositionItem
             v-else
-            class="flex justify-between items-center gap-5"
+            class="flex flex-col"
             v-for="(song, i) in songs"
             :key="song.docID"
             :song="song"
@@ -29,19 +30,22 @@
         </div>
       </section>
     </div>
+    <AppPlayer />
   </main>
 </template>
 
 <script>
 import AppUpload from '@/components/Upload.vue'
+import AppPlayer from '@/Components/AppPlayer.vue'
 import CompositionItem from '@/components/CompositionItem.vue'
 import { auth, songsCollection } from '@/includes/firebase'
 
 export default {
-  name: 'managePlaylist',
+  name: 'Manage',
   components: {
     AppUpload,
-    CompositionItem
+    CompositionItem,
+    AppPlayer
   },
   data() {
     return {

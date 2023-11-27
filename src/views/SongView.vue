@@ -99,9 +99,9 @@
         </ul>
       </section>
     </section>
-  </main>
 
-  <AppPlayer />
+    <AppPlayer />
+  </main>
 </template>
 
 <script>

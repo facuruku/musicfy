@@ -1,3 +1,4 @@
+<!-- TODO: Add email autofocus -->
 <template>
   <div
     class="text-black text-center font-bold p-4 rounded mb-4"
@@ -17,8 +18,8 @@
     <!-- Email -->
     <div class="mb-3">
       <label class="inline-block mb-2">Email</label>
-      <!-- TODO: Add email autofocus -->
       <VeeField
+        id="emailField"
         name="email"
         type="email"
         class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"

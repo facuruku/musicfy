@@ -1,8 +1,8 @@
 <template>
   <main class="view-gradient">
     <AppPlaylist :songs="songs" />
+    <AppPlayer />
   </main>
-  <AppPlayer />
 </template>
 
 <script>

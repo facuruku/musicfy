@@ -1,6 +1,6 @@
 <template>
   <!-- Playlist header -->
-  <section class="relative z-10 mx-4 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin">
+  <section class="mx-4 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin">
     <div class="container flex justify-between sm:justify-start sm:gap-6">
       <img
         aria-hidden="false"
@@ -29,7 +29,7 @@
     </div>
   </section>
   <!-- Playlist Content -->
-  <section class="relative z-10 py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
+  <section class="py-1 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
     <button type="button" class="mx-4 sm:mx-8">
       <i
         class="text-[#1ed760] text-5xl hover:scale-110 bg-black rounded-full"
@@ -84,7 +84,6 @@
             @click="selectSong(song.docID)"
             @double-click="handleDblClick(song)"
           />
-          <!--  @dblclick="this.$router.push({ name: 'song', params: { id: song.docID } })" -->
         </tbody>
       </table>
     </div>

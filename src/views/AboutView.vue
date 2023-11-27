@@ -8,16 +8,16 @@
         <a class="underline" href="https://www.spotify.com">www.spotify.com</a>
       </h6>
     </article>
-  </main>
 
-  <AppPlayer />
+    <AppPlayer />
+  </main>
 </template>
 
 <script>
 import AppPlayer from '@/components/AppPlayer.vue'
 
 export default {
-  name: 'AboutView',
+  name: 'About',
   components: { AppPlayer }
 }
 </script>

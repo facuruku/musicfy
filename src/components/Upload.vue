@@ -1,5 +1,5 @@
 <template>
-  <div class="col-span-1">
+  <main class="col-span-1">
     <div
       class="bg-zinc-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
     >
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script>
 import { storage, auth, songsCollection } from '@/includes/firebase'
