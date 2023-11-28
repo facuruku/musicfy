@@ -14,5 +14,20 @@
     "genre": "Genre",
     "comments": "Comments",
     "unknown": "Unknown"
+  },
+  "manage": {
+    "upload": "Upload",
+    "mySongs": "My Songs",
+    "dropHintMsg1": "Drop your mp3 files here",
+    "dropHintMsg2": "click here to browse",
+    "form": {
+      "titleLabel": "Title",
+      "artistLabel": "Artist",
+      "genreLabel": "Genre",
+      "buttons": {
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    }
   }
 }

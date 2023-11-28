@@ -31,7 +31,7 @@
       </p>
       <VeeForm :validation-schema="songSchema" :initialValues="initialValues" @submit="editSong">
         <div id="form-field" class="mb-3">
-          <label class="inline-block mb-2">Song Title</label>
+          <label class="inline-block mb-2">{{ $t('manage.form.titleLabel') }}</label>
           <VeeField
             name="modified_name"
             label="Song"
@@ -43,7 +43,7 @@
           <ErrorMessage class="text-red-600" name="modified_name" />
         </div>
         <div id="form-field" class="mb-3">
-          <label class="inline-block mb-2">Artist</label>
+          <label class="inline-block mb-2">{{ $t('manage.form.artistLabel') }}</label>
           <VeeField
             name="artist"
             type="text"
@@ -54,7 +54,7 @@
           <ErrorMessage class="text-red-600" name="artist" />
         </div>
         <div id="form-field" class="mb-3">
-          <label class="inline-block mb-2">Genre</label>
+          <label class="inline-block mb-2">{{ $t('manage.form.genreLabel') }}</label>
           <VeeField
             name="genre"
             type="text"
@@ -70,7 +70,7 @@
             class="py-1.5 px-3 rounded text-white bg-green-600 md:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             :disabled="in_submission"
           >
-            Save
+            {{ $t('manage.form.buttons.save') }}
           </button>
           <button
             type="button"
@@ -78,7 +78,7 @@
             @click.prevent="showForm = false"
             :disabled="in_submission"
           >
-            Go Back
+            {{ $t('manage.form.buttons.cancel') }}
           </button>
         </div>
       </VeeForm>

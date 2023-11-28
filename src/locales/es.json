@@ -14,5 +14,20 @@
     "genre": "Género",
     "comments": "Comentarios",
     "unknown": "Desconocido"
+  },
+  "manage": {
+    "upload": "Subir",
+    "mySongs": "Mis canciones",
+    "dropHintMsg1": "Suelta tus archivos mp3 aquí",
+    "dropHintMsg2": "haz click para explorar",
+    "form": {
+      "titleLabel": "Título",
+      "artistLabel": "Artista",
+      "genreLabel": "Género",
+      "buttons": {
+        "save": "Guardar",
+        "cancel": "Cancelar"
+      }
+    }
   }
 }

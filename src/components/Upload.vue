@@ -4,7 +4,7 @@
       class="bg-zinc-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
     >
       <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-400">
-        <span class="card-title">Upload</span>
+        <span class="card-title">{{ $t('manage.upload') }}</span>
         <i class="fas fa-upload float-right text-green-400 text-2xl"></i>
       </div>
       <div class="p-6">
@@ -21,7 +21,10 @@
           @drop.prevent.stop="upload($event)"
           @click.prevent="openInputFile"
         >
-          <h5>Drop your mp3 files here <span class="block text-sm">Or, click to browse</span></h5>
+          <h5>
+            {{ $t('manage.dropHintMsg1')
+            }}<span class="block text-sm">{{ $t('manage.dropHintMsg2') }}</span>
+          </h5>
         </div>
         <input
           type="file"

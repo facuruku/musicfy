@@ -48,7 +48,7 @@ export default defineStore('user', {
       this.userLoggedIn = false
       this.username = 'Anonymous'
 
-      if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
+      window.location.reload()
     }
   }
 })
