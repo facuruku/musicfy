@@ -44,12 +44,12 @@
         class="block w-max border-b border-b-transparent hover:border-b-white text-sm"
       >
         <span class="overflow-x-clip text-ellipsis">
-          {{ song.artist ? song.artist : 'Unknown artist' }}</span
+          {{ song.artist ? song.artist : $t('home.unknown') }}</span
         >
       </RouterLink>
     </td>
     <td id="genre" @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
-      {{ song.genre ? song.genre : 'Unknown genre' }}
+      {{ song.genre ? song.genre : $t('home.unknown') }}
     </td>
     <td id="comments" @dblclick="handleDblClick(song)" class="hidden sm:table-cell">
       <RouterLink

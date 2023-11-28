@@ -47,9 +47,9 @@
         <thead class="border-b border-zinc-400 border-opacity-10 secondary-text">
           <tr>
             <th class="hidden sm:table-cell px-4 sm:w-8 font-light">#</th>
-            <th class="sm:w-2/5 p-1 font-light">Title</th>
-            <th class="hidden sm:table-cell w-1/3 font-light">Genre</th>
-            <th class="hidden sm:table-cell w-1/5 font-light">Comments</th>
+            <th class="sm:w-2/5 p-1 font-light">{{ $t('home.title') }}</th>
+            <th class="hidden sm:table-cell w-1/3 font-light">{{ $t('home.genre') }}</th>
+            <th class="hidden sm:table-cell w-1/5 font-light">{{ $t('home.comments') }}</th>
             <th class="hidden sm:table-cell w-2/12 font-light">
               <div class="flex justify-end mr-2 font-light">
                 <svg

@@ -9,6 +9,10 @@
   "home": {
     "playlist": "Playlist",
     "liked": "Liked Songs",
-    "songs": "songs"
+    "songs": "songs",
+    "title": "Title",
+    "genre": "Genre",
+    "comments": "Comments",
+    "unknown": "Unknown"
   }
 }
