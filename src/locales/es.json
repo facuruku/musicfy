@@ -29,5 +29,31 @@
         "cancel": "Cancelar"
       }
     }
+  },
+  "auth": {
+    "account": "Tu cuenta",
+    "tab": {
+      "login": "Iniciar sesión",
+      "register": "Registrarse"
+    },
+    "button": {
+      "login": "Acceder",
+      "register": "Crear cuenta"
+    },
+    "form": {
+      "mandatoryTooltip": "Campo obligatorio",
+      "emailPlaceholder": "tu@email.com",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Tu contraseña",
+      "confirmPasswordLabel": "Confirmar contraseña",
+      "confirmPasswordPlaceholder": "Repite tu contraseña",
+      "nameLabel": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "phoneLabel": "Teléfono",
+      "phonePlaceholder": "Tu teléfono",
+      "birthdateLabel": "Fecha de nacimiento",
+      "countryLabel": "País",
+      "tosLabel": "Acepto los términos y condiciones"
+    }
   }
 }

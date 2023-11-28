@@ -23,7 +23,7 @@
         name="email"
         type="email"
         class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
-        placeholder="your@email.com"
+        :placeholder="$t('auth.form.emailPlaceholder')"
         autocomplete="email"
       >
       </VeeField>
@@ -31,14 +31,14 @@
     </div>
     <!-- Password -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Password</label>
+      <label class="inline-block mb-2">{{ $t('auth.form.passwordLabel') }}</label>
       <VeeField name="password" :bails="false" v-slot="{ field, errors }">
         <div class="flex items-center">
           <input
             v-bind="field"
             :type="togglePassword ? 'text' : 'password'"
             class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
-            placeholder="Password"
+            :placeholder="$t('auth.form.passwordLabel')"
             autocomplete="current-password"
           />
           <i
@@ -59,7 +59,7 @@
       class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
       :disabled="login_in_submission"
     >
-      Login
+      {{ $t('auth.button.login') }}
     </button>
   </VeeForm>
 </template>

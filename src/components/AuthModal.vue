@@ -18,7 +18,7 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold">Your Account</p>
+            <p class="text-2xl font-bold">{{ $t('auth.account') }}</p>
             <!-- Modal Close Button -->
             <div class="modal-close cursor-pointer z-50" @click="modalVisibility = false">
               <i class="fas fa-times"></i>
@@ -28,28 +28,28 @@
           <!-- Tabs -->
           <ul class="flex flex-wrap mb-4 gap-2">
             <li class="flex-auto text-center">
-              <a
-                class="block rounded-full border border-gray-300 p-2 transition font-bold"
-                href="#"
+              <button
+                class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
                 @click.prevent="handleLoginTab()"
                 :class="{
                   'text-black bg-[#1ed760]': tab === 'login',
                   'hover:scale-105 hover:text-[#1ed760]': tab === 'register'
                 }"
-                >Login</a
               >
+                {{ $t('auth.tab.login') }}
+              </button>
             </li>
             <li class="flex-auto text-center">
-              <a
-                class="block rounded-full border border-gray-300 p-2 transition font-bold"
-                href="#"
+              <button
+                class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
                 @click.prevent="handleRegisterTab()"
                 :class="{
                   'text-black bg-[#1ed760]': tab === 'register',
                   'hover:scale-105 hover:text-[#1ed760]': tab === 'login'
                 }"
-                >Register</a
               >
+                {{ $t('auth.tab.register') }}
+              </button>
             </li>
           </ul>
 
@@ -85,6 +85,7 @@ export default {
     })
   },
   methods: {
+    //TODO add forgot password functionality
     handleLoginTab() {
       this.tab = 'login'
       this.$nextTick(() => document.getElementById('emailField').focus())

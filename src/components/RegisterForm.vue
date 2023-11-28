@@ -18,48 +18,54 @@
     <!-- Name -->
     <div class="">
       <label class="select-none group"
-        >Name <sup class="">*</sup
-        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+        >{{ $t('auth.form.nameLabel') }} <sup>*</sup
+        ><sup class="invisible group-hover:visible">
+          {{ $t('auth.form.mandatoryTooltip') }}</sup
+        ></label
       >
       <VeeField
         id="nameField"
         name="name"
         type="text"
         class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        placeholder="Enter your Name"
+        :placeholder="$t('auth.form.namePlaceholder')"
       />
       <ErrorMessage class="text-red-600" name="name" />
     </div>
     <!-- Email -->
     <div class="">
       <label class="select-none group"
-        >Email <sup class="">*</sup
-        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+        >Email <sup>*</sup
+        ><sup class="invisible group-hover:visible">
+          {{ $t('auth.form.mandatoryTooltip') }}</sup
+        ></label
       >
       <VeeField
         name="email"
         type="email"
         class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        placeholder="your@email.com"
+        :placeholder="$t('auth.form.emailPlaceholder')"
       />
       <ErrorMessage class="text-red-600" name="email" />
     </div>
     <!-- Phone -->
     <div class="">
-      <label class="select-none">Phone</label>
+      <label class="select-none">{{ $t('auth.form.phoneLabel') }}</label>
       <VeeField
         name="phone"
         type="number"
         class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-        placeholder="Enter your phone"
+        :placeholder="$t('auth.form.phonePlaceholder')"
       />
       <ErrorMessage class="text-red-600" name="phone" />
     </div>
     <!-- Birthdate -->
     <div class="">
       <label class="select-none group"
-        >Birthdate <sup class="">*</sup
-        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+        >{{ $t('auth.form.birthdateLabel') }} <sup>*</sup
+        ><sup class="invisible group-hover:visible">
+          {{ $t('auth.form.mandatoryTooltip') }}</sup
+        ></label
       >
       <VeeField
         name="birthdate"
@@ -73,14 +79,16 @@
     <!-- Password -->
     <div class="">
       <label class="select-none group"
-        >Password <sup class="">*</sup
-        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+        >{{ $t('auth.form.passwordLabel') }} <sup>*</sup
+        ><sup class="invisible group-hover:visible">
+          {{ $t('auth.form.mandatoryTooltip') }}</sup
+        ></label
       >
       <VeeField name="password" :bails="false" v-slot="{ field, errors }">
         <div class="flex items-center">
           <input
             v-bind="field"
-            placeholder="Enter new Password"
+            :placeholder="$t('auth.form.passwordPlaceholder')"
             :type="togglePassword ? 'text' : 'password'"
             class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
           />
@@ -99,8 +107,10 @@
     <!-- Confirm Password -->
     <div class="">
       <label class="select-none group"
-        >Confirm Password <sup class="">*</sup
-        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+        >{{ $t('auth.form.confirmPasswordLabel') }} <sup>*</sup
+        ><sup class="invisible group-hover:visible">
+          {{ $t('auth.form.mandatoryTooltip') }}</sup
+        ></label
       >
       <VeeField name="confirmPassword" :bails="false" v-slot="{ field }">
         <div class="flex items-center">
@@ -108,7 +118,7 @@
             v-bind="field"
             :type="toggleConfirmPassword ? 'text' : 'password'"
             class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-            placeholder="Confirm Password"
+            :placeholder="$t('auth.form.confirmPasswordPlaceholder')"
           />
           <i
             @click="toggleConfirmPassword = !toggleConfirmPassword"
@@ -125,8 +135,10 @@
     <!-- Country -->
     <div class="">
       <label class="select-none group"
-        >Country <sup class="">*</sup
-        ><sup class="invisible group-hover:visible"> Mandatory field</sup></label
+        >{{ $t('auth.form.countryLabel') }} <sup>*</sup
+        ><sup class="invisible group-hover:visible">
+          {{ $t('auth.form.mandatoryTooltip') }}</sup
+        ></label
       >
       <VeeField
         label="hola"
@@ -152,7 +164,7 @@
           type="checkbox"
           class="w-4 h-4 float-left -ml-6 mt-1 rounded"
         />
-        Accept terms of service</label
+        {{ $t('auth.form.tosLabel') }}</label
       >
       <ErrorMessage class="text-red-600 block" name="tos" />
     </div>
