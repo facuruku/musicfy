@@ -23,7 +23,7 @@
         <li class="md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'about' }">
             <i class="fa-regular fa-circle-question"></i>
-            <span class="hidden md:block">About</span>
+            <span class="hidden md:block">{{ $t('header.about') }}</span>
           </RouterLink>
         </li>
 
@@ -49,7 +49,7 @@
                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span class="">Manage</span>
+            <span class="">{{ $t('header.manage') }}</span>
           </RouterLink>
         </li>
 
@@ -58,13 +58,13 @@
           <template v-if="!userLoggedIn">
             <a class="flex items-center gap-1" href="#" @click.prevent="toggleAuthModal">
               <i class="fa-regular fa-user"></i>
-              <span class="hidden md:block">Login/Register</span>
+              <span class="hidden md:block">{{ $t('header.login') }}</span>
             </a>
           </template>
           <template v-else>
             <a class="flex gap-1 items-center" href="#" @click.prevent="signOut()">
               <i class="fa-regular fa-user"></i>
-              <span class="hidden md:block">Logout</span>
+              <span class="hidden md:block">{{ $t('header.logout') }}</span>
             </a>
           </template>
           <div></div>
@@ -78,7 +78,7 @@
             target="_blank"
           >
             <i class="fa-regular fa-circle-down"></i>
-            <span>Install app</span>
+            <span>{{ $t('header.install') }}</span>
           </a>
         </li>
       </ul>

@@ -1,9 +1,9 @@
 {
   "header": {
-    "about": "Acerca",
+    "about": "Acerca de",
     "manage": "Administrar",
     "login": "Iniciar sesión",
-    "logout": "Cerrar sión",
+    "logout": "Cerrar sesión",
     "install": "Instalar app"
   },
   "home": {
