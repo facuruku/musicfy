@@ -3,7 +3,7 @@
   <!-- Header -->
   <header
     id="header"
-    class="fixed top-0 left-0 z-50 w-full bg-black font-circular-black font-semibold"
+    class="fixed top-0 left-0 z-40 w-full bg-black font-circular-black font-semibold"
   >
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
