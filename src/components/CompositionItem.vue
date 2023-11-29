@@ -176,8 +176,8 @@ export default {
         }
         await songsCollection.doc(this.song.docID).update({
           modified_name: values.modified_name,
-          artist: values.artist ? values.artist : '',
-          genre: values.genre ? values.genre : ''
+          artist: values.artist ?? '',
+          genre: values.genre ?? ''
         })
       } catch (error) {
         this.alert_variant = this.error_variant

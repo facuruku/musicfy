@@ -54,7 +54,7 @@
             {{ currentSong.modified_name }}
           </p>
           <p class="hidden sm:block song-artist secondary-text overflow-x-clip text-ellipsis">
-            {{ currentSong.artist ? currentSong.artist : 'Unknown artist' }}
+            {{ currentSong.artist || 'Unknown artist' }}
           </p>
         </div>
         <i class="!hidden lg:!block fa-solid fa-heart text-green-500"></i>
