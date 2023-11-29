@@ -98,7 +98,11 @@ export default {
     ...mapState(useUserStore, ['userLoggedIn']) // mapState is readonly
   },
   methods: {
-    ...mapActions(useUserStore, ['signOut']),
+    ...mapActions(useUserStore, { firebaseSignOut: 'signOut' }),
+    signOut() {
+      this.firebaseSignOut()
+      if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
+    },
     toggleAuthModal() {
       this.isOpen = !this.isOpen
     }

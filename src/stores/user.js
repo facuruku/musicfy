@@ -47,8 +47,6 @@ export default defineStore('user', {
       await auth.signOut()
       this.userLoggedIn = false
       this.username = 'Anonymous'
-
-      window.location.reload()
     }
   }
 })
