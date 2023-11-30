@@ -1,6 +1,6 @@
 <template>
   <main class="view-gradient">
-    <AppPlaylist :songs="songs" />
+    <AppPlaylist :songs="songs" :songsCount="songsCount" />
     <AppPlayer />
   </main>
 </template>
@@ -8,7 +8,7 @@
 <script>
 import AppPlaylist from '@/components/AppPlaylist.vue'
 import AppPlayer from '@/components/AppPlayer.vue'
-import { songsCollection } from '@/includes/firebase'
+import { songsCollection, auth, usersCollection } from '@/includes/firebase'
 
 export default {
   name: 'Home',
@@ -17,12 +17,13 @@ export default {
     return {
       songs: [],
       maxPerPage: 10,
-      pendingReq: false
+      pendingReq: false,
+      songsCount: 0
     }
   },
   async created() {
     await this.getSongs()
-
+    await this.getSongsCount()
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
@@ -58,6 +59,18 @@ export default {
         })
       }
       this.pendingReq = false
+    },
+    async getSongsCount() {
+      await usersCollection
+        .doc(auth.currentUser.uid)
+        .get()
+        .then((document) => {
+          this.songsCount = document.data().songsCount ?? 0
+        })
+        .catch((error) => {
+          this.songsCount = 0
+          console.error("Error getting user's songs count: ", error)
+        })
     },
     handleScroll() {
       const { scrollTop, offsetHeight } = document.documentElement

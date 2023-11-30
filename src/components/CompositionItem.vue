@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { songsCollection, storage } from '@/includes/firebase'
+import { auth, songsCollection, storage, FieldValue, usersCollection } from '@/includes/firebase'
 
 export default {
   name: 'CompositionItem',
@@ -146,9 +146,16 @@ export default {
 
       await songRef
         .delete()
-        .then(() => {})
+        .then(() => {
+          //Decrement songCount for user
+          let userDocRef = usersCollection.doc(auth.currentUser.uid)
+
+          userDocRef.update({
+            songsCount: FieldValue.increment(-1)
+          })
+        })
         .catch((error) => {
-          console.error(error)
+          console.error('Error eliminando en el storage', error)
           this.in_submission = false
         })
 
@@ -157,7 +164,7 @@ export default {
         .delete()
         .then(() => {})
         .catch((error) => {
-          console.error(error)
+          console.error('Error eliminando en la coleccion', error)
           this.in_submission = false
         })
 

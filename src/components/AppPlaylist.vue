@@ -24,7 +24,7 @@
         <h1 class="text-xl sm:text-8xl lg:text-8xl font-circular-black">{{ $t('home.liked') }}</h1>
         <p class="text-xs sm:text-base">
           <span class="font-circular-regular"
-            ><span v-if="userLoggedIn">{{ username }} º</span> {{ songs.length }}
+            ><span v-if="userLoggedIn">{{ username }} º</span> {{ songsCount }}
             {{ $t('home.songs') }}
           </span>
         </p>
@@ -105,6 +105,10 @@ export default {
   props: {
     songs: {
       type: Array,
+      required: true
+    },
+    songsCount: {
+      type: Number,
       required: true
     }
   },

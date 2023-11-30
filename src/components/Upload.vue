@@ -54,7 +54,7 @@
   </main>
 </template>
 <script>
-import { storage, auth, songsCollection } from '@/includes/firebase'
+import { storage, auth, songsCollection, usersCollection, FieldValue } from '@/includes/firebase'
 
 export default {
   name: 'Upload',
@@ -71,6 +71,7 @@ export default {
     }
   },
   methods: {
+    /* TODO refactor this method split in smaller pieces */
     upload($event) {
       this.is_dragover = false
 
@@ -142,7 +143,6 @@ export default {
               duration: audioDuration,
               url: downloadURL
             }
-            //song.url = await task.snapshot.ref.getDownloadURL()
 
             let songDocRef = ''
 
@@ -150,6 +150,11 @@ export default {
               .add(song)
               .then((docRef) => {
                 songDocRef = docRef
+                let userDocRef = usersCollection.doc(auth.currentUser.uid)
+
+                userDocRef.update({
+                  songsCount: FieldValue.increment(1)
+                })
               })
               .catch(async (error) => {
                 this.uploads[uploadIndex].variant = 'bg-red-400'
