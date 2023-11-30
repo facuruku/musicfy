@@ -21,7 +21,7 @@
         class="text-white main-header-content flex flex-col sm:grow gap-1 sm:gap-4 justify-center items-start order-1"
       >
         <h4 class="text-xs sm:text-base">{{ $t('home.playlist') }}</h4>
-        <h1 class="text-xl sm:text-8xl lg:text-8xl font-circular-black">{{ $t('home.liked') }}</h1>
+        <h1 class="text-xl sm:text-4xl lg:text-7xl font-circular-black">{{ $t('home.liked') }}</h1>
         <p class="text-xs sm:text-base">
           <span class="font-circular-regular"
             ><span v-if="userLoggedIn">{{ username }} º</span> {{ songsCount }}
