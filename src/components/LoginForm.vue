@@ -1,4 +1,4 @@
-<!-- TODO: Add email autofocus -->
+<!-- TODO: Add email autofocus creating directive v-focus-->
 <template>
   <div
     class="text-black text-center font-bold p-4 rounded mb-4"
