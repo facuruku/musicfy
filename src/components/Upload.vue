@@ -93,8 +93,6 @@ export default {
 
         const task = songRef.put(file)
 
-        //TODO #metadata get metadata from mp3 file (artist,album...)
-
         const uploadIndex =
           this.uploads.push({
             task,
@@ -122,6 +120,17 @@ export default {
           async () => {
             //success
 
+            //TODO #metadata (music-metadata-browser) get metadata from mp3 file (artist,album...)
+
+            const downloadURL = await task.snapshot.ref.getDownloadURL()
+
+            const audio = new Audio(downloadURL)
+
+            const audioDuration = await new Promise((resolve) => {
+              audio.addEventListener('loadedmetadata', () => {
+                resolve(audio.duration)
+              })
+            })
             const song = {
               uid: auth.currentUser.uid,
               displayName: auth.currentUser.displayName,
@@ -130,9 +139,10 @@ export default {
               genre: '',
               artist: '',
               comment_count: 0,
-              duration: Math.floor(Math.random() * (240 - 90 + 1) + 90) //TODO #metadata load duration during upload
+              duration: audioDuration,
+              url: downloadURL
             }
-            song.url = await task.snapshot.ref.getDownloadURL()
+            //song.url = await task.snapshot.ref.getDownloadURL()
 
             let songDocRef = ''
 
