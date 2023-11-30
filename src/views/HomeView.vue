@@ -27,6 +27,8 @@ export default {
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
+    //TODO show only songs for current user
+    // this may involve that if you are not logged in you can't see any songs
     async getSongs() {
       if (this.pendingReq) {
         return
