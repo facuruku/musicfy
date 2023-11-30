@@ -42,7 +42,7 @@
     },
     "form": {
       "mandatoryTooltip": "Mandatory field",
-      "emailPlaceholder": "your@email.com",
+      "emailPlaceholder": "your{'@'}email.com",
       "passwordLabel": "Password",
       "passwordPlaceholder": "Your password",
       "confirmPasswordLabel": "Confirm password",
@@ -53,7 +53,24 @@
       "phonePlaceholder": "Your phone",
       "birthdateLabel": "Birthdate",
       "countryLabel": "Country",
-      "tosLabel": "I agree with the terms of service"
+      "accept": "I agree with the {0}",
+      "tos": "Terms of Service"
     }
+  },
+  "song": {
+    "commentCount": "No comments | 1 comment | {count} comments",
+    "noComments": "No comments yet",
+    "viewTitle": "Song",
+    "latest": "Latest",
+    "oldest": "Oldest",
+    "publish": "Publish",
+    "loginMsg": "Login to leave a comment",
+    "commentPlaceholder": "Leave a comment...",
+    "secondsAgo": "0| 1 second ago | {count} seconds ago",
+    "minutesAgo": "0| 1 minute ago | {count} minutes ago",
+    "hoursAgo": "0| 1 hour ago | {count} hours ago",
+    "daysAgo": "0| 1 day ago | {count} days ago",
+    "monthsAgo": "0| 1 month ago | {count} months ago",
+    "yearsAgo": "0| 1 year ago | {count} years ago"
   }
 }

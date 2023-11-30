@@ -157,23 +157,28 @@
     </div>
     <!-- Terms of Service -->
     <div class="mb-3 pl-6">
-      <label class="inline-block hover:cursor-pointer">
-        <VeeField
-          name="tos"
-          value="0"
+      <VeeField name="tos" :bails="false" v-slot="{ field, errors }">
+        <input
+          v-bind="field"
           type="checkbox"
           class="w-4 h-4 float-left -ml-6 mt-1 rounded"
+          id="tos"
         />
-        {{ $t('auth.form.tosLabel') }}</label
-      >
-      <ErrorMessage class="text-red-600 block" name="tos" />
+        <I18nT keypath="auth.form.accept" tag="label" for="tos">
+          <a class="hover:underline" href="https://www.google.es" target="_blank"
+            >{{ $t('auth.form.tos') }}
+          </a>
+        </I18nT>
+        <ErrorMessage v-bind="errors" class="text-red-600 block" name="tos" />
+      </VeeField>
     </div>
 
+    <!-- Register Button -->
     <button
       type="submit"
       class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
     >
-      Register
+      {{ $t('auth.button.register') }}
     </button>
   </VeeForm>
 </template>
@@ -181,10 +186,12 @@
 <script>
 import useUserStore from '@/stores/user'
 import { mapActions } from 'pinia'
+import { I18nT } from 'vue-i18n'
 
 export default {
   name: 'RegisterForm',
   emits: ['register-success'],
+  components: { I18nT },
   data() {
     return {
       tab: 'login',
@@ -222,7 +229,6 @@ export default {
   methods: {
     async register(values) {
       this.initRegisterAlert()
-
       try {
         await this.createUser(values)
       } catch (error) {
@@ -231,7 +237,6 @@ export default {
         this.reg_alert_msg = this.reg_error_msg
         return
       }
-
       this.$refs.registerForm.resetForm()
       this.reg_show_alert = false
       this.reg_in_submission = false

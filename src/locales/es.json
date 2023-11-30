@@ -42,7 +42,7 @@
     },
     "form": {
       "mandatoryTooltip": "Campo obligatorio",
-      "emailPlaceholder": "tu@email.com",
+      "emailPlaceholder": "tu{'@'}email.com",
       "passwordLabel": "Contraseña",
       "passwordPlaceholder": "Tu contraseña",
       "confirmPasswordLabel": "Confirmar contraseña",
@@ -53,7 +53,24 @@
       "phonePlaceholder": "Tu teléfono",
       "birthdateLabel": "Fecha de nacimiento",
       "countryLabel": "País",
-      "tosLabel": "Acepto los términos y condiciones"
+      "accept": "Acepto los {0}",
+      "tos": "Términos y condiciones"
     }
+  },
+  "song": {
+    "commentCount": "Sin comentarios | 1 comentario | {count} commentarios",
+    "noComments": "No hay comentarios aún. ¡Sé el primero!",
+    "viewTitle": "Canción",
+    "latest": "Más recientes",
+    "oldest": "Más antiguos",
+    "publish": "Publicar",
+    "loginMsg": "Inicia sesión para comentar",
+    "commentPlaceholder": "Añade un comentario...",
+    "secondsAgo": "0| hace 1 segundo | hace {count} segundos",
+    "minutesAgo": "0| hace 1 minuto | hace {count} minutos",
+    "hoursAgo": "0| hace 1 hora | hace {count} horas",
+    "daysAgo": "0| hace 1 día | hace {count} días",
+    "monthsAgo": "0| hace 1 mes | hace {count} meses",
+    "yearsAgo": "0| hace 1 año | hace {count} años"
   }
 }

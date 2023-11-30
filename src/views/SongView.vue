@@ -12,13 +12,13 @@
         </button>
         <div class="z-50 text-left px-4">
           <!-- Song Info -->
-          <div class="text-sm font-circular-black">Song</div>
+          <div class="text-sm font-circular-black">{{ $t('song.viewTitle') }}</div>
           <div class="text-2xl md:text-4xl lg:text-6xl font-circular-black">
             {{ song.modified_name }}
           </div>
           <div class="text-sm font-circular-black">
-            {{ song.artist ? song.artist : 'Unknown artist' }}
-            <span class="font-circular-thin">{{ song.genre ? song.genre : 'Unknown Genre' }}</span>
+            {{ song.artist ?? 'Unknown artist' }}
+            <span class="font-circular-thin">{{ song.genre ?? 'Unknown Genre' }}</span>
           </div>
         </div>
       </div>
@@ -34,10 +34,9 @@
         <div class="flex flex-col">
           <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-500">
             <!-- Comment Count -->
-            <span class="card-title"
-              >Comments <span class="font-sans">(</span>{{ song.comment_count
-              }}<span class="font-sans">)</span></span
-            >
+            <span class="card-title">{{
+              $tc('song.commentCount', { count: song.comment_count })
+            }}</span>
             <i class="fa-regular fa-comment float-right text-2xl"></i>
           </div>
           <div class="p-6">
@@ -53,7 +52,7 @@
                 as="textarea"
                 name="comment"
                 class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded mb-4"
-                placeholder="Your comment here..."
+                :placeholder="$t('song.commentPlaceholder')"
               ></VeeField>
               <ErrorMessage class="text-red-600" name="comment" />
               <button
@@ -61,16 +60,19 @@
                 class="py-1.5 px-3 rounded text-white bg-green-600 block"
                 :disabled="comment_in_submission"
               >
-                Publish
+                {{ $t('song.publish') }}
               </button>
             </VeeForm>
+            <div v-else>
+              <p>{{ $t('song.loginMsg') }}</p>
+            </div>
             <!-- Sort Comments -->
             <select
-              class="block mt-4 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+              class="block mt-6 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
               v-model="sort"
             >
-              <option value="1">Latest</option>
-              <option value="2">Oldest</option>
+              <option value="1">{{ $t('song.latest') }}</option>
+              <option value="2">{{ $t('song.oldest') }}</option>
             </select>
           </div>
         </div>
@@ -79,7 +81,7 @@
       <section>
         <ul class="z-10 px-6 font-circular-thin min-h-[50vh] text-white">
           <li class="p-6 border border-slate-500" v-if="comments.length === 0">
-            No comments yet.
+            {{ $t('song.noComments') }}
             <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>
           </li>
           <li
@@ -112,6 +114,7 @@ import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
 import usePlayerStore from '@/stores/player'
 import iconSecondary from '@/directives/icon-secondary'
+import helper from '@/includes/helper'
 
 export default {
   name: 'Song',
@@ -217,37 +220,7 @@ export default {
       })
     },
     getCommentPublishDate(comment) {
-      const today = new Date()
-
-      const differenceMS = today - new Date(comment.date)
-
-      const seconds = Math.floor(differenceMS / 1000)
-      if (seconds < 60) {
-        return `${seconds} second${seconds === 1 ? '' : 's'} ago`
-      }
-
-      const minutes = Math.floor(seconds / 60)
-      if (minutes < 60) {
-        return `${minutes} minute${minutes === 1 ? '' : 's'} ago`
-      }
-
-      const hours = Math.floor(minutes / 60)
-      if (hours < 24) {
-        return `${hours} hour${hours === 1 ? '' : 's'} ago`
-      }
-
-      const days = Math.floor(hours / 24)
-      if (days < 30) {
-        return `${days} day${days === 1 ? '' : 's'} ago`
-      }
-
-      const months = Math.floor(days / 30)
-      if (months < 12) {
-        return `${months} month${months === 1 ? '' : 's'} ago`
-      }
-
-      const years = Math.floor(months / 12)
-      return `${years} year${years === 1 ? '' : 's'} ago`
+      return helper.calculateTimeAgo(comment.date)
     }
   },
   watch: {
