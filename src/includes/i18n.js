@@ -2,7 +2,7 @@ import { createI18n } from 'vue-i18n'
 import en from '@/locales/en.json'
 import es from '@/locales/es.json'
 
-export default createI18n({
+const i18n = createI18n({
   locale: 'es',
   fallbackLocale: 'en',
   messages: {
@@ -10,3 +10,7 @@ export default createI18n({
     es
   }
 })
+
+const t = i18n.global.t
+
+export { i18n, t }

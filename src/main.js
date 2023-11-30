@@ -8,7 +8,7 @@ import { auth } from '@/includes/firebase'
 import PrimeVue from 'primevue/config'
 import 'primevue/resources/themes/arya-green/theme.css'
 import Icon from '@/directives/icon'
-import i18n from '@/includes/i18n'
+import { i18n } from '@/includes/i18n'
 
 import '@/assets/base.css'
 import '@/assets/main.css'
