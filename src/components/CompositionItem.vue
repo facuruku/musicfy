@@ -48,7 +48,7 @@
             name="artist"
             type="text"
             class="block w-full py-1.5 px-3 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-            placeholder="Enter Genre"
+            placeholder="Enter Artist"
             @input="updateHasChanges(true)"
           />
           <ErrorMessage class="text-red-600" name="artist" />
