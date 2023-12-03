@@ -8,7 +8,7 @@
         class="col-span-2 bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
       >
         <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-400">
-          <span class="card-title"> {{ $t('manage.mySongs') }}</span>
+          <span class="card-title"> {{ $t('manage.mySongs') + ' (' + songs.length + ')' }}</span>
           <i class="fa-solid fa-music float-right text-green-400 text-2xl"></i>
         </div>
         <div class="p-6">
