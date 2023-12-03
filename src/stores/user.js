@@ -4,7 +4,7 @@ import { auth, usersCollection } from '@/includes/firebase'
 export default defineStore('user', {
   state: () => ({
     userLoggedIn: false,
-    username: 'Anonymous'
+    username: auth.currentUser?.displayName ?? 'Anonymous'
   }),
   actions: {
     async register(values) {
