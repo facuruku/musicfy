@@ -102,6 +102,7 @@ export default {
     signOut() {
       this.firebaseSignOut()
       if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
+      else this.$router.go()
     },
     toggleAuthModal() {
       this.isOpen = !this.isOpen

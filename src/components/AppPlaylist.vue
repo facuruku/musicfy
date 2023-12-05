@@ -24,8 +24,9 @@
         <h1 class="text-xl sm:text-4xl lg:text-7xl font-circular-black">{{ $t('home.liked') }}</h1>
         <p class="text-xs sm:text-base">
           <span class="font-circular-regular"
-            ><span v-if="userLoggedIn">{{ username }} º</span> {{ songsCount }}
-            {{ $t('home.songs') }}
+            ><span v-if="userLoggedIn"
+              >{{ username }} º {{ songsCount }} {{ $t('home.songs') }}</span
+            >
           </span>
         </p>
       </div>
@@ -74,9 +75,7 @@
 
         <tbody class="text-white">
           <tr class="h-2"></tr>
-          <div v-if="songs.length === 0">Empty playlist.</div>
           <SongItem
-            v-else
             v-for="(song, index) in songs"
             :key="song.docID"
             :song="song"
@@ -88,6 +87,17 @@
             @double-click="handleDblClick(song)"
           />
         </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <span v-if="userLoggedIn && songs.length === 0"
+                >Empty playlist. Go to Manage to add some more</span
+              >
+              <span v-else-if="!userLoggedIn">You must login to see your playlist</span>
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </section>

@@ -54,10 +54,10 @@
           </ul>
 
           <!-- Login Form -->
-          <AppLoginForm v-if="tab === 'login'" @login-success="closeAuthModal()" />
+          <AppLoginForm v-if="tab === 'login'" @login-success="handleSuccess()" />
 
           <!-- Registration Form -->
-          <AppRegisterForm v-else @register-success="closeAuthModal()" />
+          <AppRegisterForm v-else @register-success="handleSuccess()" />
         </div>
       </div>
     </div>
@@ -96,6 +96,10 @@ export default {
     },
     closeAuthModal() {
       this.modalVisibility = false
+    },
+    handleSuccess() {
+      this.closeAuthModal()
+      this.$router.go()
     }
   }
 }

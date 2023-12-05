@@ -188,7 +188,10 @@ export default {
       return fileName.replace(/\.[^.]+$/, '')
     },
     async fileExists(file) {
-      const snapshot = await songsCollection.where('original_name', '==', file.name).get()
+      const snapshot = await songsCollection
+        .where('uid', '==', auth.currentUser.uid)
+        .where('original_name', '==', file.name)
+        .get()
       return snapshot.size !== 0
     },
     cancelUploads() {

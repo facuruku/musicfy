@@ -9,6 +9,8 @@
 import AppPlaylist from '@/components/AppPlaylist.vue'
 import AppPlayer from '@/components/AppPlayer.vue'
 import { songsCollection, auth, usersCollection } from '@/includes/firebase'
+import { mapState } from 'pinia'
+import useUserStore from '@/stores/user'
 
 export default {
   name: 'Home',
@@ -21,16 +23,17 @@ export default {
       songsCount: 0
     }
   },
+  computed: {
+    ...mapState(useUserStore, ['userLoggedIn'])
+  },
   async created() {
     await this.getSongs()
     await this.getSongsCount()
     window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
-    //TODO show only songs for current user
-    // this may involve that if you are not logged in you can't see any songs
     async getSongs() {
-      if (this.pendingReq) {
+      if (this.pendingReq || !this.userLoggedIn) {
         return
       }
 
@@ -41,6 +44,7 @@ export default {
       if (this.songs.length) {
         const lastDoc = await songsCollection.doc(this.songs[this.songs.length - 1].docID).get()
         snapshots = await songsCollection
+          .where('uid', '==', auth.currentUser.uid)
           .orderBy('modified_name')
           .startAfter(lastDoc)
           .limit(this.maxPerPage)
@@ -52,7 +56,11 @@ export default {
           })
         })
       } else {
-        snapshots = await songsCollection.orderBy('modified_name').limit(this.maxPerPage).get()
+        snapshots = await songsCollection
+          .where('uid', '==', auth.currentUser.uid)
+          .orderBy('modified_name')
+          .limit(this.maxPerPage)
+          .get()
         snapshots.forEach((document) => {
           this.songs.push({
             docID: document.id,
@@ -63,6 +71,9 @@ export default {
       this.pendingReq = false
     },
     async getSongsCount() {
+      if (!this.userLoggedIn) {
+        return
+      }
       await usersCollection
         .doc(auth.currentUser.uid)
         .get()
