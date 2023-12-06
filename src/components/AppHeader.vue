@@ -18,6 +18,14 @@
       <ul class="flex gap-2 items-center text-white text-base">
         <!-- Navigation Links -->
 
+        <!-- Home page -->
+        <li class="md:hover:scale-105">
+          <RouterLink class="flex items-center gap-1" :to="{ name: 'home' }">
+            <i class="fa-solid fa-house"></i>
+            <span class="hidden md:block"> {{ $t('header.home') }}</span>
+          </RouterLink>
+        </li>
+
         <!-- About page -->
         <li class="md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'about' }">
