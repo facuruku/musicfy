@@ -157,20 +157,22 @@
     </div>
     <!-- Terms of Service -->
     <div class="mb-3 pl-6">
-      <VeeField name="tos" :bails="false" v-slot="{ field, errors }">
-        <input
-          v-bind="field"
-          type="checkbox"
-          class="w-4 h-4 float-left -ml-6 mt-1 rounded"
-          id="tos"
-        />
-        <I18nT keypath="auth.form.accept" tag="label" for="tos">
-          <a class="hover:underline" href="https://www.google.es" target="_blank"
-            >{{ $t('auth.form.tos') }}
-          </a>
-        </I18nT>
-        <ErrorMessage v-bind="errors" class="text-red-600 block" name="tos" />
-      </VeeField>
+      <VeeField
+        name="tos"
+        id="tos"
+        type="checkbox"
+        value="true"
+        class="w-4 h-4 float-left -ml-6 mt-1 rounded"
+      />
+      <I18nT keypath="auth.form.accept" tag="label" for="tos">
+        <a
+          class="hover:underline"
+          href="https://www.google.es/search?q=terms+of+service"
+          target="_blank"
+          >{{ $t('auth.form.tos') }}
+        </a>
+      </I18nT>
+      <ErrorMessage v-bind="errors" class="text-red-600 block" name="tos" />
     </div>
 
     <!-- Register Button -->
@@ -187,11 +189,12 @@
 import useUserStore from '@/stores/user'
 import { mapActions } from 'pinia'
 import { I18nT } from 'vue-i18n'
+import { ErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
 
 export default {
   name: 'RegisterForm',
   emits: ['register-success'],
-  components: { I18nT },
+  components: { I18nT, ErrorMessage, VeeField, VeeForm },
   data() {
     return {
       tab: 'login',
