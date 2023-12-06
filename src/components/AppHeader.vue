@@ -48,7 +48,7 @@
                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span class="">{{ $t('header.manage') }}</span>
+            <span class="hidden md:block">{{ $t('header.manage') }}</span>
           </RouterLink>
         </li>
 
@@ -77,7 +77,7 @@
             target="_blank"
           >
             <i class="fa-regular fa-circle-down"></i>
-            <span>{{ $t('header.install') }}</span>
+            <span class="hidden md:block">{{ $t('header.install') }}</span>
           </a>
         </li>
       </ul>
