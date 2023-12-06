@@ -94,7 +94,7 @@
           <img
             draggable="false"
             loading="eager"
-            :src="getLangImgPath()"
+            :src="getLangImgPath"
             class="w-5"
             alt="Language"
             @click.prevent="toggleLocale()"
