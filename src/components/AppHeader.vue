@@ -88,6 +88,11 @@
             <span class="hidden md:block">{{ $t('header.install') }}</span>
           </a>
         </li>
+
+        <!-- Language -->
+        <li class="md:hover:scale-105">
+          <img :src="getLangImgPath" class="w-5" alt="Language" @click.prevent="toggleLocale()" />
+        </li>
       </ul>
     </nav>
   </header>
@@ -100,7 +105,10 @@ import useUserStore from '@/stores/user'
 export default {
   name: 'AppHeader',
   computed: {
-    ...mapState(useUserStore, ['userLoggedIn'])
+    ...mapState(useUserStore, ['userLoggedIn']),
+    getLangImgPath() {
+      return this.$t('langImgPath')
+    }
   },
   methods: {
     ...mapActions(useUserStore, { firebaseSignOut: 'signOut' }),
@@ -108,6 +116,10 @@ export default {
       this.firebaseSignOut()
       if (this.$route.meta.requiresAuth) this.$router.go({ name: 'auth' })
       else this.$router.go()
+    },
+    toggleLocale() {
+      const currentLocale = this.$i18n.locale
+      this.$i18n.locale = currentLocale === 'en' ? 'es' : 'en'
     }
   }
 }
