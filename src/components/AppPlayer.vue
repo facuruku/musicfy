@@ -1,6 +1,6 @@
 <template>
   <!-- Player -->
-  <section
+  <footer
     class="fixed bottom-0 left-0 w-full bg-black h-24 z-10 px-8 py-2 flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
   >
     <!-- Buttons - Progress bar -->
@@ -82,7 +82,7 @@
         }"
       />
     </section>
-  </section>
+  </footer>
 </template>
 
 <script>

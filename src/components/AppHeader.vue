@@ -91,7 +91,14 @@
 
         <!-- Language -->
         <li class="md:hover:scale-105">
-          <img :src="getLangImgPath" class="w-5" alt="Language" @click.prevent="toggleLocale()" />
+          <img
+            draggable="false"
+            loading="eager"
+            :src="getLangImgPath()"
+            class="w-5"
+            alt="Language"
+            @click.prevent="toggleLocale()"
+          />
         </li>
       </ul>
     </nav>
