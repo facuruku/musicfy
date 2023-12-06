@@ -43,7 +43,7 @@
           />
           <i
             @click="togglePassword = !togglePassword"
-            class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
+            class="absolute -right-0 mr-12 p-3 hover:cursor-pointer hover:scale-110"
             :class="{
               'fa-regular fa-eye-slash': togglePassword,
               'fa-regular fa-eye': !togglePassword

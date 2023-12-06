@@ -5,13 +5,12 @@
       <component :is="Component"></component>
     </Transition>
   </RouterView>
-  <AuthModal />
+  <AppPlayer v-if="userLoggedIn" />
 </template>
-<!-- TODO optional make header change style while scroll -->
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
-import AuthModal from '@/components/AuthModal.vue'
+import AppPlayer from '@/components/AppPlayer.vue'
 import { mapWritableState } from 'pinia'
 import useUserStore from '@/stores/user'
 import { auth } from '@/includes/firebase'
@@ -19,7 +18,7 @@ import { RouterView } from 'vue-router'
 
 export default {
   name: 'App',
-  components: { AppHeader, AuthModal, RouterView },
+  components: { AppHeader, RouterView, AppPlayer },
   computed: {
     ...mapWritableState(useUserStore, ['userLoggedIn'])
   },

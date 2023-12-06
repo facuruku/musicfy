@@ -1,4 +1,3 @@
-<!-- TODO Create burguer menu for mobile devices -->
 <template>
   <!-- Header -->
   <header
@@ -56,10 +55,10 @@
         <!-- User icon -->
         <li class="md:hover:scale-105">
           <template v-if="!userLoggedIn">
-            <a class="flex items-center gap-1" href="#" @click.prevent="toggleAuthModal">
+            <RouterLink class="flex items-center gap-1" :to="{ name: 'auth' }">
               <i class="fa-regular fa-user"></i>
               <span class="hidden md:block">{{ $t('header.login') }}</span>
-            </a>
+            </RouterLink>
           </template>
           <template v-else>
             <a class="flex gap-1 items-center" href="#" @click.prevent="signOut()">
@@ -87,25 +86,20 @@
 </template>
 
 <script>
-import { mapState, mapWritableState, mapActions } from 'pinia'
-import useModalStore from '@/stores/modal'
+import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
 
 export default {
   name: 'AppHeader',
   computed: {
-    ...mapWritableState(useModalStore, ['isOpen']), // We can map the property we need and not the entire store
-    ...mapState(useUserStore, ['userLoggedIn']) // mapState is readonly
+    ...mapState(useUserStore, ['userLoggedIn'])
   },
   methods: {
     ...mapActions(useUserStore, { firebaseSignOut: 'signOut' }),
     signOut() {
       this.firebaseSignOut()
-      if (this.$route.meta.requiresAuth) this.$router.push({ name: 'home' })
+      if (this.$route.meta.requiresAuth) this.$router.go({ name: 'auth' })
       else this.$router.go()
-    },
-    toggleAuthModal() {
-      this.isOpen = !this.isOpen
     }
   }
 }

@@ -23,10 +23,8 @@
         <h4 class="text-xs sm:text-base">{{ $t('home.playlist') }}</h4>
         <h1 class="text-xl sm:text-4xl lg:text-7xl font-circular-black">{{ $t('home.liked') }}</h1>
         <p class="text-xs sm:text-base">
-          <span class="font-circular-regular"
-            ><span v-if="userLoggedIn"
-              >{{ username }} º {{ songsCount }} {{ $t('home.songs') }}</span
-            >
+          <span class="font-circular-regular">
+            {{ username }} º {{ songsCount }} {{ $t('home.songs') }}
           </span>
         </p>
       </div>
@@ -91,10 +89,7 @@
         <tfoot>
           <tr>
             <td colspan="5">
-              <span v-if="userLoggedIn && songs.length === 0"
-                >Empty playlist. Go to Manage to add some more</span
-              >
-              <span v-else-if="!userLoggedIn">You must login to see your playlist</span>
+              <span v-if="songs.length === 0">Empty playlist. Go to Manage to add some more</span>
             </td>
           </tr>
         </tfoot>
@@ -135,7 +130,7 @@ export default {
       'isSongPlaying',
       'playerHasSong'
     ]),
-    ...mapState(useUserStore, ['username', 'userLoggedIn'])
+    ...mapState(useUserStore, ['username'])
   },
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio']),

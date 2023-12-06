@@ -1,91 +1,63 @@
 <template>
   <!-- Auth Modal -->
-  <div class="fixed z-50 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
+  <div class="grid place-content-center min-h-screen" id="modal">
     <div
-      class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+      class="flex flex-col bg-neutral-950 rounded-lg w-96 text-left text-white overflow-hidden py-10 px-12 shadow-xl transform transition-all"
     >
-      <div class="fixed inset-0 transition-opacity">
-        <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
-      </div>
+      <!-- Add margin if you want to see some of the overlay behind the modal-->
+      <!--Title-->
+      <p class="text-2xl font-bold pb-4">{{ $t('auth.account') }}</p>
 
-      <!-- This element is to trick the browser into centering the modal contents. -->
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+      <!-- Tabs -->
+      <ul class="flex flex-wrap mb-4 gap-4 pb-4">
+        <li class="flex-auto text-center">
+          <button
+            class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
+            @click.prevent="handleLoginTab()"
+            :class="{
+              'text-black bg-[#1ed760]': tab === 'login',
+              'hover:scale-105 hover:text-[#1ed760]': tab === 'register'
+            }"
+          >
+            {{ $t('auth.tab.login') }}
+          </button>
+        </li>
+        <li class="flex-auto text-center">
+          <button
+            class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
+            @click.prevent="handleRegisterTab()"
+            :class="{
+              'text-black bg-[#1ed760]': tab === 'register',
+              'hover:scale-105 hover:text-[#1ed760]': tab === 'login'
+            }"
+          >
+            {{ $t('auth.tab.register') }}
+          </button>
+        </li>
+      </ul>
 
-      <div
-        class="inline-block align-bottom bg-neutral-950 rounded-lg text-left text-white overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-      >
-        <!-- Add margin if you want to see some of the overlay behind the modal-->
-        <div class="py-4 text-left px-6">
-          <!--Title-->
-          <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold">{{ $t('auth.account') }}</p>
-            <!-- Modal Close Button -->
-            <div class="modal-close cursor-pointer z-50" @click="modalVisibility = false">
-              <i class="fas fa-times"></i>
-            </div>
-          </div>
+      <!-- Login Form -->
+      <LoginForm v-if="tab === 'login'" @login-success="handleSuccess()" />
 
-          <!-- Tabs -->
-          <ul class="flex flex-wrap mb-4 gap-2">
-            <li class="flex-auto text-center">
-              <button
-                class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
-                @click.prevent="handleLoginTab()"
-                :class="{
-                  'text-black bg-[#1ed760]': tab === 'login',
-                  'hover:scale-105 hover:text-[#1ed760]': tab === 'register'
-                }"
-              >
-                {{ $t('auth.tab.login') }}
-              </button>
-            </li>
-            <li class="flex-auto text-center">
-              <button
-                class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
-                @click.prevent="handleRegisterTab()"
-                :class="{
-                  'text-black bg-[#1ed760]': tab === 'register',
-                  'hover:scale-105 hover:text-[#1ed760]': tab === 'login'
-                }"
-              >
-                {{ $t('auth.tab.register') }}
-              </button>
-            </li>
-          </ul>
-
-          <!-- Login Form -->
-          <AppLoginForm v-if="tab === 'login'" @login-success="handleSuccess()" />
-
-          <!-- Registration Form -->
-          <AppRegisterForm v-else @register-success="handleSuccess()" />
-        </div>
-      </div>
+      <!-- Registration Form -->
+      <RegisterForm v-else @register-success="handleSuccess()" />
     </div>
   </div>
 </template>
 
 <script>
-import useModalStore from '@/stores/modal'
-import { mapState, mapWritableState } from 'pinia'
-import AppLoginForm from '@/components/LoginForm.vue'
-import AppRegisterForm from '@/components/RegisterForm.vue'
+import LoginForm from '@/components/LoginForm.vue'
+import RegisterForm from '@/components/RegisterForm.vue'
 
 export default {
   name: 'AuthModal',
-  components: { AppLoginForm, AppRegisterForm },
+  components: { LoginForm, RegisterForm },
   data() {
     return {
       tab: 'login'
     }
   },
-  computed: {
-    ...mapState(useModalStore, ['hiddenClass']),
-    ...mapWritableState(useModalStore, {
-      modalVisibility: 'isOpen'
-    })
-  },
   methods: {
-    //TODO add forgot password functionality
     handleLoginTab() {
       this.tab = 'login'
       this.$nextTick(() => document.getElementById('emailField').focus())
@@ -94,12 +66,8 @@ export default {
       this.tab = 'register'
       this.$nextTick(() => document.getElementById('nameField').focus())
     },
-    closeAuthModal() {
-      this.modalVisibility = false
-    },
     handleSuccess() {
-      this.closeAuthModal()
-      this.$router.go()
+      this.$router.push({ name: 'home' })
     }
   }
 }

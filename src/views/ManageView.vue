@@ -30,13 +30,11 @@
         </div>
       </section>
     </div>
-    <AppPlayer />
   </main>
 </template>
 
 <script>
 import AppUpload from '@/components/Upload.vue'
-import AppPlayer from '@/Components/AppPlayer.vue'
 import CompositionItem from '@/components/CompositionItem.vue'
 import { auth, songsCollection } from '@/includes/firebase'
 
@@ -44,8 +42,7 @@ export default {
   name: 'Manage',
   components: {
     AppUpload,
-    CompositionItem,
-    AppPlayer
+    CompositionItem
   },
   data() {
     return {

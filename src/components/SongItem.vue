@@ -7,6 +7,7 @@
     }"
   >
     <td
+      id="index"
       class="hidden sm:table-cell rounded-l-md"
       :class="{ 'text-green-500': inPlayer, 'text-secondary': !inPlayer }"
     >
@@ -16,11 +17,11 @@
           :class="{ 'fa-pause ': playing, 'fa-play': !playing }"
           @click.prevent="inPlayer ? toggleAudio() : play(song)"
         ></i>
-        <p v-show="!playing" class="group-hover:hidden">
+        <p v-if="!playing" class="group-hover:hidden">
           {{ index + 1 }}
         </p>
         <img
-          v-show="playing"
+          v-else
           src="/assets/img/equaliser-animated-green.gif"
           alt="Sound wave"
           class="group-hover:hidden w-3.5"
@@ -55,7 +56,7 @@
         :to="{ name: 'song', params: { id: song.docID }, hash: '#comments' }"
         v-slot="{ navigate }"
       >
-        <span @click="navigate"> {{ song.comment_count }} </span>
+        <span @click="navigate" class="hover:underline"> {{ song.comment_count }} </span>
       </RouterLink>
     </td>
     <td id="duration" @dblclick="handleDblClick(song)" class="rounded-r-md px-2">

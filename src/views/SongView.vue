@@ -47,7 +47,7 @@
             >
               {{ comment_alert_msg }}
             </div>
-            <VeeForm :validation-schema="schema" @submit="publishComment" v-if="userLoggedIn">
+            <VeeForm :validation-schema="schema" @submit="publishComment">
               <VeeField
                 as="textarea"
                 name="comment"
@@ -63,9 +63,7 @@
                 {{ $t('song.publish') }}
               </button>
             </VeeForm>
-            <div v-else>
-              <p>{{ $t('song.loginMsg') }}</p>
-            </div>
+
             <!-- Sort Comments -->
             <select
               class="block mt-6 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
@@ -102,13 +100,10 @@
         </ul>
       </section>
     </section>
-
-    <AppPlayer />
   </main>
 </template>
 
 <script>
-import AppPlayer from '@/components/AppPlayer.vue'
 import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
 import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
@@ -118,7 +113,6 @@ import helper from '@/includes/helper'
 
 export default {
   name: 'Song',
-  components: { AppPlayer },
   directives: {
     'icon-secondary': iconSecondary
   },

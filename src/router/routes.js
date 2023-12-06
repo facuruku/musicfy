@@ -1,4 +1,5 @@
 import Home from '@/views/HomeView.vue'
+import Auth from '@/views/AuthView.vue'
 import About from '@/views/AboutView.vue'
 import Manage from '@/views/ManageView.vue'
 import Song from '@/views/SongView.vue'
@@ -6,9 +7,17 @@ import Error404 from '@/views/ErrorView.vue'
 
 export const routes = [
   {
+    name: 'auth',
+    path: '/auth',
+    component: Auth
+  },
+  {
     name: 'home',
     path: '/',
-    component: Home
+    component: Home,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     name: 'about',
@@ -34,7 +43,10 @@ export const routes = [
   {
     name: 'song',
     path: '/song/:id',
-    component: Song
+    component: Song,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     name: 'error',

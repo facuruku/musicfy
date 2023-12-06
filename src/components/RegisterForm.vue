@@ -94,7 +94,7 @@
           />
           <i
             @click="togglePassword = !togglePassword"
-            class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
+            class="absolute -right-0 mr-12 p-3 hover:cursor-pointer hover:scale-110"
             :class="{
               'fa-regular fa-eye-slash': !togglePassword,
               'fa-regular fa-eye': togglePassword
@@ -122,7 +122,7 @@
           />
           <i
             @click="toggleConfirmPassword = !toggleConfirmPassword"
-            class="absolute -right-0 mr-6 p-3 hover:cursor-pointer hover:scale-110"
+            class="absolute -right-0 mr-12 p-3 hover:cursor-pointer hover:scale-110"
             :class="{
               'fa-regular fa-eye-slash': !toggleConfirmPassword,
               'fa-regular fa-eye': toggleConfirmPassword
@@ -176,7 +176,7 @@
     <!-- Register Button -->
     <button
       type="submit"
-      class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
+      class="block self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
     >
       {{ $t('auth.button.register') }}
     </button>

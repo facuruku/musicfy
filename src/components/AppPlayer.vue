@@ -48,7 +48,6 @@
       >
         <div
           class="text-white flex lg:flex-col gap-2 lg:gap-0 justify-center items-center sm:items-center lg:items-start font-circular-thin h-8 lg:h-16 w-56 sm:w-auto"
-          v-show="playerHasSong"
         >
           <p class="song-title overflow-x-clip text-ellipsis">
             {{ currentSong.modified_name }}

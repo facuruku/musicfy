@@ -8,17 +8,12 @@
         <a class="underline" href="https://www.spotify.com">www.spotify.com</a>
       </h6>
     </article>
-
-    <AppPlayer />
   </main>
 </template>
 <!-- TODO Create short description of all functionalities and technologies used for this project -->
 
 <script>
-import AppPlayer from '@/components/AppPlayer.vue'
-
 export default {
-  name: 'About',
-  components: { AppPlayer }
+  name: 'About'
 }
 </script>
