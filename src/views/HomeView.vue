@@ -80,9 +80,9 @@ export default {
         .then((document) => {
           this.songsCount = document.data().songsCount ?? 0
         })
-        .catch((error) => {
+        .catch(() => {
           this.songsCount = 0
-          console.error("Error getting user's songs count: ", error)
+          console.error("Error getting user's songs count ")
         })
     },
     handleScroll() {

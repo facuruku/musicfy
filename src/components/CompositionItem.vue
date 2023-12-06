@@ -87,7 +87,14 @@
 </template>
 
 <script>
-import { auth, songsCollection, storage, FieldValue, usersCollection } from '@/includes/firebase'
+import {
+  auth,
+  songsCollection,
+  storage,
+  FieldValue,
+  usersCollection,
+  commentsCollection
+} from '@/includes/firebase'
 
 export default {
   name: 'CompositionItem',
@@ -138,7 +145,6 @@ export default {
   },
   methods: {
     async deleteSong() {
-      //TODO remove comments of same songID from comments collection firebase
       this.in_submission = true
 
       const storageRef = storage.ref()
@@ -153,9 +159,19 @@ export default {
           userDocRef.update({
             songsCount: FieldValue.increment(-1)
           })
+
+          //Delete comments from deleted song
+          commentsCollection
+            .where('songID', '==', this.song.docID)
+            .get()
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                doc.ref.delete()
+              })
+            })
         })
-        .catch((error) => {
-          console.error('Error eliminando en el storage', error)
+        .catch(() => {
+          console.error('Error deleting song')
           this.in_submission = false
         })
 
@@ -163,8 +179,8 @@ export default {
         .doc(this.song.docID)
         .delete()
         .then(() => {})
-        .catch((error) => {
-          console.error('Error eliminando en la coleccion', error)
+        .catch(() => {
+          console.error('Error deleting song')
           this.in_submission = false
         })
 

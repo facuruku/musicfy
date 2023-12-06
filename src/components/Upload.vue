@@ -111,11 +111,11 @@ export default {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
             this.uploads[uploadIndex].current_progress = progress
           },
-          (error) => {
+          () => {
             this.uploads[uploadIndex].variant = 'bg-red-400'
             this.uploads[uploadIndex].icon = 'fas fa-times'
             this.uploads[uploadIndex].text_class = 'text-red-400'
-            console.error('Error uploading the song', error)
+            console.error('Error uploading the song')
             return
           },
           async () => {
@@ -156,11 +156,11 @@ export default {
                   songsCount: FieldValue.increment(1)
                 })
               })
-              .catch(async (error) => {
+              .catch(async () => {
                 this.uploads[uploadIndex].variant = 'bg-red-400'
                 this.uploads[uploadIndex].icon = 'fas fa-times'
                 this.uploads[uploadIndex].text_class = 'text-red-400'
-                console.error('Error uploading the song', error)
+                console.error('Error uploading the song')
                 await songRef.delete()
 
                 return
