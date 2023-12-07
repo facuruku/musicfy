@@ -1,4 +1,5 @@
 <!-- TODO: Add email autofocus creating directive v-focus-->
+<!-- COPILOT: como puedo hacer autofocus al usuario en el campo email cuando este formulario se muestra  -->
 <template>
   <div
     class="text-black text-center font-bold p-4 rounded mb-4"
@@ -95,16 +96,12 @@ export default {
       this.login_alert_msg = 'Please wait! Logging in.'
 
       try {
-        const userCredentials = await this.authenticate(values)
+        await this.authenticate(values)
 
-        if (userCredentials?.user?.emailVerified) {
-          this.$refs.loginForm.resetForm()
-          this.login_show_alert = false
-          this.login_in_submission = false
-          this.$emit('login-success')
-        } else {
-          throw new Error('User email is not verified.')
-        }
+        this.$refs.loginForm.resetForm()
+        this.login_show_alert = false
+        this.login_in_submission = false
+        this.$emit('login-success')
       } catch (error) {
         this.login_in_submission = false
         this.login_alert_variant = 'bg-red-500'

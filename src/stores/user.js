@@ -42,7 +42,7 @@ export default defineStore('user', {
         })
     },
     async authenticate(values) {
-      const userCredentials = await auth
+      await auth
         .signInWithEmailAndPassword(values.email, values.password)
         .then((userCredentials) => {
           if (!userCredentials?.user?.emailVerified) {
@@ -51,13 +51,7 @@ export default defineStore('user', {
 
           this.userLoggedIn = true
           this.username = auth.currentUser.displayName
-
-          return userCredentials
         })
-        .catch(() => {
-          console.error("Error on user's authentication")
-        })
-      return userCredentials
     },
     async signOut() {
       await auth.signOut()
