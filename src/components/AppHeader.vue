@@ -19,7 +19,7 @@
         <!-- Navigation Links -->
 
         <!-- Home page -->
-        <li class="md:hover:scale-105">
+        <li v-show="this.userLoggedIn" class="md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'home' }">
             <i class="fa-solid fa-house"></i>
             <span class="hidden md:block"> {{ $t('header.home') }}</span>
