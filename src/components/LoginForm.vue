@@ -95,18 +95,21 @@ export default {
       this.login_alert_msg = 'Please wait! Logging in.'
 
       try {
-        await this.authenticate(values)
+        const userCredentials = await this.authenticate(values)
+
+        if (userCredentials?.user?.emailVerified) {
+          this.$refs.loginForm.resetForm()
+          this.login_show_alert = false
+          this.login_in_submission = false
+          this.$emit('login-success')
+        } else {
+          throw new Error('User email is not verified.')
+        }
       } catch (error) {
         this.login_in_submission = false
         this.login_alert_variant = 'bg-red-500'
         this.login_alert_msg = `User doesn't exist or password is incorrect.`
-        return
       }
-
-      this.$refs.loginForm.resetForm()
-      this.login_show_alert = false
-      this.login_in_submission = false
-      this.$emit('login-success')
     }
   }
 }

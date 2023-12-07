@@ -37,10 +37,10 @@
       </ul>
 
       <!-- Login Form -->
-      <LoginForm v-if="tab === 'login'" @login-success="handleSuccess()" />
+      <LoginForm v-if="tab === 'login'" @login-success="handleLoginSuccess()" />
 
       <!-- Registration Form -->
-      <RegisterForm v-else @register-success="handleSuccess()" />
+      <RegisterForm v-else @register-success="handleRegisterSuccess()" />
     </div>
   </div>
 </template>
@@ -66,8 +66,11 @@ export default {
       this.tab = 'register'
       this.$nextTick(() => document.getElementById('nameField').focus())
     },
-    handleSuccess() {
+    handleLoginSuccess() {
       this.$router.push({ name: 'home' })
+    },
+    handleRegisterSuccess() {
+      //TODO may remove if not necessary
     }
   }
 }

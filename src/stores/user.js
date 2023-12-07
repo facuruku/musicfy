@@ -13,35 +13,51 @@ export default defineStore('user', {
         values.password
       )
 
-      const userData = {
-        name: values.name,
-        email: values.email,
-        birthdate: values.birthdate,
-        country: values.country,
-        phone: values.phone
-      }
+      await auth.currentUser
+        .sendEmailVerification()
+        .then(async () => {
+          const userData = {
+            name: values.name,
+            email: values.email,
+            birthdate: values.birthdate,
+            country: values.country,
+            phone: values.phone
+          }
 
-      // Remove empty optionals fields no need to store in Firestore
-      Object.keys(userData).forEach((key) => {
-        userData[key] ?? delete userData[key]
-      })
+          // Remove empty optionals fields no need to store in Firestore
+          Object.keys(userData).forEach((key) => {
+            userData[key] ?? delete userData[key]
+          })
 
-      await usersCollection.doc(userCredentials.user.uid).set({
-        userData
-      })
+          await usersCollection.doc(userCredentials.user.uid).set({
+            userData
+          })
 
-      await userCredentials.user.updateProfile({
-        displayName: values.name
-      })
-
-      this.userLoggedIn = true
-      this.username = auth.currentUser.displayName
+          await userCredentials.user.updateProfile({
+            displayName: values.name
+          })
+        })
+        .catch(() => {
+          console.error('Error sending email verification')
+        })
     },
     async authenticate(values) {
-      await auth.signInWithEmailAndPassword(values.email, values.password)
+      const userCredentials = await auth
+        .signInWithEmailAndPassword(values.email, values.password)
+        .then((userCredentials) => {
+          if (!userCredentials?.user?.emailVerified) {
+            throw new Error('Email not verified')
+          }
 
-      this.userLoggedIn = true
-      this.username = auth.currentUser.displayName
+          this.userLoggedIn = true
+          this.username = auth.currentUser.displayName
+
+          return userCredentials
+        })
+        .catch(() => {
+          console.error("Error on user's authentication")
+        })
+      return userCredentials
     },
     async signOut() {
       await auth.signOut()

@@ -220,7 +220,8 @@ export default {
       reg_initial_msg: 'Please wait! Your account is being created.',
       reg_error_msg: 'Something went wrong. Please try again later.',
       reg_progress_variant: 'bg-gradient-to-r from-zinc-900 from-0% to-[#5038a0] to-30%',
-      reg_error_variant: 'bg-red-500'
+      reg_error_variant: 'bg-red-500',
+      reg_success_variant: 'bg-[#1ed760]'
     }
   },
   computed: {
@@ -241,8 +242,12 @@ export default {
         return
       }
       this.$refs.registerForm.resetForm()
-      this.reg_show_alert = false
+      this.reg_show_alert = true
       this.reg_in_submission = false
+      this.reg_alert_variant = this.reg_success_variant
+      this.reg_alert_msg =
+        'Account created successfully! Please check you email to verify your account.'
+
       this.$emit('register-success')
     },
     ...mapActions(useUserStore, {
