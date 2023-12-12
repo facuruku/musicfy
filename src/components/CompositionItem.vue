@@ -15,7 +15,7 @@
           @click.prevent="deleteSong"
           :disabled="in_submission"
         >
-          <i class="fa fa-times"></i>
+          <i class="fa-regular fa-trash-can"></i>
         </button>
         <button
           class="ml-1 py-1 px-2 text-sm rounded text-white float-right md:hover:scale-105 md:hover:bg-gray-800"
