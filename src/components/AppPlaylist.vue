@@ -1,14 +1,14 @@
 <template>
   <!-- Playlist header -->
   <section class="mx-4 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin">
-    <div class="container flex justify-between sm:justify-start sm:gap-6">
+    <div class="container flex justify-between items-end sm:gap-6">
       <img
         aria-hidden="false"
         draggable="false"
         loading="eager"
         src="/assets/img/liked-songs-300.webp"
         alt="Liked songs"
-        class="shadow-3xl order-2 sm:order-1 w-28 h-28 sm:w-auto sm:h-auto"
+        class="shadow-3xl order-2 sm:order-1 w-28 h-28 sm:w-max sm:h-max"
         srcset="
           /assets/img/liked-songs-300.webp 150w,
           /assets/img/liked-songs-300.webp 300w,
@@ -21,7 +21,9 @@
         class="text-white main-header-content flex flex-col sm:grow gap-1 sm:gap-4 justify-center items-start order-1"
       >
         <h4 class="text-xs sm:text-base">{{ $t('home.playlist') }}</h4>
-        <h1 class="text-xl sm:text-4xl lg:text-7xl font-circular-black">{{ $t('home.liked') }}</h1>
+        <h1 class="text-xl sm:text-4xl lg:text-7xl font-circular-black text-left">
+          {{ $t('home.liked') }}
+        </h1>
         <p class="text-xs sm:text-base">
           <span class="font-circular-regular">
             {{ username }} º {{ songsCount }} {{ $t('home.songs') }}
@@ -31,7 +33,7 @@
     </div>
   </section>
   <!-- Playlist Content -->
-  <section class="py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh]">
+  <section class="py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50dvh]">
     <button type="button" class="mx-4 sm:mx-8">
       <i
         v-icon.button="!playing ? 'play-circle' : 'pause-circle'"

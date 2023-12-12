@@ -1,8 +1,8 @@
 <template>
   <main class="view-gradient">
     <!-- Music Header -->
-    <section class="relative z-10 w-full px-6 pt-40 pb-6 text-white text-center">
-      <div class="container mx-auto flex items-center">
+    <section class="relative w-full px-6 pt-40 pb-6 text-white text-center">
+      <div class="container flex items-center">
         <!-- Play/Pause Button -->
         <button @click.prevent="play(song)" type="button">
           <i
@@ -10,7 +10,7 @@
             class="text-[#1ed760] text-8xl bg-black rounded-full"
           ></i>
         </button>
-        <div class="z-50 text-left px-4">
+        <div class="text-left px-4">
           <!-- Song Info -->
           <div class="text-sm font-circular-black">{{ $t('song.viewTitle') }}</div>
           <div class="text-2xl md:text-4xl lg:text-6xl font-circular-black">
@@ -27,7 +27,7 @@
     <!-- Comments -->
     <section
       id="comments"
-      class="relative z-10 py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
+      class="relative py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
     >
       <!-- Form -->
       <section>
@@ -77,7 +77,7 @@
       </section>
       <!-- Comments -->
       <section>
-        <ul class="z-10 px-6 font-circular-thin min-h-[50vh] text-white">
+        <ul class="px-6 font-circular-thin min-h-[50vh] text-white">
           <li class="p-6 border border-slate-500" v-if="comments.length === 0">
             {{ $t('song.noComments') }}
             <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>

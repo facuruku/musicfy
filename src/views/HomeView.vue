@@ -1,20 +1,18 @@
 <template>
   <main class="view-gradient">
     <AppPlaylist :songs="songs" :songsCount="songsCount" />
-    <AppPlayer />
   </main>
 </template>
 
 <script>
 import AppPlaylist from '@/components/AppPlaylist.vue'
-import AppPlayer from '@/components/AppPlayer.vue'
 import { songsCollection, auth, usersCollection } from '@/includes/firebase'
 import { mapState } from 'pinia'
 import useUserStore from '@/stores/user'
 
 export default {
   name: 'Home',
-  components: { AppPlaylist, AppPlayer },
+  components: { AppPlaylist },
   data() {
     return {
       songs: [],

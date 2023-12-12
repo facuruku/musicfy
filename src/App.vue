@@ -1,11 +1,13 @@
 <template>
-  <AppHeader />
-  <RouterView v-slot="{ Component }">
-    <Transition name="fade" mode="out-in">
-      <component :is="Component"></component>
-    </Transition>
-  </RouterView>
-  <AppPlayer v-if="userLoggedIn" />
+  <div class="flex flex-col min-h-screen">
+    <AppHeader />
+    <RouterView v-slot="{ Component }" class="overflow-auto">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component"></component>
+      </Transition>
+    </RouterView>
+    <AppPlayer v-if="userLoggedIn" />
+  </div>
 </template>
 
 <script>
