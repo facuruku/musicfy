@@ -10,12 +10,12 @@
       id="index"
       class="hidden sm:table-cell rounded-l-md"
       :class="{ 'text-green-500': inPlayer, 'text-secondary': !inPlayer }"
+      @click.prevent="inPlayer ? toggleAudio() : play(song)"
     >
-      <div class="hidden sm:flex justify-center items-center">
+      <div class="flex justify-center items-center">
         <i
           class="!hidden group-hover:!block fa-solid text-white text-sm"
           :class="{ 'fa-pause ': playing, 'fa-play': !playing }"
-          @click.prevent="inPlayer ? toggleAudio() : play(song)"
         ></i>
         <p v-if="!playing" class="group-hover:hidden">
           {{ index + 1 }}
