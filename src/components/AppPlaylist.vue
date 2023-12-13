@@ -80,8 +80,6 @@
             :key="song.docID"
             :song="song"
             :index="index"
-            :in-player="isSongInPlayer(song)"
-            :playing="isSongPlaying(song)"
             :is-selected="isSongSelected(song.docID)"
             @click="selectSong(song.docID)"
             @double-click="handleDblClick(song)"
@@ -125,13 +123,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePlayerStore, [
-      'playing',
-      'songInPlayer',
-      'isSongInPlayer',
-      'isSongPlaying',
-      'playerHasSong'
-    ]),
+    ...mapState(usePlayerStore, ['playing', 'playerHasSong']),
     ...mapState(useUserStore, ['username'])
   },
   methods: {

@@ -88,13 +88,10 @@ export default defineStore('player', {
       }
       return false
     },
-    isSongInPlayer: (state) => (song) => {
-      return state.currentSong && state.currentSong === song
+    getCurrentSong: (state) => {
+      return state.currentSong
     },
-    isSongPlaying: (state) => (song) => {
-      if (!state.isSongInPlayer(song)) {
-        return false
-      }
+    isPlaying: (state) => {
       return state.playing
     },
     playerHasSong: (state) => {

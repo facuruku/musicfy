@@ -9,15 +9,15 @@
     <td
       id="index"
       class="hidden sm:table-cell rounded-l-md"
-      :class="{ 'text-green-500': inPlayer, 'text-secondary': !inPlayer }"
-      @click.prevent="inPlayer ? toggleAudio() : play(song)"
+      :class="{ 'text-green-500': isSongInPlayer, 'text-secondary': !isSongInPlayer }"
+      @click.prevent="isSongInPlayer ? toggleAudio() : play(song)"
     >
       <div class="flex justify-center items-center">
         <i
           class="!hidden group-hover:!block fa-solid text-white text-sm"
-          :class="{ 'fa-pause ': playing, 'fa-play': !playing }"
+          :class="{ 'fa-pause ': isSongPlaying, 'fa-play': !isSongPlaying }"
         ></i>
-        <p v-if="!playing" class="group-hover:hidden">
+        <p v-if="!isSongPlaying" class="group-hover:hidden">
           {{ index + 1 }}
         </p>
         <img
@@ -35,7 +35,7 @@
       >
         <span
           class="overflow-x-clip text-ellipsis"
-          :class="{ 'text-white': !inPlayer, 'text-green-500': inPlayer }"
+          :class="{ 'text-white': !isSongInPlayer, 'text-green-500': isSongInPlayer }"
         >
           {{ song.modified_name }}
         </span>
@@ -64,8 +64,8 @@
         <i class="!hidden sm:!block fa-solid fa-heart text-green-500"></i>
         <i
           class="sm:!hidden fa-solid text-white text-xl"
-          :class="{ 'fa-pause': playing, 'fa-play': !playing }"
-          @click.prevent="inPlayer ? toggleAudio() : play(song)"
+          :class="{ 'fa-pause': isSongPlaying, 'fa-play': !isSongPlaying }"
+          @click.prevent="isSongInPlayer ? toggleAudio() : play(song)"
         ></i>
 
         <p class="hidden sm:block w-9">{{ getDuration() }}</p>
@@ -76,7 +76,7 @@
 
 <script>
 import helper from '@/includes/helper'
-import { mapActions } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import usePlayerStore from '@/stores/player'
 import { RouterLink } from 'vue-router'
 export default {
@@ -90,20 +90,21 @@ export default {
       type: Number,
       required: true
     },
-    inPlayer: {
-      type: Boolean,
-      required: true
-    },
-    playing: {
-      type: Boolean,
-      required: true
-    },
     isSelected: {
       type: Boolean,
       required: true
     }
   },
   emits: ['double-click'],
+  computed: {
+    ...mapState(usePlayerStore, ['getCurrentSong', 'isPlaying']),
+    isSongInPlayer() {
+      return this.getCurrentSong.docID === this.song.docID
+    },
+    isSongPlaying() {
+      return this.isSongInPlayer && this.isPlaying
+    }
+  },
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
     getDuration() {
