@@ -38,11 +38,11 @@ export default {
 }
 
 .fade-enter-active {
-  transition: opacity 200ms ease-out;
+  transition: opacity 100ms ease-out;
 }
 
 .fade-leave-to {
-  transition: opacity 200ms ease-out;
+  transition: opacity 250ms ease-out;
   opacity: 0;
 }
 </style>
