@@ -15,7 +15,8 @@
     "title": "Título",
     "genre": "Género",
     "comments": "Comentarios",
-    "unknown": "Desconocido"
+    "unknown": "Desconocido",
+    "emptyPlaylist": "Tu lista de reproducción está vacía. ¡Añade canciones!"
   },
   "manage": {
     "upload": "Subir",

@@ -14,7 +14,7 @@
         <div class="p-6">
           <!-- Composition Items -->
           <div v-if="songs.length === 0">
-            <p class="text-center">Playlist empty.</p>
+            <p class="text-center">{{ $t('home.emptyPlaylist') }}</p>
           </div>
           <CompositionItem
             v-else

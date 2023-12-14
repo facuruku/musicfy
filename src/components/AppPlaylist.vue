@@ -89,7 +89,7 @@
         <tfoot>
           <tr>
             <td colspan="5">
-              <span v-if="songs.length === 0">Empty playlist. Go to Manage to add some more</span>
+              <span v-if="songs.length === 0">{{ $t('home.emptyPlaylist') }}</span>
             </td>
           </tr>
         </tfoot>

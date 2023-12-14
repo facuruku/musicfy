@@ -15,7 +15,8 @@
     "title": "Title",
     "genre": "Genre",
     "comments": "Comments",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "emptyPlaylist": "Your playlist is empty, add some songs!"
   },
   "manage": {
     "upload": "Upload",
