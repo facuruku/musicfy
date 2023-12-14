@@ -60,11 +60,11 @@ export default {
   methods: {
     handleLoginTab() {
       this.tab = 'login'
-      this.$nextTick(() => document.getElementById('emailField').focus())
+      this.$nextTick(() => document.getElementById('email').focus())
     },
     handleRegisterTab() {
       this.tab = 'register'
-      this.$nextTick(() => document.getElementById('nameField').focus())
+      this.$nextTick(() => document.getElementById('name').focus())
     },
     handleLoginSuccess() {
       this.$router.push({ name: 'home' })

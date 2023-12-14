@@ -1,5 +1,6 @@
 import Home from '@/views/HomeView.vue'
 import Auth from '@/views/AuthView.vue'
+import ResetPassword from '@/views/ResetPasswordView.vue'
 import About from '@/views/AboutView.vue'
 import Manage from '@/views/ManageView.vue'
 import Song from '@/views/SongView.vue'
@@ -10,6 +11,11 @@ export const routes = [
     name: 'auth',
     path: '/auth',
     component: Auth
+  },
+  {
+    name: 'resetPassword',
+    path: '/auth/resetPassword',
+    component: ResetPassword
   },
   {
     name: 'home',

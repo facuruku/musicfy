@@ -40,7 +40,8 @@
     },
     "button": {
       "login": "Acceder",
-      "register": "Crear cuenta"
+      "register": "Crear cuenta",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
     },
     "form": {
       "mandatoryTooltip": "Campo obligatorio",
@@ -57,6 +58,17 @@
       "countryLabel": "País",
       "accept": "Acepto los {0}",
       "tos": "Términos y condiciones"
+    }
+  },
+  "resetPassword": {
+    "title": "Restablecer contraseña",
+    "description": "Introduce la dirección de correo electrónico que usaste en el registro. Te enviaremos un correo con un enlace para restablecer tu contraseña.",
+    "emailSentMsg": "Te hemos enviado un correo electrónico. Solo tienes que seguir las instrucciones para restablecer tu contraseña.",
+    "form": {
+      "emailLabel": "Email",
+      "emailPlaceholder": "tu{'@'}email.com",
+      "button": "Enviar",
+      "error": " ¡Vaya! Algo no ha ido como debía. Por favor, prueba de nuevo."
     }
   },
   "song": {

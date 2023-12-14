@@ -57,6 +57,9 @@ export default defineStore('user', {
       await auth.signOut()
       this.userLoggedIn = false
       this.username = 'Anonymous'
+    },
+    async resetPassword(email) {
+      await auth.sendPasswordResetEmail(email)
     }
   }
 })

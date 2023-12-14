@@ -40,7 +40,8 @@
     },
     "button": {
       "login": "Login",
-      "register": "Create account"
+      "register": "Create account",
+      "forgotPassword": "Forgot password?"
     },
     "form": {
       "mandatoryTooltip": "Mandatory field",
@@ -57,6 +58,17 @@
       "countryLabel": "Country",
       "accept": "I agree with the {0}",
       "tos": "Terms of Service"
+    }
+  },
+  "resetPassword": {
+    "title": "Password Reset",
+    "description": "Enter the email address that you used to register. We'll send you an email with a link to reset your password.",
+    "emailSentMsg": "We've sent you an email. Just follow the instructions to reset your password.",
+    "form": {
+      "emailLabel": "Email",
+      "emailPlaceholder": "Your email",
+      "button": "Send",
+      "error": " Oops! Something went wrong, please try again."
     }
   },
   "song": {

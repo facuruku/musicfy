@@ -18,9 +18,9 @@
   >
     <!-- Email -->
     <div class="mb-3">
-      <label class="inline-block mb-2">Email</label>
+      <label for="email" class="inline-block mb-2">Email</label>
       <VeeField
-        id="emailField"
+        id="email"
         name="email"
         type="email"
         class="block w-full py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
@@ -32,7 +32,7 @@
     </div>
     <!-- Password -->
     <div class="mb-3">
-      <label class="inline-block mb-2">{{ $t('auth.form.passwordLabel') }}</label>
+      <label for="password" class="inline-block mb-2">{{ $t('auth.form.passwordLabel') }}</label>
       <VeeField name="password" :bails="false" v-slot="{ field, errors }">
         <div class="flex items-center">
           <input
@@ -57,21 +57,34 @@
     </div>
     <button
       type="submit"
-      class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
+      class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 mb-3 rounded-full transition hover:scale-105"
       :disabled="login_in_submission"
     >
       {{ $t('auth.button.login') }}
     </button>
+    <div class="text-center underline">
+      <RouterLink :to="{ name: 'resetPassword' }">
+        <span>{{ $t('auth.button.forgotPassword') }}</span>
+      </RouterLink>
+    </div>
   </VeeForm>
 </template>
 
 <script>
 import { mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
+import { ErrorMessage, Field as VeeField, Form as VeeForm } from 'vee-validate'
+import { RouterLink } from 'vue-router'
 
 export default {
   name: 'LoginForm',
   emits: ['login-success'],
+  components: {
+    ErrorMessage,
+    VeeField,
+    VeeForm,
+    RouterLink
+  },
   data() {
     return {
       tab: 'login',
