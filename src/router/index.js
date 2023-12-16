@@ -12,6 +12,11 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.meta.requiresAuth
   const store = useUserStore()
 
+  if (to.name === 'auth' && store.userLoggedIn) {
+    next({ name: 'home' })
+    return
+  }
+
   if (!requiresAuth || store.userLoggedIn) {
     next()
     return
