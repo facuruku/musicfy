@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <AppHeader class="Header rounded-b-xl" />
-    <RouterView v-slot="{ Component }" class="Main rounded-xl">
+    <AppHeader class="Header rounded-b-lg" />
+    <RouterView v-slot="{ Component }" class="Main rounded-lg">
       <Transition name="fade" mode="out-in">
         <component :is="Component"></component>
       </Transition>
     </RouterView>
-    <AppPlayer v-if="userLoggedIn" class="Footer rounded-t-xl" />
-    <div v-else class="Footer bg-black"></div>
+    <AppPlayer v-if="userLoggedIn" class="Player" />
+    <div v-else class="Player bg-black"></div>
   </div>
 </template>
 
@@ -40,11 +40,11 @@ export default {
   height: 100dvh;
   grid-template-columns: 1fr;
   grid-template-rows: 0.2fr 2.4fr 0.4fr;
-  gap: 0px 0px;
+  gap: 5px 0px;
   grid-template-areas:
-    'Header Header Header'
-    'Main Main Main'
-    'Player Player Player';
+    'Header'
+    'Main'
+    'Player';
 }
 
 .Header {
