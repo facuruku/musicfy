@@ -1,7 +1,5 @@
 <template>
-  <main class="overflow-y-scroll">
-    <AuthModal />
-  </main>
+  <AuthModal />
 </template>
 
 <script>

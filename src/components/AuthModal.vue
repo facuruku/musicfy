@@ -1,15 +1,18 @@
+<!-- Auth Modal -->
 <template>
-  <!-- Auth Modal -->
-  <div class="grid place-content-center h-[92dvh] bg-neutral-950" id="modal">
+  <main
+    class="grid justify-center items-center sm:p-2 h-full bg-gradient overflow-y-scroll"
+    id="modal"
+  >
     <div
-      class="flex flex-col bg-black rounded-lg w-96 text-left text-white overflow-hidden py-10 px-12 shadow-xl transform transition-all"
+      class="flex flex-col justify-center bg-black sm:rounded-lg w-screen sm:w-96 h-full sm:h-auto text-left text-white py-10 px-12 md:shadow-lg shadow-white transform transition-all"
     >
       <!-- Add margin if you want to see some of the overlay behind the modal-->
       <!--Title-->
       <p class="text-2xl font-bold pb-4">{{ $t('auth.account') }}</p>
 
       <!-- Tabs -->
-      <ul class="flex flex-wrap mb-4 gap-4 pb-4">
+      <ul class="flex flex-wrap mb-4 gap-4 pb-2">
         <li class="flex-auto text-center">
           <button
             class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
@@ -42,7 +45,7 @@
       <!-- Registration Form -->
       <RegisterForm v-else @register-success="handleRegisterSuccess()" />
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

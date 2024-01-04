@@ -1,6 +1,6 @@
 <template>
   <!-- Header -->
-  <header id="header" class="bg-[#18181b] font-circular-black font-semibold">
+  <header id="header" class="bg-black font-circular-black font-semibold">
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
       <RouterLink
