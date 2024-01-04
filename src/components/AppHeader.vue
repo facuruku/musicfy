@@ -1,6 +1,6 @@
 <template>
   <!-- Header -->
-  <header id="header" class="w-full h-[8dvh] bg-black font-circular-black font-semibold">
+  <header id="header" class="bg-[#18181b] font-circular-black font-semibold text-gray-500">
     <nav class="flex items-center justify-between py-5 px-10">
       <!-- Home link -->
       <RouterLink
@@ -12,11 +12,11 @@
       </RouterLink>
 
       <!-- Primary Navigation -->
-      <ul class="flex gap-2 items-center text-white text-base">
+      <ul class="flex gap-2 items-center text-gray-300 text-base">
         <!-- Navigation Links -->
 
         <!-- Home page -->
-        <li v-show="this.userLoggedIn" class="md:hover:scale-105">
+        <li v-show="this.userLoggedIn" class="hover:text-white md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'home' }">
             <i class="fa-solid fa-house"></i>
             <span class="hidden md:block"> {{ $t('header.home') }}</span>
@@ -24,7 +24,7 @@
         </li>
 
         <!-- About page -->
-        <li class="md:hover:scale-105">
+        <li class="hover:text-white md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'about' }">
             <i class="fa-regular fa-circle-question"></i>
             <span class="hidden md:block">{{ $t('header.about') }}</span>
@@ -32,7 +32,7 @@
         </li>
 
         <!-- Settings icon -->
-        <li v-show="this.userLoggedIn" class="md:hover:scale-105">
+        <li v-show="this.userLoggedIn" class="hover:text-white md:hover:scale-105">
           <RouterLink class="flex items-center gap-1" :to="{ name: 'manage' }"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@
         </li>
 
         <!-- User icon -->
-        <li class="md:hover:scale-105">
+        <li class="hover:text-white md:hover:scale-105">
           <template v-if="!userLoggedIn">
             <RouterLink class="flex items-center gap-1" :to="{ name: 'auth' }">
               <i class="fa-regular fa-user"></i>
@@ -75,7 +75,7 @@
         </li>
 
         <!-- Install app -->
-        <li class="md:hover:scale-105">
+        <li class="hover:text-white md:hover:scale-105">
           <a
             class="flex items-center gap-1"
             href="https://www.spotify.com/es/download/"
@@ -87,7 +87,7 @@
         </li>
 
         <!-- Language -->
-        <li class="md:hover:scale-105">
+        <li class="hover:text-white md:hover:scale-105">
           <img
             draggable="false"
             loading="eager"

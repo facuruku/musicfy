@@ -1,9 +1,9 @@
 <template>
-  <main class="view-gradient">
+  <main class="bg-zinc-950">
     <!-- Manage Main Content -->
 
-    <div class="md:grid md:grid-cols-3 md:gap-4 px-20 pt-32 py-1 mb-24">
-      <AppUpload ref="upload" :addSong="addSong" />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-5 md:gap-5 grid-rows-1 mx-5 md:mx-10 my-5">
+      <AppUpload class="" ref="upload" :addSong="addSong" />
       <section
         class="col-span-2 bg-neutral-900 rounded-lg shadow-inner shadow-slate-500 relative flex flex-col text-white"
       >

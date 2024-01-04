@@ -1,8 +1,8 @@
 <template>
   <!-- Auth Modal -->
-  <div class="grid place-content-center min-h-screen" id="modal">
+  <div class="grid place-content-center h-[92dvh] bg-neutral-950" id="modal">
     <div
-      class="flex flex-col bg-neutral-950 rounded-lg w-96 text-left text-white overflow-hidden py-10 px-12 shadow-xl transform transition-all"
+      class="flex flex-col bg-black rounded-lg w-96 text-left text-white overflow-hidden py-10 px-12 shadow-xl transform transition-all"
     >
       <!-- Add margin if you want to see some of the overlay behind the modal-->
       <!--Title-->

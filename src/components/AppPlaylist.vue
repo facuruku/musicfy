@@ -1,6 +1,6 @@
 <template>
   <!-- Playlist header -->
-  <section class="mx-4 pt-32 sm:pt-40 pb-6 text-white text-center font-circular-thin">
+  <section class="mx-4 pt-32 pb-6 text-white text-center font-circular-thin">
     <div class="container flex justify-between items-end sm:gap-6">
       <img
         aria-hidden="false"
@@ -33,7 +33,7 @@
     </div>
   </section>
   <!-- Playlist Content -->
-  <section class="py-5 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50dvh]">
+  <section class="py-5 bg-zinc-900 bg-opacity-30 font-circular-thin">
     <button type="button" class="mx-4 sm:mx-8">
       <i
         v-icon.button="!playing ? 'play-circle' : 'pause-circle'"
@@ -44,7 +44,7 @@
 
     <!-- Playlist -->
     <div class="mx-4 sm:mx-8 mt-4">
-      <table id="playlist" class="w-full text-left mb-40">
+      <table id="playlist" class="w-full text-left">
         <thead class="border-b border-zinc-400 border-opacity-10 secondary-text">
           <tr>
             <th class="hidden sm:table-cell px-4 sm:w-8 font-light">#</th>

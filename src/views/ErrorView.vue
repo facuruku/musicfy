@@ -1,5 +1,5 @@
 <template>
-  <main class="view-gradient">
+  <main class="bg-gradient">
     <div class="flex flex-col gap-5 justify-center items-center pt-32">
       <h1>Melody not found</h1>
       <h4>We didn't found the page you are looking for</h4>

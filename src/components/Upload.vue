@@ -10,7 +10,7 @@
       <div class="p-6">
         <!-- Upload Dropbox -->
         <div
-          class="hidden sm:block w-full px-10 py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-zinc-700 hover:border-solid"
+          class="w-full px-5 py-10 md:px-10 lg:py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-zinc-700 hover:border-solid"
           :class="{ 'bg-zinc-700 text-white border border-solid': is_dragover }"
           @drag.prevent.stop=""
           @dragstart.prevent.stop=""
@@ -31,7 +31,7 @@
           multiple
           ref="inputFile"
           @change="upload($event)"
-          class="md:hidden w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:font-semibold file:bg-green-500 hover:file:bg-green-400 bg-gray-800 hover:cursor-pointer"
+          class="hidden w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:font-semibold file:bg-green-500 hover:file:bg-green-400 bg-gray-800 hover:cursor-pointer"
         />
         <hr class="my-6 border-slate-400" />
         <!-- Progess Bars -->

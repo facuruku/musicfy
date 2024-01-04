@@ -24,10 +24,7 @@ a:hover {
   text-decoration: none;
 }
 
-.view-gradient {
-  width: 100%;
-  min-height: 80dvh;
-  max-height: 80dvh;
+.bg-gradient {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
   --tw-gradient-from: #18181b var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(24 24 27 / 0) var(--tw-gradient-to-position);

@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="overflow-y-scroll">
     <AuthModal />
   </main>
 </template>

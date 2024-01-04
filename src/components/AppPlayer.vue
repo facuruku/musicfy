@@ -1,7 +1,7 @@
 <template>
   <!-- Player -->
   <footer
-    class="w-full h-[12dvh] bg-black px-8 py-2 flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
+    class="w-full bg-black p-8 flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
   >
     <!-- Buttons - Progress bar -->
     <section class="text-white flex flex-col items-center flex-1 font-circular-thin lg:order-2">

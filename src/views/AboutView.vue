@@ -1,12 +1,12 @@
 <template>
-  <main class="view-gradient">
-    <article class="pt-40 text-white text-center font-circular-thin">
-      <h1 class="">About musicfy</h1>
-      <h4>This application is for educational purposes only</h4>
-      <h6>
+  <main class="grid place-content-center bg-neutral-950">
+    <article class="text-white text-center font-circular-thin">
+      <h1 class="font-circular-black text-4xl">About musicfy</h1>
+      <h2>This application is for educational purposes only</h2>
+      <p>
         To see the real Spotify visit
         <a class="underline" href="https://www.spotify.com">www.spotify.com</a>
-      </h6>
+      </p>
     </article>
   </main>
 </template>

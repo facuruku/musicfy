@@ -1,5 +1,5 @@
 <template>
-  <main class="view-gradient">
+  <main class="bg-gradient">
     <!-- Music Header -->
     <section class="relative w-full px-6 pt-40 pb-6 text-white text-center">
       <div class="container flex items-center">

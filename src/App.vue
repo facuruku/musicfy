@@ -1,12 +1,13 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <AppHeader />
-    <RouterView v-slot="{ Component }" class="overflow-auto">
+  <div class="wrapper">
+    <AppHeader class="Header rounded-b-xl" />
+    <RouterView v-slot="{ Component }" class="Main rounded-xl">
       <Transition name="fade" mode="out-in">
         <component :is="Component"></component>
       </Transition>
     </RouterView>
-    <AppPlayer v-if="userLoggedIn" />
+    <AppPlayer v-if="userLoggedIn" class="Footer rounded-t-xl" />
+    <div v-else class="Footer bg-black"></div>
   </div>
 </template>
 
@@ -33,6 +34,29 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: grid;
+  background-color: black;
+  height: 100dvh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 2.4fr 0.4fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'Header Header Header'
+    'Main Main Main'
+    'Player Player Player';
+}
+
+.Header {
+  grid-area: Header;
+}
+.Main {
+  grid-area: Main;
+  overflow-y: auto;
+}
+.Player {
+  grid-area: Player;
+}
 .fade-enter-from {
   opacity: 0;
 }
