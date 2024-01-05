@@ -5,20 +5,20 @@
       class="border border-slate-500 p-3 mb-4 w-full rounded flex justify-between items-center gap-5"
     >
       <h4
-        class="inline-block text-base md:text-2xl lg:text-3xl font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+        class="w-full text-base md:text-2xl lg:text-3xl font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
       >
         {{ song.modified_name }}
       </h4>
-      <div class="">
+      <div class="w-24">
         <button
-          class="ml-1 py-1 px-2 text-sm rounded text-red-600 float-right md:hover:scale-105 md:hover:bg-gray-800"
+          class="w-8 h-8 text-sm rounded text-red-600 float-right md:hover:scale-105 md:hover:bg-gray-800"
           @click.prevent="deleteSong"
           :disabled="in_submission"
         >
           <i class="fa-regular fa-trash-can"></i>
         </button>
         <button
-          class="ml-1 py-1 px-2 text-sm rounded text-white float-right md:hover:scale-105 md:hover:bg-gray-800"
+          class="w-8 h-8 text-sm rounded text-white float-right md:hover:scale-105 md:hover:bg-gray-800"
           @click="showForm = true"
         >
           <i class="fa-solid fa-pen-to-square"></i>
