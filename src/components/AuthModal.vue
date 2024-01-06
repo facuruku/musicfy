@@ -2,17 +2,17 @@
 <template>
   <main class="grid justify-center items-center sm:p-2 h-full bg-gradient" id="modal">
     <div
-      class="flex flex-col justify-center bg-black sm:rounded-lg w-screen sm:w-96 h-full sm:h-auto text-left text-white py-10 px-12 md:shadow-lg shadow-white transform transition-all"
+      class="flex flex-col justify-center bg-black sm:rounded-lg w-96 h-full sm:h-auto text-left text-white py-10 px-12 md:shadow-lg shadow-white transform transition-all"
     >
       <!-- Add margin if you want to see some of the overlay behind the modal-->
       <!--Title-->
       <p class="text-2xl font-bold pb-4">{{ $t('auth.account') }}</p>
 
       <!-- Tabs -->
-      <ul class="flex flex-wrap mb-4 gap-4 pb-2">
+      <ul class="flex flex-wrap mb-4 gap-4">
         <li class="flex-auto text-center">
           <button
-            class="w-full rounded-full border border-gray-300 p-2 transition font-bold"
+            class="w-full rounded-full p-2 transition font-bold"
             @click.prevent="handleLoginTab()"
             :class="{
               'text-black bg-[#1ed760]': tab === 'login',
