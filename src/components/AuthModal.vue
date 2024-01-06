@@ -1,7 +1,7 @@
 <!-- Auth Modal -->
 <template>
   <main
-    class="grid justify-center items-center sm:p-2 h-full bg-gradient overflow-y-scroll"
+    class="grid justify-center items-center sm:p-2 h-full bg-gradient overflow-x-hidden overflow-y-scroll"
     id="modal"
   >
     <div
