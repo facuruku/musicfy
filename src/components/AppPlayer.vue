@@ -89,7 +89,7 @@
 import { mapState, mapWritableState, mapActions } from 'pinia'
 import usePlayerStore from '@/stores/player'
 import Slider from 'primevue/slider'
-import helper from '@/includes/helper'
+import { formatTime } from '@/includes/helper'
 
 export default {
   name: 'AppPlayer',
@@ -125,7 +125,7 @@ export default {
 
       const seconds = this.duration * percentage
 
-      this.seek = helper.formatTime(seconds)
+      this.seek = formatTime(seconds)
     },
     handleSliderChange(playerProgress) {
       this.isDragging = true

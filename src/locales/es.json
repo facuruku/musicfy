@@ -9,6 +9,9 @@
     "install": "Instalar app"
   },
   "home": {
+    "morningGreeting": "¡Buenos días!",
+    "afternoonGreeting": "¡Buenas tardes!",
+    "nightGreeting": "¡Buenas noches!",
     "playlist": "Lista",
     "liked": "Canciones que me gustan",
     "songs": "canciones",

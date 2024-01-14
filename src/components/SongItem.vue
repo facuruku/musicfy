@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import helper from '@/includes/helper'
+import { formatTime } from '@/includes/helper'
 import { mapActions, mapState } from 'pinia'
 import usePlayerStore from '@/stores/player'
 import { RouterLink } from 'vue-router'
@@ -108,7 +108,7 @@ export default {
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
     getDuration() {
-      return helper.formatTime(this.song.duration ?? 0)
+      return formatTime(this.song.duration ?? 0)
     },
     handleDblClick(song) {
       this.$emit('double-click')

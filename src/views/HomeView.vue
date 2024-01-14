@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-gradient">
+  <main class="">
     <AppPlaylist :songs="songs" :songsCount="songsCount" />
   </main>
 </template>

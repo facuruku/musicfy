@@ -9,6 +9,9 @@
     "install": "Install app"
   },
   "home": {
+    "morningGreeting": "Good morning!",
+    "afternoonGreeting": "Good afternoon!",
+    "nightGreeting": "Good night!",
     "playlist": "Playlist",
     "liked": "Liked Songs",
     "songs": "songs",

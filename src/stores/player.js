@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { Howl } from 'howler'
-import helper from '@/includes/helper'
+import { formatTime } from '@/includes/helper'
 
 export default defineStore('player', {
   state: () => ({
@@ -32,7 +32,7 @@ export default defineStore('player', {
 
       this.sound.on('play', () => {
         this.duration = this.sound.duration()
-        this.displayDuration = helper.formatTime(this.duration)
+        this.displayDuration = formatTime(this.duration)
         requestAnimationFrame(this.progress)
       })
     },
@@ -49,7 +49,7 @@ export default defineStore('player', {
     },
     progress() {
       if (!this.isDragging) {
-        this.seek = helper.formatTime(this.sound.seek())
+        this.seek = formatTime(this.sound.seek())
         this.playerProgress = (this.sound.seek() / this.sound.duration()) * 100
       }
 

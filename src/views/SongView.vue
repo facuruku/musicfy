@@ -1,18 +1,21 @@
 <template>
-  <main class="bg-gradient">
+  <main class="flex flex-col">
     <!-- Music Header -->
-    <section class="relative w-full px-6 pt-40 pb-6 text-white text-center">
-      <div class="container flex items-center">
+    <section class="w-full px-6 pb-10 text-white bg-gradient-1">
+      <h1 class="pt-10 pb-10 font-circular-black text-xl sm:text-2xl lg:text-4xl">
+        {{ greeting() }}
+      </h1>
+      <div class="w-full flex items-center">
         <!-- Play/Pause Button -->
         <button @click.prevent="play(song)" type="button">
           <i
             v-icon-secondary="{ icon: 'play-circle', button: true }"
-            class="text-[#1ed760] text-8xl bg-black rounded-full"
+            class="text-[#1ed760] text-5xl sm:text-8xl bg-black rounded-full"
           ></i>
         </button>
         <div class="text-left px-4">
           <!-- Song Info -->
-          <div class="text-sm font-circular-black">{{ $t('song.viewTitle') }}</div>
+          <h2 class="text-lg font-circular-black">{{ $t('song.viewTitle') }}</h2>
           <div class="text-2xl md:text-4xl lg:text-6xl font-circular-black">
             {{ song.modified_name }}
           </div>
@@ -25,59 +28,54 @@
     </section>
 
     <!-- Comments -->
-    <section
-      id="comments"
-      class="relative py-5 mb-20 bg-zinc-900 bg-opacity-30 font-circular-thin min-h-[50vh] text-white"
-    >
+    <section class="flex-1 py-5 font-circular-thin text-white bg-gradient-2" id="comments">
       <!-- Form -->
-      <section>
-        <div class="flex flex-col">
-          <div class="px-6 pt-6 pb-5 font-bold border-b border-slate-500">
-            <!-- Comment Count -->
-            <span class="card-title">{{
-              $tc('song.commentCount', { count: song.comment_count })
-            }}</span>
-            <i class="fa-regular fa-comment float-right text-2xl"></i>
-          </div>
-          <div class="p-6">
-            <div
-              class="text-white text-center p-4 mb-4"
-              v-if="comment_show_alert"
-              :class="comment_alert_variant"
-            >
-              {{ comment_alert_msg }}
-            </div>
-            <VeeForm :validation-schema="schema" @submit="publishComment">
-              <VeeField
-                as="textarea"
-                name="comment"
-                class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded mb-4"
-                :placeholder="$t('song.commentPlaceholder')"
-              ></VeeField>
-              <ErrorMessage class="text-red-600" name="comment" />
-              <button
-                type="submit"
-                class="py-1.5 px-3 rounded text-white bg-green-600 block"
-                :disabled="comment_in_submission"
-              >
-                {{ $t('song.publish') }}
-              </button>
-            </VeeForm>
-
-            <!-- Sort Comments -->
-            <select
-              class="block mt-6 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
-              v-model="sort"
-            >
-              <option value="1">{{ $t('song.latest') }}</option>
-              <option value="2">{{ $t('song.oldest') }}</option>
-            </select>
-          </div>
+      <div class="">
+        <div class="px-6 pb-5 font-bold border-b border-slate-500">
+          <!-- Comment Count -->
+          <span class="card-title">{{
+            $tc('song.commentCount', { count: song.comment_count })
+          }}</span>
+          <i class="fa-regular fa-comment float-right text-2xl"></i>
         </div>
-      </section>
+        <div class="p-6">
+          <div
+            class="text-white text-center p-4 mb-4"
+            v-if="comment_show_alert"
+            :class="comment_alert_variant"
+          >
+            {{ comment_alert_msg }}
+          </div>
+          <VeeForm :validation-schema="schema" @submit="publishComment">
+            <VeeField
+              as="textarea"
+              name="comment"
+              class="block w-full py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded mb-4"
+              :placeholder="$t('song.commentPlaceholder')"
+            ></VeeField>
+            <ErrorMessage class="text-red-600" name="comment" />
+            <button
+              type="submit"
+              class="py-1.5 px-3 rounded text-white bg-green-600 block"
+              :disabled="comment_in_submission"
+            >
+              {{ $t('song.publish') }}
+            </button>
+          </VeeForm>
+
+          <!-- Sort Comments -->
+          <select
+            class="block mt-6 py-1.5 px-3 text-white border border-transparent transition duration-500 focus:outline-none focus:border-white rounded"
+            v-model="sort"
+          >
+            <option value="1">{{ $t('song.latest') }}</option>
+            <option value="2">{{ $t('song.oldest') }}</option>
+          </select>
+        </div>
+      </div>
       <!-- Comments -->
-      <section>
-        <ul class="px-6 font-circular-thin min-h-[50vh] text-white">
+      <div class="">
+        <ul class="px-6 font-circular-thin text-white">
           <li class="p-6 border border-slate-500" v-if="comments.length === 0">
             {{ $t('song.noComments') }}
             <span v-if="!userLoggedIn"> Login or Register to leave a comment.</span>
@@ -98,7 +96,7 @@
             </p>
           </li>
         </ul>
-      </section>
+      </div>
     </section>
   </main>
 </template>
@@ -109,7 +107,7 @@ import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
 import usePlayerStore from '@/stores/player'
 import iconSecondary from '@/directives/icon-secondary'
-import helper from '@/includes/helper'
+import { greeting, calculateTimeAgo } from '@/includes/helper'
 
 export default {
   name: 'Song',
@@ -165,6 +163,9 @@ export default {
   },
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
+    greeting() {
+      return greeting()
+    },
     async publishComment(values, { resetForm }) {
       this.initCommentAlert()
 
@@ -214,7 +215,7 @@ export default {
       })
     },
     getCommentPublishDate(comment) {
-      return helper.calculateTimeAgo(comment.date)
+      return calculateTimeAgo(comment.date)
     }
   },
   watch: {

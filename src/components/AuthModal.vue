@@ -1,6 +1,6 @@
 <!-- Auth Modal -->
 <template>
-  <main class="grid justify-center items-center sm:p-2 h-full bg-gradient" id="modal">
+  <main class="grid justify-center items-center sm:p-2 h-full bg-gradient-2" id="modal">
     <div
       class="flex flex-col justify-center bg-black sm:rounded-lg w-96 h-full sm:h-auto text-left text-white py-10 px-12 md:shadow-lg shadow-white transform transition-all"
     >
