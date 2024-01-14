@@ -75,6 +75,10 @@ input[type='text'] {
   cursor: text;
 }
 
+label {
+  font-family: 'Circular Black', sans-serif;
+}
+
 /* TODO: create variable colors to toggle Dark/Light mode */
 input {
   background-color: #262626;
