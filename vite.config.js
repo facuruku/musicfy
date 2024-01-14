@@ -20,6 +20,7 @@ export default defineConfig({
         description: 'Listen to your favorite music anywhere',
         theme_color: '#18181b',
         display_override: ['standalone', 'fullscreen', 'minimal-ui', 'browser'],
+        start_url: '/musicfy/',
         icons: [
           {
             src: 'assets/img/pwa-192x192.png',
@@ -47,7 +48,8 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,jpg,}']
+        globPatterns: ['**/*.{js,css,html,png,jpg,gif,svg,webp,}'],
+        globIgnores: ['**/pwa-192x192.png', '**/pwa-512x512.png']
       }
     })
   ],
