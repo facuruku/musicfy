@@ -1,11 +1,11 @@
 <template>
-  <main class="grid place-content-center h-[92dvh] font-circular-black">
-    <div class="flex flex-col gap-6 items-center text-center h-[50dvh]">
+  <main class="grid place-content-center font-circular-black">
+    <div class="flex flex-col gap-6 items-center justify-center text-center w-full">
       <h1 class="text-5xl">{{ $t('resetPassword.title') }}</h1>
-      <p v-if="!emailSent" class="w-[30rem] secondary-text font-circular-thin">
+      <p v-if="!emailSent" class="w-[90dvw] sm:w-[30rem] secondary-text font-circular-thin">
         {{ $t('resetPassword.description') }}
       </p>
-      <p v-else class="w-[30rem] secondary-text font-circular-thin">
+      <p v-else class="w-full sm:w-[30rem] secondary-text font-circular-thin">
         {{ $t('resetPassword.emailSentMsg') }}
       </p>
       <VeeForm
@@ -20,7 +20,7 @@
             id="emailField"
             name="email"
             type="email"
-            class="w-[30rem] py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
+            class="w-[90dvw] sm:w-[30rem] py-1.5 px-3 text-white bg-neutral-800 border border-transparent transition duration-500 focus:outline-none focus:border-white rounded-lg"
             :placeholder="$t('auth.form.emailPlaceholder')"
             autocomplete="email"
           >
