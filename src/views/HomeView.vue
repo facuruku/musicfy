@@ -1,7 +1,5 @@
 <template>
-  <main class="">
-    <AppPlaylist :songs="songs" :songsCount="songsCount" />
-  </main>
+  <AppPlaylist :songs="songs" :songsCount="songsCount" />
 </template>
 
 <script>
