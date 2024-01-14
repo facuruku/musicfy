@@ -9,9 +9,12 @@ import PrimeVue from 'primevue/config'
 import 'primevue/resources/themes/arya-green/theme.css'
 import Icon from '@/directives/icon'
 import { i18n } from '@/includes/i18n'
+import { useRegisterSW } from 'virtual:pwa-register/vue'
 
 import '@/assets/base.css'
 import '@/assets/main.css'
+
+useRegisterSW({ immediate: true })
 
 let app
 

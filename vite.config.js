@@ -19,7 +19,7 @@ export default defineConfig({
         short_name: 'Musicfy',
         description: 'Listen to your favorite music anywhere',
         theme_color: '#18181b',
-        background_color: '#000000',
+        display_override: ['standalone', 'fullscreen', 'minimal-ui', 'browser'],
         icons: [
           {
             src: 'assets/img/pwa-192x192.png',
@@ -34,17 +34,20 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: 'assets/img/screenshot-wide.png',
+            src: 'assets/img/screenshot-pc-fullhd.webp',
             sizes: '1920x1080',
-            type: 'image/png',
+            type: 'image/webp',
             form_factor: 'wide'
           },
           {
-            src: 'assets/img/screenshot-mobile.png',
-            sizes: '396x843',
-            type: 'image/png'
+            src: 'assets/img/screenshot-iphone14promax.webp',
+            sizes: '430x932',
+            type: 'image/webp'
           }
         ]
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,jpg,}']
       }
     })
   ],
