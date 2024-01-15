@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-base: #18181b;
+  --background-noise: url(/assets/img/noise.svg);
+  --musicfy-green: #20d862;
+  --field-bg-dark: #262626;
+}
+
 /* Hide input type number arrow */
 
 /* Chrome, Safari, Edge, Opera */
@@ -57,3 +64,22 @@ input[type='number'] {
 }
 
 /* Custom scrollbar end */
+
+input[type='text'] {
+  cursor: text;
+}
+
+label {
+  font-family: 'Circular Black', sans-serif;
+}
+
+/* TODO: create variable colors to toggle Dark/Light mode */
+input {
+  background-color: var(--field-bg-dark);
+}
+select {
+  background-color: var(--field-bg-dark);
+}
+textarea {
+  background-color: var(--field-bg-dark);
+}

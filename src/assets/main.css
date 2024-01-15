@@ -11,10 +11,6 @@
   src: url(/src/assets/fonts/CircularSpTitle-Black.woff2) format('woff2');
 }
 
-:root {
-  --background-base: #18181b;
-  --background-noise: url(/assets/img/noise.svg);
-}
 a {
   transition: all 0.15s ease;
 }
@@ -62,8 +58,8 @@ a:hover {
 
 .upload-dropbox.upload-dropbox-drag {
   color: #fff;
-  background-color: #20d862;
-  border-color: #20d862;
+  background-color: var(--musicfy-green);
+  border-color: var(--musicfy-green);
   border-style: solid;
 }
 
@@ -71,23 +67,9 @@ input[type='file'] {
   margin-top: 20px;
   background-color: #262626;
 }
-input[type='text'] {
-  cursor: text;
-}
 
-label {
-  font-family: 'Circular Black', sans-serif;
-}
-
-/* TODO: create variable colors to toggle Dark/Light mode */
-input {
-  background-color: #262626;
-}
-select {
-  background-color: #262626;
-}
-textarea {
-  background-color: #262626;
+#nprogress .bar {
+  border: 1px solid var(--musicfy-green);
 }
 
 .progress-bar {
