@@ -1,10 +1,10 @@
-import Home from '@/views/HomeView.vue'
-import Auth from '@/views/AuthView.vue'
-import ResetPassword from '@/views/ResetPasswordView.vue'
-import About from '@/views/AboutView.vue'
-import Manage from '@/views/ManageView.vue'
-import Song from '@/views/SongView.vue'
-import Error404 from '@/views/ErrorView.vue'
+const Home = () => import('@/views/HomeView.vue')
+const Auth = () => import('@/views/AuthView.vue')
+const ResetPassword = () => import('@/views/ResetPasswordView.vue')
+const About = () => import('@/views/AboutView.vue')
+const Manage = () => import('@/views/ManageView.vue')
+const Song = () => import('@/views/SongView.vue')
+const Error404 = () => import('@/views/ErrorView.vue')
 
 export const routes = [
   {
