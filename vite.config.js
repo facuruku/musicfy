@@ -48,8 +48,8 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,jpg,gif,svg,webp,}'],
-        globIgnores: ['**/pwa-192.webp', '**/pwa-512.webp']
+        globPatterns: ['**/*.{js,css,html,png,jpg,gif,svg,webp,woff2}'],
+        globIgnores: ['**/pwa-192.webp', '**/pwa-512.webp'] // ignore pwa icons precached automatically by vite-plugin-pwa to avoid 'add-to-cache-list-conflicting-entries'
       }
     })
   ],
