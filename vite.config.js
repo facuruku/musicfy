@@ -23,14 +23,14 @@ export default defineConfig({
         start_url: '/musicfy/',
         icons: [
           {
-            src: 'assets/img/pwa-192x192.png',
+            src: 'assets/img/pwa-192.webp',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/webp'
           },
           {
-            src: 'assets/img/pwa-512x512.png',
+            src: 'assets/img/pwa-512.webp',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/webp'
           }
         ],
         screenshots: [
@@ -49,7 +49,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,jpg,gif,svg,webp,}'],
-        globIgnores: ['**/pwa-192x192.png', '**/pwa-512x512.png']
+        globIgnores: ['**/pwa-192.webp', '**/pwa-512.webp']
       }
     })
   ],
