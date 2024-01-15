@@ -38,7 +38,7 @@
         <div class="mb-4" v-for="upload in uploads" :key="upload.name" :class="upload.hide_class">
           <!-- File Name -->
           <div class="font-bold text-sm" :class="upload.text_class">
-            <i :class="upload.icon"></i>{{ upload.name }}
+            <i :class="upload.icon"> </i><span>{{ upload.name }}</span>
           </div>
           <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
             <!-- Inner Progress Bar -->
@@ -77,10 +77,24 @@ export default {
 
       const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files]
       files.forEach(async (file) => {
+        if (!navigator.onLine) {
+          this.uploads.push({
+            task: {},
+            current_progress: 100,
+            name: file.name,
+            variant: 'progress-bar bg-red-400',
+            icon: 'fas fa-times',
+            text_class: 'text-red-400'
+          })
+          alert('You are offline, please check your internet connection')
+          return
+        }
+
         if (file.type != 'audio/mpeg') {
           alert('file type invalid')
           return
         }
+
         const storageRef = storage.ref() // musicfy-53b66.appspot.com
         const songsFolderRef = storageRef.child('songs') // musicfy-53b66.appspot.com/songs
         const songRef = songsFolderRef.child(`${file.name}`) // musicfy-53b66.appspot.com/songs/example.mp3
@@ -99,7 +113,7 @@ export default {
             task,
             current_progress: 0,
             name: file.name,
-            variant: 'progress-bar bg-blue-400',
+            variant: 'progress-bar bg-green-400',
             icon: 'fa-solid fa-spinner fa-spin',
             text_class: '',
             hide_class: ''
