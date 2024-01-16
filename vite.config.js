@@ -52,8 +52,8 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,png,jpg,gif,svg,webp,woff2}'],
         globIgnores: ['**/pwa-192.webp', '**/pwa-512.webp'] // ignore pwa icons precached automatically by vite-plugin-pwa to avoid 'add-to-cache-list-conflicting-entries'
       }
-    }),
-    visualizer({ open: true })
+    })
+    //visualizer({ open: true })
   ],
   resolve: {
     alias: {
