@@ -25,8 +25,8 @@ export default defineStore('player', {
       let songUrl = song.url
 
       // If offline take localStorage song
-      if (!navigator.onLine && localStorage.getItem(song.id)) {
-        songUrl = localStorage.getItem(song.id)
+      if (!navigator.onLine && localStorage.getItem(song.uid)) {
+        songUrl = localStorage.getItem(song.uid)
       }
 
       if (!songUrl) {

@@ -160,12 +160,12 @@ export default {
     },
     downloadSongs() {
       this.songs.forEach(async (song) => {
-        if (!localStorage.getItem(song.id)) {
+        if (!localStorage.getItem(song.uid)) {
           const response = await fetch(song.url)
           const blob = await response.blob()
           const url = URL.createObjectURL(blob)
 
-          localStorage.setItem(song.id, url)
+          localStorage.setItem(song.uid, url)
         }
       })
       this.downladed = true
