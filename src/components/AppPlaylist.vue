@@ -47,7 +47,7 @@
           ></i>
         </button>
         <button
-          v-if="!downladed"
+          v-if="!downladed && songs.length > 0"
           class="text-gray-300 hover:text-white md:hover:scale-105"
           @click.prevent="downloadSongs()"
         >
