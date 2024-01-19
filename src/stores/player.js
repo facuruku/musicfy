@@ -22,8 +22,20 @@ export default defineStore('player', {
       this.currentSong = song
       this.isDragging = false
 
+      let songUrl = song.url
+
+      // If offline take localStorage song
+      if (!navigator.onLine && localStorage.getItem(song.id)) {
+        songUrl = localStorage.getItem(song.id)
+      }
+
+      if (!songUrl) {
+        console.error('No song found')
+        return
+      }
+
       this.sound = new Howl({
-        src: [song.url],
+        src: [songUrl],
         html5: true,
         volume: this.volume / 100 //0-1
       })

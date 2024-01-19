@@ -38,13 +38,23 @@
     </section>
     <!-- Playlist Content -->
     <section class="flex-1 py-5 bg-zinc-900 bg-opacity-30 font-circular-thin bg-gradient-2">
-      <button type="button" class="mx-4 sm:mx-8">
-        <i
-          v-icon.button="!playing ? 'play-circle' : 'pause-circle'"
-          class="text-[#1ed760] text-5xl bg-black rounded-full"
-          @click.prevent="playerHasSong ? toggleAudio() : play(this.songs[0])"
-        ></i>
-      </button>
+      <div class="flex justify-between mx-4 sm:mx-8">
+        <button type="button" class="md:hover:scale-105">
+          <i
+            v-icon.button="!playing ? 'play-circle' : 'pause-circle'"
+            class="text-[#1ed760] text-5xl bg-black rounded-full"
+            @click.prevent="playerHasSong ? toggleAudio() : play(this.songs[0])"
+          ></i>
+        </button>
+        <button
+          v-if="!downladed"
+          class="text-gray-300 hover:text-white md:hover:scale-105"
+          @click.prevent="downloadSongs()"
+        >
+          <i class="fa-regular fa-circle-down"></i>
+          <span class="font-circular-black"> Download songs</span>
+        </button>
+      </div>
 
       <!-- Playlist -->
       <div class="mx-4 sm:mx-8 mt-4">
@@ -125,7 +135,8 @@ export default {
   },
   data() {
     return {
-      selectedSong: ''
+      selectedSong: '',
+      downladed: false
     }
   },
   computed: {
@@ -146,6 +157,18 @@ export default {
     handleDblClick(song) {
       this.selectSong(song.docID)
       this.play(song)
+    },
+    downloadSongs() {
+      this.songs.forEach(async (song) => {
+        if (!localStorage.getItem(song.id)) {
+          const response = await fetch(song.url)
+          const blob = await response.blob()
+          const url = URL.createObjectURL(blob)
+
+          localStorage.setItem(song.id, url)
+        }
+      })
+      this.downladed = true
     }
   }
 }
