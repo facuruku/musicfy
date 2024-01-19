@@ -24,14 +24,15 @@ export default defineStore('player', {
 
       let songUrl = song.url
 
-      // If offline take localStorage song
-      if (!navigator.onLine && localStorage.getItem(song.uid)) {
-        songUrl = localStorage.getItem(song.uid)
-      }
-
-      if (!songUrl) {
-        console.error('No song found')
-        return
+      if (!navigator.onLine) {
+        const cache = await caches.open('audio-cache')
+        const response = await cache.match(song.url)
+        if (response) {
+          songUrl = URL.createObjectURL(await response.blob())
+        } else {
+          console.error('Song not found in cache')
+          return
+        }
       }
 
       this.sound = new Howl({

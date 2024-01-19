@@ -50,7 +50,20 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,jpg,gif,svg,webp,woff2}'],
-        globIgnores: ['**/pwa-192.webp', '**/pwa-512.webp'] // ignore pwa icons precached automatically by vite-plugin-pwa to avoid 'add-to-cache-list-conflicting-entries'
+        globIgnores: ['**/pwa-192.webp', '**/pwa-512.webp'], // ignore pwa icons precached automatically by vite-plugin-pwa to avoid 'add-to-cache-list-conflicting-entries'
+        runtimeCaching: [
+          {
+            urlPattern: '**/*.mp3',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'audio-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+              }
+            }
+          }
+        ]
       }
     })
     //visualizer({ open: true })

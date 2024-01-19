@@ -49,7 +49,7 @@
         <button
           v-if="!downladed && songs.length > 0"
           class="text-gray-300 hover:text-white md:hover:scale-105"
-          @click.prevent="downloadSongs()"
+          @click.prevent="cacheSongs()"
         >
           <i class="fa-regular fa-circle-down"></i>
           <span class="font-circular-black"> Download songs</span>
@@ -158,17 +158,18 @@ export default {
       this.selectSong(song.docID)
       this.play(song)
     },
-    downloadSongs() {
-      this.songs.forEach(async (song) => {
-        if (!localStorage.getItem(song.uid)) {
+    async cacheSongs() {
+      const cache = await caches.open('audio-cache')
+      for (const song of this.songs) {
+        if (!(await cache.match(song.url))) {
           const response = await fetch(song.url)
-          const blob = await response.blob()
-          const url = URL.createObjectURL(blob)
-
-          localStorage.setItem(song.uid, url)
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          await cache.put(song.url, response)
         }
-      })
-      this.downladed = true
+      }
+      this.downloaded = true
     }
   }
 }
