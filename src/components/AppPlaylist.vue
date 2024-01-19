@@ -47,7 +47,7 @@
           ></i>
         </button>
         <button
-          v-if="!downladed && songs.length > 0"
+          v-if="!downloaded && songs.length > 0"
           class="text-gray-300 hover:text-white md:hover:scale-105"
           @click.prevent="cacheSongs()"
         >
@@ -136,7 +136,7 @@ export default {
   data() {
     return {
       selectedSong: '',
-      downladed: false
+      downloaded: false
     }
   },
   computed: {
