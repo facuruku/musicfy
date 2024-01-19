@@ -76,14 +76,14 @@
 
         <!-- Install app -->
         <li class="hover:text-white md:hover:scale-105">
-          <a
+          <button
+            v-if="installPromptEvent"
             class="flex items-center gap-1"
-            href="https://www.spotify.com/es/download/"
-            target="_blank"
+            @click.prevent="promptInstall()"
           >
             <i class="fa-regular fa-circle-down"></i>
-            <span class="hidden md:block">{{ $t('header.install') }}</span>
-          </a>
+            {{ $t('header.install') }}
+          </button>
         </li>
 
         <!-- Language -->
@@ -114,6 +114,17 @@ export default {
       return this.$t('langImgPath')
     }
   },
+  data() {
+    return {
+      installPromptEvent: null
+    }
+  },
+  mounted() {
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault()
+      this.installPromptEvent = event
+    })
+  },
   methods: {
     ...mapActions(useUserStore, { firebaseSignOut: 'signOut' }),
     signOut() {
@@ -124,6 +135,15 @@ export default {
     toggleLocale() {
       const currentLocale = this.$i18n.locale
       this.$i18n.locale = currentLocale === 'en' ? 'es' : 'en'
+    },
+    promptInstall() {
+      if (!this.installPromptEvent) return
+      this.installPromptEvent.prompt()
+      this.installPromptEvent.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          this.installPromptEvent = null
+        }
+      })
     }
   }
 }
