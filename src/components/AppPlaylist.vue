@@ -146,7 +146,7 @@ export default {
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
     greeting() {
-      return greeting()
+      return greeting(this.username)
     },
     isSongSelected(songDocID) {
       return this.selectedSong === songDocID

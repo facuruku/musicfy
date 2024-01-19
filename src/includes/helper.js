@@ -42,15 +42,14 @@ export function calculateTimeAgo(commentDate) {
   return t('song.yearsAgo', { count: years })
 }
 
-export function greeting() {
+export function greeting(username) {
   const now = new Date()
   const hour = now.getHours()
-
   if (hour >= 6 && hour < 12) {
-    return t('home.morningGreeting')
+    return t('home.morningGreeting', { username: username })
   } else if (hour >= 12 && hour < 18) {
-    return t('home.afternoonGreeting')
+    return t('home.afternoonGreeting', { username: username })
   } else {
-    return t('home.nightGreeting')
+    return t('home.nightGreeting', { username: username })
   }
 }
