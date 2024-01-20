@@ -46,14 +46,12 @@
             @click.prevent="playerHasSong ? toggleAudio() : play(this.songs[0])"
           ></i>
         </button>
-        <button
-          v-if="!downloaded && songs.length > 0"
-          class="text-gray-300 hover:text-white md:hover:scale-105"
-          @click.prevent="cacheSongs()"
-        >
-          <i class="fa-regular fa-circle-down"></i>
-          <span class="font-circular-black"> Download songs</span>
-        </button>
+        <div class="text-gray-300 hover:text-white">
+          <div class="flex items-center gap-2 group" v-if="!downloaded && songs.length > 0">
+            <span class="font-circular-black"> Offline mode</span>
+            <InputSwitch v-model="dowloadSongs" />
+          </div>
+        </div>
       </div>
 
       <!-- Playlist -->
@@ -119,10 +117,11 @@ import usePlayerStore from '@/stores/player'
 import useUserStore from '@/stores/user'
 import SongItem from '@/components/SongItem.vue'
 import { greeting } from '@/includes/helper'
+import InputSwitch from 'primevue/inputswitch'
 
 export default {
   name: 'AppPlaylist',
-  components: { SongItem },
+  components: { SongItem, InputSwitch },
   props: {
     songs: {
       type: Array,
@@ -136,12 +135,17 @@ export default {
   data() {
     return {
       selectedSong: '',
-      downloaded: false
+      dowloadSongs: false
     }
   },
   computed: {
     ...mapState(usePlayerStore, ['playing', 'playerHasSong']),
     ...mapState(useUserStore, ['username'])
+  },
+  watch: {
+    dowloadSongs(newVal) {
+      newVal ? this.cacheSongs() : this.clearSongsCache()
+    }
   },
   methods: {
     ...mapActions(usePlayerStore, ['play', 'toggleAudio']),
@@ -169,7 +173,9 @@ export default {
           await cache.put(song.url, response)
         }
       }
-      this.downloaded = true
+    },
+    async clearSongsCache() {
+      await caches.delete('audio-cache')
     }
   }
 }
