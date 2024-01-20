@@ -19,7 +19,8 @@
     "genre": "Género",
     "comments": "Comentarios",
     "unknown": "Desconocido",
-    "emptyPlaylist": "Tu lista de reproducción está vacía. ¡Añade canciones!"
+    "emptyPlaylist": "Tu lista de reproducción está vacía. ¡Añade canciones!",
+    "offlineMode": "Modo offline"
   },
   "manage": {
     "upload": "Subir",

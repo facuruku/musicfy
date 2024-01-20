@@ -47,9 +47,14 @@
           ></i>
         </button>
         <div class="text-gray-300 hover:text-white">
-          <div class="flex items-center gap-2 group" v-if="!downloaded && songs.length > 0">
-            <span class="font-circular-black"> Offline mode</span>
-            <InputSwitch v-model="dowloadSongs" />
+          <div class="flex items-center gap-2 group" v-if="songs.length > 0">
+            <span
+              class="font-circular-black hover:cursor-pointer"
+              @click.prevent="downloadSongs = !downloadSongs"
+            >
+              {{ $t('home.offlineMode') }}</span
+            >
+            <InputSwitch v-model="downloadSongs" id="offlineSwitch" />
           </div>
         </div>
       </div>
@@ -135,7 +140,7 @@ export default {
   data() {
     return {
       selectedSong: '',
-      dowloadSongs: false
+      downloadSongs: false
     }
   },
   computed: {
@@ -143,7 +148,7 @@ export default {
     ...mapState(useUserStore, ['username'])
   },
   watch: {
-    dowloadSongs(newVal) {
+    downloadSongs(newVal) {
       newVal ? this.cacheSongs() : this.clearSongsCache()
     }
   },

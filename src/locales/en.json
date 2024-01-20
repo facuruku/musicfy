@@ -19,7 +19,8 @@
     "genre": "Genre",
     "comments": "Comments",
     "unknown": "Unknown",
-    "emptyPlaylist": "Your playlist is empty, add some songs!"
+    "emptyPlaylist": "Your playlist is empty, add some songs!",
+    "offlineMode": "Offline mode"
   },
   "manage": {
     "upload": "Upload",
