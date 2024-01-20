@@ -62,6 +62,17 @@ export default defineConfig({
                 maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
               }
             }
+          },
+          {
+            urlPattern: 'https://kit.fontawesome.com/1dba7abd3d.js',
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'font-awesome-cache',
+              expiration: {
+                maxEntries: 5,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+              }
+            }
           }
         ]
       }
