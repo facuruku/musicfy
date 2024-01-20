@@ -49,11 +49,11 @@
         <div class="flex items-center gap-2 text-gray-300 hover:text-white" v-if="songs.length > 0">
           <span
             class="font-circular-black hover:cursor-pointer"
-            @click.prevent="downloadSongs = !downloadSongs"
+            @click.prevent="offlineMode = !offlineMode"
           >
             {{ $t('home.offlineMode') }}</span
           >
-          <InputSwitch v-model="downloadSongs" id="offlineSwitch" />
+          <InputSwitch v-model="offlineMode" />
         </div>
       </div>
 
@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia'
+import { mapState, mapActions, mapWritableState } from 'pinia'
 import usePlayerStore from '@/stores/player'
 import useUserStore from '@/stores/user'
 import SongItem from '@/components/SongItem.vue'
@@ -137,16 +137,16 @@ export default {
   },
   data() {
     return {
-      selectedSong: '',
-      downloadSongs: false
+      selectedSong: ''
     }
   },
   computed: {
     ...mapState(usePlayerStore, ['playing', 'playerHasSong']),
-    ...mapState(useUserStore, ['username'])
+    ...mapState(useUserStore, ['username']),
+    ...mapWritableState(useUserStore, ['offlineMode'])
   },
   watch: {
-    downloadSongs(newVal) {
+    offlineMode(newVal) {
       newVal ? this.cacheSongs() : this.clearSongsCache()
     }
   },
