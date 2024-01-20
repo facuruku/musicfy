@@ -1,25 +1,31 @@
 <template>
   <!-- Player -->
   <footer
-    class="w-full bg-black p-8 flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
+    class="w-full bg-black p-4 sm:p-8 flex flex-col lg:flex-row lg:justify-between justify-center items-center select-none"
   >
     <!-- Buttons - Progress bar -->
-    <section class="text-white flex flex-col items-center flex-1 font-circular-thin lg:order-2">
+    <section
+      class="text-white flex flex-col sm:gap-1 items-center flex-1 font-circular-thin lg:order-2"
+    >
       <!-- Play/Pause Button -->
-      <button type="button" class="">
+      <button
+        type="button"
+        :class="{ 'text-white': playerHasSong, 'text-gray-500': !playerHasSong }"
+        @click.prevent="toggleAudio()"
+      >
         <i
-          class="text-white text-3xl hover:scale-105"
+          class="text-3xl hover:scale-105"
           :class="{ 'fa fa-play-circle': !playing, 'fa fa-pause-circle': playing }"
-          @click.prevent="toggleAudio()"
         ></i>
       </button>
       <div class="flex flex-nowrap gap-3 justify-center items-center">
         <!-- Current Position -->
-        <div class="player-currenttime text-xs secondary-text font-sans">
-          {{ seek }}
-        </div>
+        <p class="player-currenttime text-xs secondary-text font-sans">
+          {{ playerHasSong ? seek : '-:--' }}
+        </p>
         <!-- Progress Slider  -->
         <Slider
+          :disabled="!playerHasSong"
           v-model="playerProgress"
           @change="handleSliderChange(playerProgress)"
           @slideend="handleSlideEnd()"
@@ -35,9 +41,9 @@
         />
 
         <!-- Duration -->
-        <div class="player-duration text-xs secondary-text font-sans">
-          {{ displayDuration }}
-        </div>
+        <p class="player-duration text-xs secondary-text font-sans">
+          {{ playerHasSong ? displayDuration : '-:--' }}
+        </p>
       </div>
     </section>
     <!-- Track Info -->
@@ -61,9 +67,11 @@
     </section>
 
     <!-- Volume -->
-    <section class="hidden text-white lg:flex items-center justify-end flex-1 order-3">
-      <!-- TODO set popover for mute funcitonality (check https://valgeirb.github.io/vue3-popper/)-->
+    <section
+      class="hidden text-gray-300 lg:flex items-center justify-end flex-1 order-3 hover:text-white"
+    >
       <i
+        v-tooltip.top="'Mute'"
         @click.prevent="toggleVolume"
         class="fa-solid hover:cursor-pointer p-3"
         :class="{

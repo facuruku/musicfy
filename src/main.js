@@ -34,8 +34,8 @@ auth.onAuthStateChanged(() => {
     app.use(i18n)
     app.use(GlobalComponents)
     app.directive('icon', Icon)
-    app.component('Slider', Slider)
     app.directive('tooltip', Tooltip)
+    app.component('Slider', Slider)
 
     app.mount('#app')
   }

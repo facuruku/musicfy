@@ -40,7 +40,7 @@ export default {
   height: 100dvh;
   grid-template-columns: 1fr;
   grid-template-rows: 0.2fr 2.4fr 0.4fr;
-  gap: 5px 0px;
+  gap: 0px 0px;
   grid-template-areas:
     'Header'
     'Main'
