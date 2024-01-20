@@ -68,10 +68,22 @@ input[type='file'] {
   background-color: #262626;
 }
 
+/* Extend touchable area above and below slider to improve accessibility */
+.p-slider::before {
+  content: '';
+  position: absolute;
+  height: 10px;
+  top: -3px;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+
 #nprogress .bar {
   border: 1px solid var(--musicfy-green);
 }
 
+/* Upload files progressbar */
 .progress-bar {
   background-size: 1rem 1rem;
   background-image: linear-gradient(
