@@ -20,6 +20,7 @@ export default defineConfig({
         short_name: 'Musicfy',
         description: 'Listen to your favorite music anywhere',
         theme_color: '#18181b',
+        background_color: '#18181b',
         display_override: ['standalone', 'fullscreen', 'minimal-ui', 'browser'],
         start_url: '/musicfy/',
         icons: [
@@ -32,6 +33,12 @@ export default defineConfig({
             src: 'assets/img/pwa-512.webp',
             sizes: '512x512',
             type: 'image/webp'
+          },
+          {
+            src: 'assets/img/pwa-512.webp',
+            sizes: '512x512',
+            type: 'image/webp',
+            purpose: 'maskable'
           }
         ],
         screenshots: [
