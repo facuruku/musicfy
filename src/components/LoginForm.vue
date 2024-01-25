@@ -1,5 +1,3 @@
-<!-- TODO: Add email autofocus creating directive v-focus-->
-<!-- COPILOT: como puedo hacer autofocus al usuario en el campo email cuando este formulario se muestra  -->
 <template>
   <div
     class="text-black text-center font-bold p-4 rounded mb-4"
@@ -60,7 +58,8 @@
       class="block w-2/5 self-center bg-[#1ed760] text-black font-bold py-2 px-3 mb-3 rounded-full transition hover:scale-105"
       :disabled="login_in_submission"
     >
-      {{ $t('auth.button.login') }}
+      <i v-if="login_in_submission" class="fa-solid fa-spinner fa-spin"></i>
+      <span v-else>{{ $t('auth.button.login') }}</span>
     </button>
     <div class="text-center underline">
       <RouterLink :to="{ name: 'resetPassword' }">

@@ -12,7 +12,7 @@
       <ul class="flex flex-wrap mb-4 gap-4">
         <li class="flex-auto text-center">
           <button
-            class="w-full rounded-full p-2 transition font-bold"
+            class="w-full rounded-full p-2 transition font-bold border"
             @click.prevent="handleLoginTab()"
             :class="{
               'text-black bg-[#1ed760]': tab === 'login',
@@ -60,17 +60,15 @@ export default {
   methods: {
     handleLoginTab() {
       this.tab = 'login'
-      this.$nextTick(() => document.getElementById('email').focus())
     },
     handleRegisterTab() {
       this.tab = 'register'
-      this.$nextTick(() => document.getElementById('name').focus())
     },
     handleLoginSuccess() {
       this.$router.push({ name: 'home' })
     },
     handleRegisterSuccess() {
-      //TODO may remove if not necessary
+      this.$router.push({ name: 'registerSuccess' })
     }
   }
 }

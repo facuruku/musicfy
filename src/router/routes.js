@@ -1,5 +1,6 @@
 const Home = () => import('@/views/HomeView.vue')
 const Auth = () => import('@/views/AuthView.vue')
+const RegisterSuccess = () => import('@/views/registerSuccessView.vue')
 const ResetPassword = () => import('@/views/ResetPasswordView.vue')
 const About = () => import('@/views/AboutView.vue')
 const Manage = () => import('@/views/ManageView.vue')
@@ -11,6 +12,11 @@ export const routes = [
     name: 'auth',
     path: '/auth',
     component: Auth
+  },
+  {
+    name: 'registerSuccess',
+    path: '/auth/registerSuccess',
+    component: RegisterSuccess
   },
   {
     name: 'resetPassword',

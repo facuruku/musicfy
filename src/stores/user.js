@@ -37,6 +37,10 @@ export default defineStore('user', {
           await userCredentials.user.updateProfile({
             displayName: values.name
           })
+
+          //Logout user after register to force email verification
+          await auth.signOut()
+          this.userLoggedIn = false
         })
         .catch(() => {
           console.error('Error sending email verification')

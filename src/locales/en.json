@@ -65,6 +65,10 @@
       "tos": "Terms of Service"
     }
   },
+  "register": {
+    "title": "Account created successfully!",
+    "description": "We've sent you an email. Just follow the instructions to activate your account."
+  },
   "resetPassword": {
     "title": "Password Reset",
     "description": "Enter the email address that you used to register. We'll send you an email with a link to reset your password.",

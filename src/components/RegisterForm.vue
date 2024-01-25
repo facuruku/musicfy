@@ -172,15 +172,17 @@
           >{{ $t('auth.form.tos') }}
         </a>
       </I18nT>
-      <ErrorMessage v-bind="errors" class="text-red-600 block" name="tos" />
+      <ErrorMessage class="text-red-600 block" name="tos" />
     </div>
 
     <!-- Register Button -->
     <button
       type="submit"
       class="block self-center bg-[#1ed760] text-black font-bold py-2 px-3 rounded-full transition hover:scale-105"
+      :disabled="reg_in_submission"
     >
-      {{ $t('auth.button.register') }}
+      <i v-if="reg_in_submission" class="fa-solid fa-spinner fa-spin"></i>
+      <span v-else>{{ $t('auth.button.register') }}</span>
     </button>
   </VeeForm>
 </template>

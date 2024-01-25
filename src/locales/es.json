@@ -65,6 +65,10 @@
       "tos": "Términos y condiciones"
     }
   },
+  "register": {
+    "title": "Cuenta creada con éxito",
+    "description": "Te hemos enviado un correo electrónico. Solo tienes que seguir las instrucciones para activar tu cuenta."
+  },
   "resetPassword": {
     "title": "Restablecer contraseña",
     "description": "Introduce la dirección de correo electrónico que usaste en el registro. Te enviaremos un correo con un enlace para restablecer tu contraseña.",
