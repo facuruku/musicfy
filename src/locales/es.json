@@ -22,6 +22,12 @@
     "emptyPlaylist": "Tu lista de reproducción está vacía. ¡Añade canciones!",
     "offlineMode": "Modo offline"
   },
+  "player": {
+    "muteTooltip": "Silenciar",
+    "unmuteTooltip": "No silenciar",
+    "playTooltip": "Reproducir",
+    "pauseTooltip": "Pausar"
+  },
   "manage": {
     "upload": "Subir",
     "mySongs": "Mis canciones",

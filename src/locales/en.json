@@ -22,6 +22,12 @@
     "emptyPlaylist": "Your playlist is empty, add some songs!",
     "offlineMode": "Offline mode"
   },
+  "player": {
+    "muteTooltip": "Mute",
+    "unmuteTooltip": "Unmute",
+    "playTooltip": "Play",
+    "pauseTooltip": "Pause"
+  },
   "manage": {
     "upload": "Upload",
     "mySongs": "My Songs",

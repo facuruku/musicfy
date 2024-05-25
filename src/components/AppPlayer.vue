@@ -14,6 +14,7 @@
         @click.prevent="toggleAudio()"
       >
         <i
+          v-tooltip.top="getPlayIconTooltip()"
           class="text-3xl hover:scale-105"
           :class="{ 'fa fa-play-circle': !playing, 'fa fa-pause-circle': playing }"
         ></i>
@@ -71,7 +72,7 @@
       class="hidden text-gray-300 lg:flex items-center justify-end flex-1 order-3 hover:text-white"
     >
       <i
-        v-tooltip.top="'Mute'"
+        v-tooltip.top="getVolumeIconTooltip()"
         @click.prevent="toggleVolume"
         class="fa-solid hover:cursor-pointer p-3 w-11"
         :class="{
@@ -128,8 +129,11 @@ export default {
         this.volume = this.volumeOld
       }
     },
-    getVolumeTooltip() {
-      return this.volume >= 1 ? 'Mute' : 'Unmute'
+    getVolumeIconTooltip() {
+      return this.volume >= 1 ? this.$t('player.muteTooltip') : this.$t('player.unmuteTooltip')
+    },
+    getPlayIconTooltip() {
+      return this.playing ? this.$t('player.pauseTooltip') : this.$t('player.playTooltip')
     },
     updateDisplaySeek(playerProgress) {
       const percentage = playerProgress / 100
