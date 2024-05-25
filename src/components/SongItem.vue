@@ -8,6 +8,7 @@
   >
     <td
       id="index"
+      v-tooltip.right="getInlinePlayIconTooltip()"
       class="hidden sm:table-cell rounded-l-md"
       :class="{ 'text-green-500': isSongInPlayer, 'text-secondary': !isSongInPlayer }"
       @click.prevent="isSongInPlayer ? toggleAudio() : play(song)"
@@ -113,6 +114,11 @@ export default {
     handleDblClick(song) {
       this.$emit('double-click')
       this.play(song)
+    },
+    getInlinePlayIconTooltip() {
+      return this.isSongPlaying
+        ? this.$t('player.pauseTooltip')
+        : this.$tc('player.inlinePlayTooltip', { title: this.song.modified_name })
     }
   },
   components: { RouterLink }

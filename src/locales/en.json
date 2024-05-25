@@ -26,7 +26,8 @@
     "muteTooltip": "Mute",
     "unmuteTooltip": "Unmute",
     "playTooltip": "Play",
-    "pauseTooltip": "Pause"
+    "pauseTooltip": "Pause",
+    "inlinePlayTooltip": "Play {title}"
   },
   "manage": {
     "upload": "Upload",

@@ -26,7 +26,8 @@
     "muteTooltip": "Silenciar",
     "unmuteTooltip": "No silenciar",
     "playTooltip": "Reproducir",
-    "pauseTooltip": "Pausar"
+    "pauseTooltip": "Pausar",
+    "inlinePlayTooltip": "Reproducir {title}"
   },
   "manage": {
     "upload": "Subir",
