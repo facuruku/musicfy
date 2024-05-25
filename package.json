@@ -15,7 +15,6 @@
   "dependencies": {
     "@vee-validate/rules": "^4.11.8",
     "@vercel/analytics": "^1.2.2",
-    "dotenv": "^16.4.5",
     "firebase": "^8.10.1",
     "howler": "^2.2.4",
     "nprogress": "^0.2.0",
