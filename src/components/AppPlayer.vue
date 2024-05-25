@@ -73,7 +73,7 @@
       <i
         v-tooltip.top="'Mute'"
         @click.prevent="toggleVolume"
-        class="fa-solid hover:cursor-pointer p-3"
+        class="fa-solid hover:cursor-pointer p-3 w-11"
         :class="{
           'fa-volume-high': volume > 50,
           'fa-volume-low': volume >= 1,
@@ -127,6 +127,9 @@ export default {
       } else {
         this.volume = this.volumeOld
       }
+    },
+    getVolumeTooltip() {
+      return this.volume >= 1 ? 'Mute' : 'Unmute'
     },
     updateDisplaySeek(playerProgress) {
       const percentage = playerProgress / 100
